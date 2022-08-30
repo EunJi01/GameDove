@@ -15,7 +15,7 @@
 * 디테일뷰에서 star 버튼을 누를 경우 토스트 메세지를 띄우고 해당 게임의 정보가 Realm으로 저장된다.
 -------------
 ### 앱 UI/UX
-![스크린샷 2022-08-30 오후 6 37 00](https://user-images.githubusercontent.com/92143918/187403664-5744f19a-7df2-4e9b-a285-f3e101b4d6c7.png)
+![스크린샷 2022-08-30 오후 7 43 50](https://user-images.githubusercontent.com/92143918/187417082-522e3efd-3ff9-4796-bca8-8305659b5a8e.png)
 -------------
 ### 앱 기능
 #### NewGameView / RatingGameView
@@ -69,6 +69,7 @@
 |  | FavoritesView | Code Base 레이아웃 | 1h |  |  |
 |  | FavoritesView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
 |  | FavoritesView | 스와이프로 삭제 기능 구현 | 2h |  |  |
+|  | FavoritesView | didSeletRowAt | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
 |  | 추가 기능 | 다국어 지원 | 3h |  |  |
