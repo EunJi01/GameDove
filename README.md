@@ -1,1 +1,1 @@
-# Gamepedia-
+# Gamepedia
