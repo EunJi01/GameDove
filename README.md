@@ -15,7 +15,7 @@
 * 디테일뷰에서 star 버튼을 누를 경우 토스트 메세지를 띄우고 해당 게임의 정보가 Realm으로 저장된다.
 -------------
 ### 앱 UI/UX
-![스크린샷 2022-08-30 오후 7 43 50](https://user-images.githubusercontent.com/92143918/187417082-522e3efd-3ff9-4796-bca8-8305659b5a8e.png)
+![스크린샷 2022-08-30 오후 7 43 50](https://user-images.githubusercontent.com/92143918/187417082-522e3efd-3ff9-4796-bca8-8305659b5a8e.png)  
 -------------
 ### 앱 기능
 #### NewGameView / RatingGameView
