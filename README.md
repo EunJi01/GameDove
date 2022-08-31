@@ -64,7 +64,7 @@
 |  | DetailView | WebView로 예고편 재생 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
-|  | RealmModel | Realm 모델 만들기 | 1h |  |  |
+|  | RealmModel | Realm 스키마 구성 | 1h |  |  |
 |  | DetailView | 즐겨찾기 버튼 구현 (Realm 저장) | 5h |  |  |
 |  | FavoritesView | Code Base 레이아웃 | 1h |  |  |
 |  | FavoritesView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
