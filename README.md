@@ -11,7 +11,6 @@
 #### DetailView (+WebView)
 * 셀을 선택하면 세부 화면으로 이동하며, 게임의 세부 정보를 보여준다.
 * 웹뷰로 연결할 수 있는 버튼이 있고 해당 버튼을 누르면 예고편을 볼 수 있다.
-* ActivityViewController를 통해 외부에 공유할 수 있다.
 #### FavoritesView
 * 탭바에 즐겨찾기 탭을 추가하고, 즐겨찾기한 게임들은 여기서 모아볼 수 있다.
 * 디테일뷰에서 star 버튼을 누를 경우 토스트 메세지를 띄우고 해당 게임의 정보가 Realm으로 저장된다.
@@ -40,53 +39,54 @@
 * 다국어 지원 (한영일)
 * 하이퍼링크로 API 명시
 * 문의하기/리뷰 작성 안내 등의 설정창 구현
-* 
+* ActivityViewController를 통해 외부에 공유
 -------------
 
 ### 개발 공수
 | 회차 | 내용 | 세부내용 | 예상시간 | 특이사항 | 날짜 |
 | --- | --- | --- | --- | --- | --- |
 | **Iteration 1** |  |  |  |  | **~2022.09.11** |
+|  |  | 다국어 지원 설계 | 2h |  |  |
 |  | NewGameView | Code Base 레이아웃 | 2h |  |  |
 |  | NewGameView | 오픈API 통신 | 2h |  |  |
 |  | NewGameView | 오픈API 호출 설계 | 3h |  |  |
 |  | NewGameView | 페이지네이션 구현 | 4h |  |  |
 |  | UIMenu+Extensio | UIMenu+Extension 구현 | 1h |  |  |
-|  | NewGameView | 플랫폼 필터 구현 | 3h |  |  |
-|  | NewGameView | 기간 필터 구현 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
+|  | NewGameView | 플랫폼 필터 구현 | 3h |  |  |
+|  | NewGameView | 기간 필터 구현 | 3h |  |  |
 |  | NewGameView | UserDefaults로 옵션 저장 | 2h |  |  |
 |  | NewGameView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
 |  | NewGameView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
-|  | RatingGameView | 탭바 구현 | 1h |  |  |
-|  | RatingGameView | 오픈 API 통신 | 1h |  |  |
-|  | RatingGameView | NewGameView 기능 재구성 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
+|  | RatingGameView | 탭바 구현 | 1h |  |  |
+|  | RatingGameView | 오픈 API 통신 | 1h |  |  |
+|  | RatingGameView | NewGameView 기능 재구성 | 2h |  |  |
 |  | DetailView | Code Base 레이아웃 | 4h |  |  |
 |  | DetailView | Struct Model 구성 | 1h |  |  |
-|  | DetailView | 선택된 셀의 정보 받아오기 | 3h |  |  |
-|  | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 4** |  |  |  |  | **~2022.09.21** |
+|  | DetailView | 선택된 셀의 정보 받아오기 | 3h |  |  |
+|  | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
 |  | DetailView | bannerCollectionView 구성 | 2h |  |  |
 |  | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h |  |  |
 |  | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 3h |  |  |
-|  | DetailView | WebView로 예고편 재생 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
+|  | DetailView | WebView로 예고편 재생 | 3h |  |  |
 |  | RealmModel | Realm 스키마 구성 | 1h |  |  |
-|  | DetailView | 즐겨찾기 버튼 구현 (Realm 저장) | 5h |  |  |
+|  | DetailView | 즐겨찾기 버튼 구현 (Realm 저장) | 3h |  |  |
 |  | FavoritesView | Code Base 레이아웃 | 1h |  |  |
 |  | FavoritesView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
 |  | FavoritesView | 스와이프로 삭제 기능 구현 | 2h |  |  |
-|  | FavoritesView | didSeletRowAt | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
-|  | 추가 기능 | 다국어 지원 | 3h |  |  |
-|  | 추가 기능 | 필터에 날짜 옵션 추가 | 5h |  |  |
+|  | FavoritesView | didSeletRowAt | 3h |  |  |
 |  | 추가 기능 | SettingTableView 구현 | 4h |  |  |
+|  | 추가 기능 | ActivityViewController | 2h |  |  |
+|  |  |  |  |  |  |
 | **Iteration 7** |  |  |  |  | **~2022.10.02** |
 |  |  | 마무리 작업 | 5h |  |  |
 |  |  | Code-Refactoring | 5h |  |  |
