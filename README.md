@@ -51,7 +51,7 @@
 |  | NewGameView | 오픈API 통신 | 2h |  |  |
 |  | NewGameView | 오픈API 호출 설계 | 3h |  |  |
 |  | NewGameView | 페이지네이션 구현 | 4h |  |  |
-|  | UIMenu+Extensio | UIMenu+Extension 구현 | 1h |  |  |
+|  | UIMenu+Extension | UIMenu+Extension 구현 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
 |  | NewGameView | 플랫폼 필터 구현 | 3h |  |  |
