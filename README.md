@@ -51,6 +51,7 @@
 |  | NewGameView | Code Base 레이아웃 | 2h |  |  |
 |  | NewGameView | 오픈API 통신 | 2h |  |  |
 |  | NewGameView | 오픈API 호출 설계 | 3h |  |  |
+|  | NewGameView | 페이지네이션 구현 | 3h |  |  |
 |  | UIMenu+Extension | UIMenu+Extension 구현 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
