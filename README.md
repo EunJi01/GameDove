@@ -20,8 +20,7 @@
 -------------
 ### 앱 기능
 =====수정예정=====
-1. 다국어 지원은 초반부터 설정
-2. ActivityViewController를 어디서 설계할까...
+1. ActivityViewController를 어디서 설계할까... --> 디테일뷰?
 
 #### NewGameView / RatingGameView
 * API 통신 ⭐️매우 중요⭐️ ---> 우선 신작 모아보기를 구현 후, 마지막에 나누기
