@@ -47,12 +47,12 @@
 | 회차 | 내용 | 세부내용 | 예상시간 | 특이사항 | 날짜 |
 | --- | --- | --- | --- | --- | --- |
 | **Iteration 1** |  |  |  |  | **~2022.09.11** |
-|  |  | 다국어 지원 설계 | 2h |  |  |
-|  | NewGameView | Code Base 레이아웃 | 2h |  |  |
-|  | NewGameView | 오픈API 통신 | 2h |  |  |
-|  | NewGameView | 오픈API 호출 설계 | 3h |  |  |
-|  | NewGameView | 페이지네이션 구현 | 3h |  |  |
-|  | UIMenu+Extension | UIMenu+Extension 구현 | 1h |  |  |
+|  |  | 다국어 지원 설계 | 2h | 2h |  |
+|  |  | ColorSet/IconSet 구성 | 1h | 1h |  |
+|  | NewGameView | Code Base 레이아웃 | 2h | 2h |  |
+|  | NewGameView | 오픈API 통신 | 2h | 2h |  |
+|  | NewGameView | 페이지네이션 구현 | 3h | X |  |
+|  | UIMenu+Extension | UIMenu+Extension 구현 | 1h | 1h |  |
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
 |  | NewGameView | 플랫폼 필터 구현 | 3h |  |  |
@@ -85,6 +85,7 @@
 |  |  |  |  |  |  |
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
 |  | FavoritesView | didSeletRowAt | 3h |  |  |
+|  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
 |  | 추가 기능 | SettingTableView 구현 | 4h |  |  |
 |  | 추가 기능 | ActivityViewController | 2h |  |  |
 |  |  |  |  |  |  |
