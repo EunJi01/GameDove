@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  GameDove
+
+  Created by 황은지 on 2022/09/08.
+  
+*/
+
+// MARK: 메인뷰
+// 자세히 보기
+"inDetail" = "자세히 보기";
+
+// MARK: 디테일뷰
+// 원제
+"name_original" = "원제";
+
+// 장르 => 3~4개 정도
+"genres" = "장르";
+
+// 플랫폼 => 전체 다 보여주되, 가독성에 신경쓰기
+"platforms" = "플랫폼";
+
+// 출시
+"released" = "출시일";
+
+// 플레이타임
+"playtime" = "플레이타임";
+
+// 메타크리틱 점수
+"metacritic" = "메타스코어";
