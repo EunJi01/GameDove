@@ -55,24 +55,24 @@
 |  | UIMenu+Extension | UIMenu+Extension 구현 | 1h | 1h |  |
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
-|  | NewGameView | 플랫폼 필터 구현 | 3h |  |  |
-|  | NewGameView | 기간 필터 구현 | 3h |  |  |
-|  | NewGameView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
-|  | NewGameView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
+| 13 | NewGameView | 플랫폼 필터 구현 | 3h |  |  |
+| 13 | NewGameView | 기간 필터 구현 | 3h |  |  |
+| 14 | NewGameView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
+| 14 | NewGameView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
-|  | RatingGameView | 탭바 구현 | 1h |  |  |
-|  | RatingGameView | 오픈 API 통신 | 1h |  |  |
-|  | RatingGameView | NewGameView 기능 재구성 | 2h |  |  |
-|  | DetailView | Code Base 레이아웃 | 4h |  |  |
-|  | DetailView | Struct Model 구성 | 1h |  |  |
+| 15 | RatingGameView | 탭바 구현 | 1h |  |  |
+| 15 | RatingGameView | NewGameView 기능 재구성 | 2h |  |  |
+| 16 | RatingGameView | 오픈 API 통신 | 1h |  |  |
+| 17 | DetailView | Code Base 레이아웃 | 4h |  |  |
+| 17 | DetailView | Struct Model 구성 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 4** |  |  |  |  | **~2022.09.21** |
-|  | DetailView | 선택된 셀의 정보 받아오기 | 3h |  |  |
-|  | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
-|  | DetailView | bannerCollectionView 구성 | 2h |  |  |
-|  | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h |  |  |
-|  | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 3h |  |  |
+| 18 | DetailView | 선택된 셀의 정보 받아오기 | 3h |  |  |
+| 18 | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
+| 19 | DetailView | bannerCollectionView 구성 | 2h |  |  |
+| 19 | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h |  |  |
+| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
 |  | DetailView | WebView로 예고편 재생 | 3h |  |  |
