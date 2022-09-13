@@ -28,6 +28,9 @@
 * 모아보기 설정 - API 정렬 옵션
 * 옵션 저장 - UserDefaults
 * 탭바로 나누기
+#### SearchView
+* 키워드로 검색
+* 검색 결과에서 해당 키워드 색상 
 #### DetailView (+WebView)
 * MainView로부터 정보 전달받기
 * WebView로 예고편 재생
@@ -56,10 +59,10 @@
 |  | UIMenu+Extension | UIMenu+Extension 구현 | 1h | 1h |  |
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
-| 13 | NewGameView | 플랫폼 필터 구현 | 3h |  |  |
-| 13 | NewGameView | 기간 필터 구현 | 3h |  |  |
-| 14 | NewGameView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
-| 14 | NewGameView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
+| 13 | NewGameView | 플랫폼 필터 구현 | 3h | 2h 리펙토링 必 |  |
+| 13 | NewGameView | 기간 필터 구현 | ~~3h~~ | 5h 리펙토링 必 |  |
+| 14 | SearchView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
+| 14 | SearchView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
 | 15 | RatingGameView | 탭바 구현 | 1h |  |  |
@@ -85,10 +88,11 @@
 |  |  |  |  |  |  |
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
 |  | FavoritesView | didSeletRowAt | 3h |  |  |
-|  | 추가  | UserDefaults로 옵션 저장 | 2h |  |  |
-|  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
-|  | 추가 기능 | SettingTableView 구현 | 4h |  |  |
+|  | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
+|  | 추가 기능 | SettingTableView 구현 | 3h |  |  |
+|  | 추가 기능 | UserDefaults로 옵션 저장 | 2h |  |  |
 |  | 추가 기능 | ActivityViewController | 2h |  |  |
+|  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 7** |  |  |  |  | **~2022.10.02** |
 |  |  | 마무리 작업 | 5h |  |  |
