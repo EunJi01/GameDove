@@ -65,9 +65,9 @@
 | 14 | SearchView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
-| 15 | RatingGameView | 탭바 구현 | 1h |  |  |
-| 15 | RatingGameView | NewGameView 기능 재구성 | 2h |  |  |
-| 16 | RatingGameView | 오픈 API 통신 | 1h |  |  |
+| 15 | RatingGameView | 탭바 구현 | 1h | 1h |  |
+| 15 | RatingGameView | NewGameView 기능 재구성 | 2h | 2h |  |
+| 16 | RatingGameView | 오픈 API 통신 | 1h | 1h |  |
 | 17 | DetailView | Code Base 레이아웃 | 4h |  |  |
 | 17 | DetailView | Struct Model 구성 | 1h |  |  |
 |  |  |  |  |  |  |
