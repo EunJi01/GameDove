@@ -55,19 +55,21 @@
 |  |  | ColorSet/IconSet 구성 | 1h | 1h |  |
 |  | NewGameView | Code Base 레이아웃 | 2h | 2h |  |
 |  | NewGameView | 오픈API 통신 | 2h | 2h |  |
-|  | NewGameView | 페이지네이션 구현 | 3h | X |  |
 |  | UIMenu+Extension | UIMenu+Extension 구현 | 1h | 1h |  |
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
 | 13 | NewGameView | 플랫폼 필터 구현 | 3h | 2h 리펙토링 必 |  |
 | 13 | NewGameView | 기간 필터 구현 | ~~3h~~ | 5h 리펙토링 必 |  |
+| 13 | RatingGameView | 탭바 구현 | 1h | 1h |  |
+| 13 | RatingGameView | NewGameView 기능 재구성 | 2h | 2h |  |
+| 13 | RatingGameView | 오픈 API 통신 | 1h | 1h |  |
 | 14 | SearchView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
 | 14 | SearchView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
-| 15 | RatingGameView | 탭바 구현 | 1h | 1h |  |
-| 15 | RatingGameView | NewGameView 기능 재구성 | 2h | 2h |  |
-| 16 | RatingGameView | 오픈 API 통신 | 1h | 1h |  |
+| 15 | API 통신 | 페이지네이션 구성 | 1h |  |  |
+| 15 | API 통신 | 페이지네이션 구현 | 6h |  |  |
+| 16 | 중간점검 | 버그해결 및 리펙토링 | 6h |  |  |
 | 17 | DetailView | Code Base 레이아웃 | 4h |  |  |
 | 17 | DetailView | Struct Model 구성 | 1h |  |  |
 |  |  |  |  |  |  |
