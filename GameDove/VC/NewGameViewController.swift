@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class NewGameViewController: BaseViewController {
+final class NewGameViewController: BaseViewController {
     let mainView = GamesView()
     var games: Games?
 
@@ -22,28 +22,30 @@ class NewGameViewController: BaseViewController {
     }
     
     override func configure() {
-        fetchGames()
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
+        fetchGames(title: "Switch", platform: .nintendoSwitch)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
     }
     
-    @objc func menu() -> UIMenu {
+    @objc private func platformMenu() -> UIMenu {
         let menuItems = [
-            UIAction(title: "PS5", image: nil, handler: { _ in }),
-            UIAction(title: "PS4", image: nil, handler: { _ in }),
-            UIAction(title: "Nintendo-Switch", image: nil, handler: { _ in }),
-            UIAction(title: "PC", image: nil, handler: { _ in }),
-            UIAction(title: "iOS", image: nil, handler: { _ in }),
-            UIAction(title: "Android", image: nil, handler: { _ in })
+            UIAction(title: "PS5", image: nil, handler: { _ in self.fetchGames(title: "PS5", platform: .playStation5)}),
+            UIAction(title: "PS4", image: nil, handler: { _ in self.fetchGames(title: "PS4", platform: .playStation4)}),
+            UIAction(title: "Switch", image: nil, handler: { _ in self.fetchGames(title: "Switch", platform: .nintendoSwitch)}),
+            UIAction(title: "PC", image: nil, handler: { _ in self.fetchGames(title: "PC", platform: .pc)}),
+            UIAction(title: "iOS", image: nil, handler: { _ in self.fetchGames(title: "iOS", platform: .ios)}),
+            UIAction(title: "Android", image: nil, handler: { _ in self.fetchGames(title: "Android", platform: .android)})
         ]
         
-        let menu = UIMenu(title: "플랫폼 선택(임시)", image: nil, identifier: nil, options: [], children: menuItems)
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
         return menu
     }
     
-    func fetchGames() {
-        GamesAPIManager.requestGames(order: .metacritic, platform: .nintendoSwitch) { games, error in
+    private func fetchGames(title: String, platform: APIQuery.Platforms) {
+        GamesAPIManager.requestGames(order: .released, platform: platform, startDate: defaultDate) { games, error in
             self.games = games
+            self.navigationItem.title = title
             self.mainView.collectionView.reloadData()
         }
     }

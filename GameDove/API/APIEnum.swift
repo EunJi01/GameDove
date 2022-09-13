@@ -21,18 +21,23 @@ enum APIQuery: String {
     case dates
     
     enum Ordering: String {
-        case released
-        case rating
-        case metacritic
+        case released = "-released"
+        case rating = "-rating"
+        case metacritic = "-metacritic"
     }
     
     enum Platforms: String {
-        case all = "0"
         case pc = "4"
         case ios = "3"
         case android = "21"
         case playStation5 = "187"
         case playStation4 = "18"
         case nintendoSwitch = "7"
+    }
+    
+    static func dateFormatter(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
     }
 }

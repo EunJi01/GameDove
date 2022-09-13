@@ -22,8 +22,8 @@ struct TabBarIconSet {
     static let newly = UIImage(systemName: "gamecontroller") // 신작
     static let newlySelected = UIImage(systemName: "gamecontroller.fill")
     
-//    static let  // 검색
-//    static let
+    static let search = UIImage(systemName: "magnifyingglass.circle") // 검색
+    static let searchSelected = UIImage(systemName: "magnifyingglass.circle.fill")
     
     static let star = UIImage(systemName: "star") // 즐겨찾기
     static let starSelected = UIImage(systemName: "star.fill")

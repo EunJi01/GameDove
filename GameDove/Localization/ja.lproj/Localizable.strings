@@ -6,11 +6,37 @@
   
 */
 
-// MARK: 메인뷰
+// MARK: TabBarController
+// 신작
+"new_game" = "新作";
+
+// 인기작
+"popular_game" = "人気作";
+
+// 검색
+"search_game" = "検索";
+
+// MARK: MainView
 // 자세히 보기
  "inDetail" = "詳しく";
 
-// MARK: 디테일뷰
+// periodMenu
+"all" = "期間未定";
+
+"week" = "今週発売されたゲーム";
+
+"month" = "1か月以内に発売されたゲーム";
+
+"half_year" = "半年以内に発売されたゲーム";
+
+"year" = "1年以内に発売されたゲーム";
+
+"3years" = "3年以内に発売されたゲーム";
+
+// MARK: SearchView
+"search_placeholder" = "ゲーム検索";
+
+// MARK: DetailView
 // 원제
 "name_original" = "原題";
 

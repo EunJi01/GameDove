@@ -46,7 +46,6 @@ class GamesCollectionViewCell: UICollectionViewCell {
     let releasedLabel: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 12)
-        view.textColor = .gray
         return view
     }()
     
@@ -93,12 +92,12 @@ class GamesCollectionViewCell: UICollectionViewCell {
         
         inDetailLabel.snp.makeConstraints { make in
             make.top.equalTo(separateView.snp.bottom).offset(8)
-            make.trailing.equalTo(separateView).offset(-8)
+            make.trailing.equalTo(separateView)
         }
         
         releasedLabel.snp.makeConstraints { make in
             make.top.equalTo(separateView.snp.bottom).offset(8)
-            make.leading.equalTo(separateView).offset(8)
+            make.leading.equalTo(separateView)
         }
     }
 }

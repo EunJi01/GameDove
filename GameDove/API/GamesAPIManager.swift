@@ -8,8 +8,9 @@
 import Foundation
 
 class GamesAPIManager {
-    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms, completion: @escaping (Games?, APIError?) -> Void) {
-        
+    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms, startDate: String, completion: @escaping (Games?, APIError?) -> Void) {
+        let currentDate = APIQuery.dateFormatter(date: Date())
+
         let scheme = "https"
         let host = "api.rawg.io"
         let path = "/api/games"
@@ -21,7 +22,8 @@ class GamesAPIManager {
         component.queryItems = [
             URLQueryItem(name: APIQuery.key.rawValue, value: APIKey.RAWG),
             URLQueryItem(name: APIQuery.ordering.rawValue, value: order.rawValue),
-            URLQueryItem(name: APIQuery.platforms.rawValue, value: platform.rawValue)
+            URLQueryItem(name: APIQuery.platforms.rawValue, value: platform.rawValue),
+            URLQueryItem(name: APIQuery.dates.rawValue, value: "\(startDate),\(currentDate)")
         ]
         
         guard let url = component.url else { return }
