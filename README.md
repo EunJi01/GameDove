@@ -59,9 +59,9 @@
 |  |  |  |  |  |  |
 | **Iteration 2** |  |  |  |  | **~2022.09.14** |
 | 13 | NewGameView | 플랫폼 필터 구현 | 3h | 2h 리펙토링 必 |  |
-| 13 | NewGameView | 기간 필터 구현 | ~~3h~~ | 5h 리펙토링 必 |  |
+| 13 | NewGameView | 기간 필터 구현 | ~~3h~~ | 4h 리펙토링 必 |  |
 | 13 | RatingGameView | 탭바 구현 | 1h | 1h |  |
-| 13 | RatingGameView | NewGameView 기능 재구성 | 2h | 2h |  |
+| 13 | RatingGameView | NewGameView 기능 재구성 | ~~2h~~ | 1h |  |
 | 13 | RatingGameView | 오픈 API 통신 | 1h | 1h |  |
 | 14 | SearchView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
 | 14 | SearchView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
