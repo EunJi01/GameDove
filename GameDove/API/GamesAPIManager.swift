@@ -8,7 +8,7 @@
 import Foundation
 
 class GamesAPIManager {
-    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms, startDate: String, completion: @escaping (Games?, APIError?) -> Void) {
+    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms?, startDate: String, search: String = "", completion: @escaping (Games?, APIError?) -> Void) {
         let currentDate = APIQuery.dateFormatter(date: Date())
 
         let scheme = "https"
@@ -21,13 +21,15 @@ class GamesAPIManager {
         component.path = path
         component.queryItems = [
             URLQueryItem(name: APIQuery.key.rawValue, value: APIKey.RAWG),
+            URLQueryItem(name: APIQuery.pageSize.rawValue, value: "40"),
             URLQueryItem(name: APIQuery.ordering.rawValue, value: order.rawValue),
-            URLQueryItem(name: APIQuery.platforms.rawValue, value: platform.rawValue),
-            URLQueryItem(name: APIQuery.dates.rawValue, value: "\(startDate),\(currentDate)")
+            URLQueryItem(name: APIQuery.dates.rawValue, value: "\(startDate),\(currentDate)"),
+            URLQueryItem(name: APIQuery.platforms.rawValue, value: platform?.rawValue ?? APIQuery.Platforms.allPlatforms()),
+            URLQueryItem(name:APIQuery.search.rawValue , value: search)
         ]
-        
-        guard let url = component.url else { return }
 
+        guard let url = component.url else { return }
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             
             DispatchQueue.main.async {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum APIError: Error {
     case invalidResponse
@@ -19,6 +20,8 @@ enum APIQuery: String {
     case ordering
     case platforms
     case dates
+    case pageSize = "page_size"
+    case search
     
     enum Ordering: String {
         case released = "-released"
@@ -26,13 +29,18 @@ enum APIQuery: String {
         case metacritic = "-metacritic"
     }
     
-    enum Platforms: String {
+    enum Platforms: String, CaseIterable {
         case pc = "4"
         case ios = "3"
         case android = "21"
         case playStation5 = "187"
         case playStation4 = "18"
         case nintendoSwitch = "7"
+        
+        static func allPlatforms() -> String {
+            let platformList = Platforms.allCases.map { $0.rawValue }
+            return platformList[1...].reduce("") { str, i in str + "," + i}
+        }
     }
     
     static func dateFormatter(date: Date) -> String {

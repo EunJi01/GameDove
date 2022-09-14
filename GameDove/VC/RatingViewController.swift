@@ -36,6 +36,7 @@ final class RatingViewController: BaseViewController {
     @objc private func periodMenu() -> UIMenu {
         let menuItems = [
             // MARK: 조금 더 깔끔하게 개선하면 좋을 것 같다... 예를들어... 반복문...?
+            
             UIAction(title: LocalizationKey.week.localized, image: nil, handler: { _ in self.filterPeriod(period: .week)}),
             UIAction(title: LocalizationKey.month.localized, image: nil, handler: { _ in self.filterPeriod(period: .month)}),
             UIAction(title: LocalizationKey.halfYear.localized, image: nil, handler: { _ in self.filterPeriod(period: .halfYear)}),
@@ -49,7 +50,6 @@ final class RatingViewController: BaseViewController {
     
     private func filterPeriod(period: Period) {
         guard let platform = currentPlatform else { return }
-        
         GamesAPIManager.requestGames(order: .rating, platform: platform, startDate: period.periodDate()) { games, error in
             // MARK: 필터가 적용되는 동안 바버튼의 색을 바꾸고 싶다...!
             self.currentStartDate = period.periodDate()

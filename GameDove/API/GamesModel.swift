@@ -14,9 +14,10 @@ struct Games: Codable {
 struct GamesResults: Codable {
     let name: String
     let image, released: String?
+    let id: Int
     
     enum CodingKeys: String, CodingKey {
         case image = "background_image"
-        case name, released
+        case name, released, id
     }
 }

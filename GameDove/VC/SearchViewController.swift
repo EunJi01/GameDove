@@ -28,9 +28,13 @@ class SearchViewController: BaseViewController {
 }
 
 extension SearchViewController: UISearchBarDelegate {
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        GamesAPIManager.requestGames(order: <#T##APIQuery.Ordering#>, platform: <#T##APIQuery.Platforms#>, startDate: <#T##String#>, completion: <#T##(Games?, APIError?) -> Void#>)
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        GamesAPIManager.requestGames(order: .metacritic, platform: nil, startDate: defaultDate, search: text) { games, error in
+            self.games = games
+            self.mainView.collectionView.reloadData()
+        }
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {

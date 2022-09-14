@@ -47,6 +47,7 @@ final class NewGameViewController: BaseViewController {
             self.games = games
             self.navigationItem.title = title
             self.mainView.collectionView.reloadData()
+            //dump(games)
         }
     }
 }
