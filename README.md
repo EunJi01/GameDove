@@ -63,8 +63,9 @@
 | 13 | RatingGameView | 탭바 구현 | 1h | 1h |  |
 | 13 | RatingGameView | NewGameView 기능 재구성 | ~~2h~~ | 1h |  |
 | 13 | RatingGameView | 오픈 API 통신 | 1h | 1h |  |
-| 14 | SearchView | 쿼리를 통한 검색 기능 구현 | 3h |  |  |
+| 14 | SearchView | 쿼리를 통한 검색 기능 구현 | 2h |  |  |
 | 14 | SearchView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
+| 14 | 도전... | MVVM | 4h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
 | 15 | API 통신 | 페이지네이션 구성 | 1h |  |  |
