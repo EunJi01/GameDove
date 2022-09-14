@@ -63,9 +63,9 @@
 | 13 | RatingGameView | 탭바 구현 | 1h | 1h |  |
 | 13 | RatingGameView | NewGameView 기능 재구성 | ~~2h~~ | 1h |  |
 | 13 | RatingGameView | 오픈 API 통신 | 1h | 1h |  |
-| 14 | SearchView | 쿼리를 통한 검색 기능 구현 | 2h |  |  |
-| 14 | SearchView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
-| 14 | 도전... | MVVM | 4h |  |  |
+| 14 | SearchView | 쿼리를 통한 검색 기능 구현 | ~~2h~~ | 1h |  |
+| 14 | SearchView | 검색 결과에서 키워드 색상 변경 | ~~1h~~ | X 부적합 |  |
+| 14 | 도전... | MVVM | ~~4h~~ | 실패... |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
 | 15 | API 통신 | 페이지네이션 구성 | 1h |  |  |
@@ -79,21 +79,22 @@
 | 18 | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
 | 19 | DetailView | bannerCollectionView 구성 | 2h |  |  |
 | 19 | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h |  |  |
-| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 3h |  |  |
+| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 2h |  |  |
+| 20 | DetailView | bannerCollectionView 자동 스크롤 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
-|  | DetailView | WebView로 예고편 재생 | 3h |  |  |
-|  | RealmModel | Realm 스키마 구성 | 1h |  |  |
-|  | DetailView | 즐겨찾기 버튼 구현 (Realm 저장) | 3h |  |  |
-|  | FavoritesView | Code Base 레이아웃 | 1h |  |  |
-|  | FavoritesView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
-|  | FavoritesView | 스와이프로 삭제 기능 구현 | 2h |  |  |
+| 21 | DetailView | WebView로 예고편 재생 | 3h |  |  |
+| 22 | RealmModel | Realm 스키마 구성 | 1h |  |  |
+| 22 | DetailView | 즐겨찾기 버튼 구현 (Realm 저장) | 3h |  |  |
+| 23 | FavoritesView | Code Base 레이아웃 | 1h |  |  |
+| 23 | FavoritesView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
+| 24 | FavoritesView | 스와이프로 삭제 기능 구현 | 2h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
-|  | FavoritesView | didSeletRowAt | 3h |  |  |
-|  | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
-|  | 추가 기능 | SettingTableView 구현 | 3h |  |  |
-|  | 추가 기능 | UserDefaults로 옵션 저장 | 2h |  |  |
+| 25 | FavoritesView | didSeletRowAt | 3h |  |  |
+| 26 | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
+| 27 | 추가 기능 | SettingTableView 구현 | 3h |  |  |
+| 28 | 추가 기능 | UserDefaults로 옵션 저장 | 2h |  |  |
 |  | 추가 기능 | ActivityViewController | 2h |  |  |
 |  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
 |  |  |  |  |  |  |
@@ -105,3 +106,19 @@
 | **Iteration 8** |  |  |  |  | **~2022.10.05** |
 |  |  | 출시 전 테스트 |  |  |  |
 |  |  |  |  |  |  |
+-------------
+### 일지
+* 09/13  
+공수산정 일일 세분화 | RatingGameView 구성 및 필터 구현   
+플랫폼을 선택한 상태에서 날짜 변경, 날짜를 변경한 상태에서 플랫폼 변경 시 기존 선택옵션이 유지되도록 구현하는 것이 어려웠다.   
+Class에 변수를 두개 선언하고 옵션이 바뀔 때마다 저장했다가 불러오는 형태로 우선 구현했지만 더 좋은 방법이 있을 것 같다.
+
+* 09/14
+SearchView 검색 구현 | MVVM 도전  
+SearchView를 구현하는 것까지는 어렵지 않았고, 기존에 구현하려고 했던 검색 키워드 색상 변경은 API와 잘 맞지 않는것 같아 제외했다.   
+해당 API는 검색 단어가 정확하지 않더라도 비슷한 이름의 게임을 찾아주기 때문에 항상 검색 단어가 포함되지는 않는다.   
+기존에 구현한 VC를 ViewModel로 나누는 작업을 도전해봤으나 시간이 매우 오래 걸리고, 미숙하기 때문에 MVC로 구현하기로 했다.   
+하지만 나중에라도 MVVM으로 전환하기 용이하도록 최대한 코드를 쪼개서 정리할 생각이다.
+
+* 09/15
+* 09/16
