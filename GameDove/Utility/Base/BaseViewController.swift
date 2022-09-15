@@ -12,7 +12,6 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         configure()
         setConstraints()
-        //tapGesture()
         navigationItemColor()
     }
     
@@ -24,7 +23,7 @@ class BaseViewController: UIViewController {
         navigationController?.toolbar.tintColor = ColorSet.shared.buttonColor
     }
     
-    private func tapGesture() {
+    func tapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         tapGestureRecognizer.cancelsTouchesInView = false // 중요!
         view.addGestureRecognizer(tapGestureRecognizer)

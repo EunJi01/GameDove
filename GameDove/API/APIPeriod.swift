@@ -9,7 +9,7 @@ import Foundation
 
 let defaultDate = "2000-01-01"
 
-enum Period {
+enum APIPeriod: String, CaseIterable {
     case all
     case week
     case month

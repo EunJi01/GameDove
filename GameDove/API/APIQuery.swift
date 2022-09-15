@@ -6,14 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
-
-enum APIError: Error {
-    case invalidResponse
-    case noData
-    case failedRequest
-    case invalidData
-}
 
 enum APIQuery: String {
     case key
@@ -22,6 +14,7 @@ enum APIQuery: String {
     case dates
     case pageSize = "page_size"
     case search
+    case page
     
     enum Ordering: String {
         case released = "-released"
@@ -36,6 +29,23 @@ enum APIQuery: String {
         case playStation5 = "187"
         case playStation4 = "18"
         case nintendoSwitch = "7"
+        
+        static func title(platform: APIQuery.Platforms) -> String {
+            switch platform {
+            case .pc:
+                return "PC"
+            case .ios:
+                return "iOS"
+            case .android:
+                return "Android"
+            case .playStation5:
+                return "PS5"
+            case .playStation4:
+                return "PS4"
+            case .nintendoSwitch:
+                return "Switch"
+            }
+        }
         
         static func allPlatforms() -> String {
             let platformList = Platforms.allCases.map { $0.rawValue }

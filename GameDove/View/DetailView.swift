@@ -9,15 +9,7 @@ import UIKit
 import SnapKit
 
 class DetailView: BaseView {
-    let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 300)
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = .systemIndigo
-        view.register(GamesCollectionViewCell.self, forCellWithReuseIdentifier: GamesCollectionViewCell.reuseIdentifier)
-        return view
-    }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -27,7 +19,7 @@ class DetailView: BaseView {
     }
     
     override func configure() {
-        [collectionView].forEach {
+        [].forEach {
             addSubview($0)
         }
     }

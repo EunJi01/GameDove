@@ -6,52 +6,58 @@
 //
 
 import UIKit
+import SnapKit
 
-class SearchViewController: BaseViewController {
-    let mainView = SearchView()
-    var games: Games?
+final class SearchViewController: GamesCollectionViewController {
     
-    override func loadView() {
-        view = mainView
-    }
-
+    private let searchBar: UISearchBar = {
+        let view = UISearchBar()
+        view.placeholder = LocalizationKey.searchPlaceholder.localized
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.backgroundColor = .white
     }
     
     override func configure() {
-        mainView.collectionView.delegate = self
-        mainView.collectionView.dataSource = self
-        mainView.searchBar.delegate = self
+        [searchBar, collectionView].forEach {
+            view.addSubview($0)
+        }
+        
+        currentOrder = .metacritic
+        tapGesture()
+        searchBar.delegate = self
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.xmark, style: .plain, target: self, action: #selector(dismissView))
+    }
+    
+    override func setConstraints() {
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(view)
+        }
+    }
+
+    @objc private func dismissView() {
+        dismiss(animated: true)
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
-        GamesAPIManager.requestGames(order: .metacritic, platform: nil, startDate: defaultDate, search: text) { games, error in
-            self.games = games
-            self.mainView.collectionView.reloadData()
-        }
-    }
-}
-
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return games?.results.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GamesCollectionViewCell.reuseIdentifier, for: indexPath) as? GamesCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.titleLabel.text = games?.results[indexPath.row].name
-        cell.releasedLabel.text = games?.results[indexPath.row].released
-        if let urlStr = games?.results[indexPath.row].image {
-            let url = URL(string: urlStr)
-            cell.mainImageView.kf.setImage(with: url)
+        GamesAPIManager.requestGames(order: currentOrder, platform: nil, startDate: defaultDate, search: text) { games, error in
+            guard let games = games else { return }
+            self.games.append(contentsOf: games.results)
+            self.collectionView.reloadData()
         }
-        
-        return cell
     }
 }

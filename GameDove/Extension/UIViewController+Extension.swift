@@ -35,12 +35,12 @@ extension UIViewController {
         }
     }
     
-    func showDeleteAlert(completionHandler: @escaping (UIAlertAction) -> Void) {
-        let alert = UIAlertController(title: "메모를 삭제하시겠습니까?", message: "삭제된 메모는 복구할 수 없습니다", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "삭제", style: .destructive, handler: completionHandler)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        alert.addAction(ok)
-        alert.addAction(cancel)
-        self.present(alert, animated: true)
-    }
+//    func showDeleteAlert(completionHandler: @escaping (UIAlertAction) -> Void) {
+//        let alert = UIAlertController(title: "메모를 삭제하시겠습니까?", message: "삭제된 메모는 복구할 수 없습니다", preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "삭제", style: .destructive, handler: completionHandler)
+//        let cancel = UIAlertAction(title: "취소", style: .cancel)
+//        alert.addAction(ok)
+//        alert.addAction(cancel)
+//        self.present(alert, animated: true)
+//    }
 }

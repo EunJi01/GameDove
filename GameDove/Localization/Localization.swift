@@ -20,11 +20,13 @@ struct LocalizationKey {
     static let playtime = "playtime"
     static let metascore = "metacritic"
     
+    static let all = "all"
     static let week = "week"
     static let month = "month"
     static let halfYear = "half_year"
     static let year = "year"
     static let years3 = "3years"
+    static let period = [all, week, month, halfYear, year, years3]
     
     static let searchPlaceholder = "search_placeholder"
 }

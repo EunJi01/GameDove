@@ -7,8 +7,15 @@
 
 import Foundation
 
+enum APIError: Error {
+    case invalidResponse
+    case noData
+    case failedRequest
+    case invalidData
+}
+
 class GamesAPIManager {
-    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms?, startDate: String, search: String = "", completion: @escaping (Games?, APIError?) -> Void) {
+    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms?, startDate: String, search: String = "", page: String = "1", completion: @escaping (Game?, APIError?) -> Void) {
         let currentDate = APIQuery.dateFormatter(date: Date())
 
         let scheme = "https"
@@ -25,7 +32,8 @@ class GamesAPIManager {
             URLQueryItem(name: APIQuery.ordering.rawValue, value: order.rawValue),
             URLQueryItem(name: APIQuery.dates.rawValue, value: "\(startDate),\(currentDate)"),
             URLQueryItem(name: APIQuery.platforms.rawValue, value: platform?.rawValue ?? APIQuery.Platforms.allPlatforms()),
-            URLQueryItem(name:APIQuery.search.rawValue , value: search)
+            URLQueryItem(name:APIQuery.search.rawValue , value: search),
+            URLQueryItem(name: APIQuery.page.rawValue, value: page)
         ]
 
         guard let url = component.url else { return }
@@ -58,7 +66,7 @@ class GamesAPIManager {
                 }
                 
                 do {
-                    let result = try JSONDecoder().decode(Games.self, from: data)
+                    let result = try JSONDecoder().decode(Game.self, from: data)
                     completion(result, nil)
                 } catch {
                     print(error)

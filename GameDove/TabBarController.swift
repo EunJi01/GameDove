@@ -18,15 +18,15 @@ final class TabBarController: UITabBarController {
     private func configureTabBarController() {
         let firstNav = UINavigationController(rootViewController: NewGameViewController())
         let secondNav = UINavigationController(rootViewController: RatingViewController())
-        let thirdNav = UINavigationController(rootViewController: SearchViewController())
+ //       let thirdNav = UINavigationController(rootViewController: SearchViewController())
         
         firstNav.tabBarItem = UITabBarItem(title: LocalizationKey.newGame.localized, image: TabBarIconSet.newly, selectedImage: TabBarIconSet.newlySelected)
         secondNav.tabBarItem = UITabBarItem(title: LocalizationKey.popularGame.localized, image: TabBarIconSet.rating, selectedImage: TabBarIconSet.ratingSelected)
-        thirdNav.tabBarItem = UITabBarItem(title: LocalizationKey.searchGame.localized, image: TabBarIconSet.search, selectedImage: TabBarIconSet.searchSelected)
+ //       thirdNav.tabBarItem = UITabBarItem(title: LocalizationKey.searchGame.localized, image: TabBarIconSet.search, selectedImage: TabBarIconSet.searchSelected)
 
 
-        setViewControllers([firstNav, secondNav, thirdNav], animated: true)
-        hidesBottomBarWhenPushed = false // 네비게이션VC로 푸쉬했을 때 밑에 바가 사라지는 것을 방지
+        setViewControllers([firstNav, secondNav], animated: true)
+        hidesBottomBarWhenPushed = true // 네비게이션VC로 푸쉬했을 때 밑에 바가 사라지는 것
         tabBar.tintColor = ColorSet.shared.buttonColor
     }
 }
