@@ -36,15 +36,18 @@
 * WebView로 예고편 재생
 #### FavoritesView
 * 탭바에 즐겨찾기 탭을 추가하고, 즐겨찾기한 게임들을 모아볼 수 있다.
+* 즐겨찾기한 게임은 스와이프를 통해 즐겨찾기 해제가 가능하다.
 #### 추가 기능
 * 다국어 지원 (한영일)
 * 하이퍼링크로 API 명시
 * 문의하기/리뷰 작성 안내 등의 설정창 구현
 * UserDefaults를 통해 사용자가 마지막으로 설정한 플랫폼 옵션을 유지
-* ActivityViewController를 통해 외부에 공유
+* 날짜 기간 필터를 선택했을 때 사용자가 인식할 수 있도록 UI 변경
+* API와 통신중일 때 스켈레톤뷰를 이용해 로딩중임을 사용자에게 명시
 #### 업데이트 (하고싶은...) 기능
 * 장르 필터 추가 -> 필터가 여러개면 사용자가 헷갈리지 않도록 어떤식으로 알려줄지?
 * 출시 예정 탭 추가 -> 탭이 총 5개가 되는데 너무 지저분하지 않은지...?
+* ActivityViewController를 통해 외부에 공유
 -------------
 
 ### 개발 공수
@@ -63,13 +66,13 @@
 | 13 | RatingGameView | 탭바 구현 | 1h | 1h |  |
 | 13 | RatingGameView | NewGameView 기능 재구성 | ~~2h~~ | 1h |  |
 | 13 | RatingGameView | 오픈 API 통신 | 1h | 1h |  |
-| 14 | SearchView | 쿼리를 통한 검색 기능 구현 | 2h |  |  |
-| 14 | SearchView | 검색 결과에서 키워드 색상 변경 | 1h |  |  |
-| 14 | 도전... | MVVM | 4h |  |  |
+| 14 | SearchView | 쿼리를 통한 검색 기능 구현 | ~~2h~~ | 1h |  |
+| 14 | SearchView | 검색 결과에서 키워드 색상 변경 | ~~1h~~ | X 부적합 |  |
+| 14 | 도전... | MVVM | ~~4h~~ | 실패... |  |
 |  |  |  |  |  |  |
 | **Iteration 3** |  |  |  |  | **~2022.09.18** |
-| 15 | API 통신 | 페이지네이션 구성 | 1h |  |  |
-| 15 | API 통신 | 페이지네이션 구현 | 6h |  |  |
+| 15 | API 통신 | 페이지네이션 구성 | 1h | 1h |  |
+| 15 | API 통신 | 페이지네이션 구현 | 6h | 6h |  |
 | 16 | 중간점검 | 버그해결 및 리펙토링 | 6h |  |  |
 | 17 | DetailView | Code Base 레이아웃 | 4h |  |  |
 | 17 | DetailView | Struct Model 구성 | 1h |  |  |
@@ -79,21 +82,22 @@
 | 18 | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
 | 19 | DetailView | bannerCollectionView 구성 | 2h |  |  |
 | 19 | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h |  |  |
-| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 3h |  |  |
+| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 2h |  |  |
+| 20 | DetailView | bannerCollectionView 자동 스크롤 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
-|  | DetailView | WebView로 예고편 재생 | 3h |  |  |
-|  | RealmModel | Realm 스키마 구성 | 1h |  |  |
-|  | DetailView | 즐겨찾기 버튼 구현 (Realm 저장) | 3h |  |  |
-|  | FavoritesView | Code Base 레이아웃 | 1h |  |  |
-|  | FavoritesView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
-|  | FavoritesView | 스와이프로 삭제 기능 구현 | 2h |  |  |
+| 21 | DetailView | WebView로 예고편 재생 | 3h |  |  |
+| 22 | RealmModel | Realm 스키마 구성 | 1h |  |  |
+| 22 | DetailView | 즐겨찾기 버튼 구현 (Realm 저장) | 3h |  |  |
+| 23 | FavoritesView | Code Base 레이아웃 | 1h |  |  |
+| 23 | FavoritesView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
+| 24 | FavoritesView | 스와이프로 삭제 기능 구현 | 2h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
-|  | FavoritesView | didSeletRowAt | 3h |  |  |
-|  | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
-|  | 추가 기능 | SettingTableView 구현 | 3h |  |  |
-|  | 추가 기능 | UserDefaults로 옵션 저장 | 2h |  |  |
+| 25 | FavoritesView | didSeletRowAt | 3h |  |  |
+| 26 | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
+| 27 | 추가 기능 | SettingTableView 구현 | 3h |  |  |
+| 28 | 추가 기능 | UserDefaults로 옵션 저장 | 2h |  |  |
 |  | 추가 기능 | ActivityViewController | 2h |  |  |
 |  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
 |  |  |  |  |  |  |
@@ -105,3 +109,28 @@
 | **Iteration 8** |  |  |  |  | **~2022.10.05** |
 |  |  | 출시 전 테스트 |  |  |  |
 |  |  |  |  |  |  |
+-------------
+#### 09/13 
+- 팀 회의 : 각자 기획한 프로젝트를 공유
+- 일일 목적 : 공수산정 일일 세분화 | RatingGameView 구성 및 필터 구현   
+- 플랫폼을 선택한 상태에서 날짜 변경, 날짜를 변경한 상태에서 플랫폼 변경 시 기존 선택옵션이 유지되도록 구현하는 것이 어려웠다.   
+- Class에 변수를 두개 선언하고 옵션이 바뀔 때마다 저장했다가 불러오는 형태로 우선 구현했지만 더 좋은 방법이 있을 것 같다.
+
+#### 09/14
+- 팀 회의 : 일일 작업 목표 공유
+- 일일 목적 : SearchView 검색 구현 | MVVM 도전  
+- SearchView를 구현하는 것까지는 어렵지 않았고, 기존에 구현하려고 했던 검색 키워드 색상 변경은 API와 잘 맞지 않는것 같아 제외했다.   
+- 해당 API는 검색 단어가 정확하지 않더라도 비슷한 이름의 게임을 찾아주기 때문에 항상 검색 단어가 포함되지는 않는다.   
+- 기존에 구현한 VC를 ViewModel로 나누는 작업을 도전해봤으나 시간이 매우 오래 걸리고, 미숙하기 때문에 MVC로 구현하기로 했다.   
+- 하지만 나중에라도 MVVM으로 전환하기 용이하도록 최대한 코드를 쪼개서 정리하는 것이 좋을 것 같다.
+
+#### 09/15
+- 기간 옵션을 변경했을 때, 현재 옵션이 적용되어 있다는 것을 보여주기 위해 해당 버튼의 컬러를 변경했다.
+- 이 외에도 어떤 옵션을 선택했는지까지 보여주는 것이 좋을 것 같아, UIMenu 의 타이틀에 체크 표시를 보여주려고 한다.
+- Prefetching으로 페이지네이션을 구현했으며, 플랫폼/기간 옵션 변경 시 뷰의 최상단으로 이동하는 코드를 추가했다.
+- 거의 같은 구성의 화면을 사용하며, Cell의 정보만 다른 VC가 3개이기 때문에 DataSource, Delegate를 한번에 작성하는 것이 좋을 것 같다고 생각했다.
+- 우선 구현 먼저 하자!! 라고 생각해서 여태까지 복붙으로 구현한 extension들을 한데 모아서 BaseCollectionViewController도 만들었다.
+- BaseCollectionViewController도 BaseViewController를 상속받고 있기 때문에 관계가 조금 복잡해졌지만, 우선 분리 먼저 하고 리펙토링 할 예정이다.
+- 팀원분들께 여쭤보니, 프로토콜을 만든 다음 extension 해서 메서드를 구현하면 더 깔끔하고, 메모리 측면에서도 좋다고 하니 이 방법을 사용해봐야겠다.
+
+#### 09/16
