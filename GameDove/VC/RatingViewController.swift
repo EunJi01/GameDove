@@ -16,7 +16,7 @@ final class RatingViewController: GamesCollectionViewController {
     override func configure() {
         view.addSubview(collectionView)
         currentOrder = .metacritic
-        fetchGames(platform: currentPlatform, order: .metacritic, startDate: currentStartDate)
+        fetchGames(platform: currentPlatform, order: currentOrder, baseDate: currentBaseDate)
         
         let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
         let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
@@ -32,12 +32,11 @@ final class RatingViewController: GamesCollectionViewController {
     
     @objc private func periodMenu() -> UIMenu {
         var menuItems: [UIAction] = []
-        
-        // MARK: 제대로 현지화 대응하기
+
         for i in 0...LocalizationKey.period.count - 1 {
-            let title = LocalizationKey.period[i]
+            let title = LocalizationKey.period[i].localized
             let period = APIPeriod.allCases[i]
-            //menuItems.append(UIAction(title: title, image: nil, handler: { _ in self.filterPeriod(period: period)}))
+            menuItems.append(UIAction(title: title, image: nil, handler: { _ in self.filterPeriod(period: period)}))
         }
         
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)

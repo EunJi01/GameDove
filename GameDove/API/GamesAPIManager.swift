@@ -15,8 +15,9 @@ enum APIError: Error {
 }
 
 class GamesAPIManager {
-    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms?, startDate: String, search: String = "", page: String = "1", completion: @escaping (Game?, APIError?) -> Void) {
+    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms, baseDate: String, search: String = "", page: String = "1", completion: @escaping (Game?, APIError?) -> Void) {
         let currentDate = APIQuery.dateFormatter(date: Date())
+        let nextDate = APIQuery.dateFormatter(date: Date(timeIntervalSinceNow: 86400))
 
         let scheme = "https"
         let host = "api.rawg.io"
@@ -30,11 +31,16 @@ class GamesAPIManager {
             URLQueryItem(name: APIQuery.key.rawValue, value: APIKey.RAWG),
             URLQueryItem(name: APIQuery.pageSize.rawValue, value: "40"),
             URLQueryItem(name: APIQuery.ordering.rawValue, value: order.rawValue),
-            URLQueryItem(name: APIQuery.dates.rawValue, value: "\(startDate),\(currentDate)"),
-            URLQueryItem(name: APIQuery.platforms.rawValue, value: platform?.rawValue ?? APIQuery.Platforms.allPlatforms()),
+            URLQueryItem(name: APIQuery.platforms.rawValue, value: platform.rawValue),
             URLQueryItem(name:APIQuery.search.rawValue , value: search),
             URLQueryItem(name: APIQuery.page.rawValue, value: page)
         ]
+        
+        if baseDate == defaultEndDate {
+            component.queryItems?.append(URLQueryItem(name: APIQuery.dates.rawValue, value: "\(nextDate),\(baseDate)"))
+        } else {
+            component.queryItems?.append(URLQueryItem(name: APIQuery.dates.rawValue, value: "\(baseDate),\(currentDate)"))
+        }
 
         guard let url = component.url else { return }
         

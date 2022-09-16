@@ -13,11 +13,12 @@ class BaseViewController: UIViewController {
         configure()
         setConstraints()
         navigationItemColor()
+        view.backgroundColor = ColorSet.shared.backgroundColor
     }
     
     private func navigationItemColor() {
         let navigation = UINavigationBarAppearance()
-        navigation.backgroundColor = .tertiarySystemFill
+        //navigation.backgroundColor = .tertiarySystemFill
         navigationController?.navigationBar.scrollEdgeAppearance = navigation
         navigationController?.navigationBar.tintColor = ColorSet.shared.buttonColor
         navigationController?.toolbar.tintColor = ColorSet.shared.buttonColor

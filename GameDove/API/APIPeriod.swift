@@ -7,7 +7,8 @@
 
 import Foundation
 
-let defaultDate = "2000-01-01"
+let defaultStartDate = "2000-01-01"
+let defaultEndDate = "2099-12-31"
 
 enum APIPeriod: String, CaseIterable {
     case all
@@ -20,7 +21,7 @@ enum APIPeriod: String, CaseIterable {
     func periodDate() -> String {
         switch self {
         case .all:
-            return defaultDate
+            return defaultStartDate
         case .week:
             return dateFormat(previous: -6)
         case .month:

@@ -1,22 +1,22 @@
 //
-//  NewGameViewController.swift
+//  UpcomingGameViewController.swift
 //  GameDove
 //
-//  Created by 황은지 on 2022/09/08.
+//  Created by 황은지 on 2022/09/16.
 //
 
 import UIKit
 
-final class NewGameViewController: GamesCollectionViewController {
-    
+class UpcomingGameViewController: GamesCollectionViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func configure() {
         view.addSubview(collectionView)
-        currentOrder = .released
-        fetchGames(platform: currentPlatform, order: currentOrder, baseDate: currentBaseDate)
+        currentOrder = .upcoming
+        fetchGames(platform: currentPlatform, order: currentOrder, baseDate: defaultEndDate) // MARK: 수정해라!!!
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))

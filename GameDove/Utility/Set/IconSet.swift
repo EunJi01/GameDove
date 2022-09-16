@@ -24,6 +24,9 @@ struct TabBarIconSet {
     static let newly = UIImage(systemName: "gamecontroller") // 신작
     static let newlySelected = UIImage(systemName: "gamecontroller.fill")
     
+    static let upcoming = UIImage(systemName: "books.vertical") // 출시예정작
+    static let upcomingSelected = UIImage(systemName: "books.vertical.fill")
+    
     static let star = UIImage(systemName: "star") // 즐겨찾기
     static let starSelected = UIImage(systemName: "star.fill")
 }

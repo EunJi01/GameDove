@@ -8,13 +8,13 @@
 
 // MARK: TabBarController
 // 신작
-"new_game" = "New";
+"new_games" = "New";
 
 // 인기작
-"popular_game" = "Popular";
+"popular_games" = "Popular";
 
-// 검색
-"search_game" = "Search";
+// 출시예정작
+"upcoming_games" = "Upcoming";
 
 // MARK: MainView
 // 자세히 보기
@@ -33,8 +33,8 @@
 
 "3years" = "Released within 3 years";
 
-// MARK: SearchView
-"search_placeholder" = "Search for games";
+// MARK: SearchView --> 신작검색 인기검색 출시예정검색
+"search_placeholder" = "Search for %@ games";
 
 // MARK: DetailView
 // 원제

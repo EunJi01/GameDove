@@ -8,9 +8,9 @@
 import Foundation
 
 struct LocalizationKey {
-    static let newGame = "new_game"
-    static let popularGame = "popular_game"
-    static let searchGame = "search_game"
+    static let newGames = "new_games"
+    static let popularGames = "popular_games"
+    static let upcomingGames = "upcoming_games"
     static let inDetail = "inDetail"
     
     static let originalName = "name_original"

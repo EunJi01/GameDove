@@ -10,9 +10,22 @@ import SnapKit
 
 final class SearchViewController: GamesCollectionViewController {
     
-    private let searchBar: UISearchBar = {
+    private lazy var searchBar: UISearchBar = {
         let view = UISearchBar()
-        view.placeholder = LocalizationKey.searchPlaceholder.localized
+        var order = ""
+        
+        switch currentOrder {
+        case .metacritic:
+            order = LocalizationKey.popularGames.localized
+        case .released:
+            order = LocalizationKey.newGames.localized
+        case .upcoming:
+            order = LocalizationKey.upcomingGames.localized
+        case .none:
+            break
+        }
+        
+        view.placeholder = LocalizationKey.searchPlaceholder.localized(with: order.lowercased())
         return view
     }()
     
@@ -24,11 +37,10 @@ final class SearchViewController: GamesCollectionViewController {
         [searchBar, collectionView].forEach {
             view.addSubview($0)
         }
-        
-        currentOrder = .metacritic
+
         tapGesture()
         searchBar.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.xmark, style: .plain, target: self, action: #selector(dismissView))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: IconSet.xmark, style: .plain, target: self, action: #selector(dismissView))
     }
     
     override func setConstraints() {
@@ -54,10 +66,13 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
         
-        GamesAPIManager.requestGames(order: currentOrder, platform: nil, startDate: defaultDate, search: text) { games, error in
+        GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: currentBaseDate, search: text) { games, error in
             guard let games = games else { return }
-            self.games.append(contentsOf: games.results)
+            
+            self.currentSearch = text
+            self.games = games.results
             self.collectionView.reloadData()
+            self.scrollToTop()
         }
     }
 }

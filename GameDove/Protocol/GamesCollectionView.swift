@@ -12,12 +12,12 @@ protocol GamesCollectionView {
 }
 
 extension GamesCollectionView where Self: UICollectionViewDataSource, Self: UICollectionViewDelegate, Self: UICollectionViewDataSourcePrefetching {
-    func addCollectionView() -> UICollectionView{
+    func addCollectionView() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 300)
         
         let gamesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        gamesCollectionView.backgroundColor = .systemIndigo
+        gamesCollectionView.backgroundColor = ColorSet.shared.backgroundColor
         gamesCollectionView.dataSource = self
         gamesCollectionView.delegate = self
         gamesCollectionView.prefetchDataSource = self

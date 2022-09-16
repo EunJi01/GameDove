@@ -10,20 +10,23 @@ import UIKit
 class GamesCollectionViewCell: UICollectionViewCell {
     let cellBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = ColorSet.shared.whiteAndBlack
+        view.backgroundColor = ColorSet.shared.objectColor
         view.clipsToBounds = true
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
         return view
     }()
     
     let mainImageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .red
+        view.backgroundColor = .lightGray
         return view
     }()
     
     let titleLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .black
         view.text = "Title"
         view.font = .boldSystemFont(ofSize: 20)
         return view
@@ -46,6 +49,7 @@ class GamesCollectionViewCell: UICollectionViewCell {
     let releasedLabel: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 12)
+        view.textColor = .black
         return view
     }()
     

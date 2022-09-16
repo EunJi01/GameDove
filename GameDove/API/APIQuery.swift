@@ -18,18 +18,18 @@ enum APIQuery: String {
     
     enum Ordering: String {
         case released = "-released"
-        case rating = "-rating"
         case metacritic = "-metacritic"
+        case upcoming = "released"
     }
     
     enum Platforms: String, CaseIterable {
+        case nintendoSwitch = "7"
+        case playStation5 = "187"
+        case playStation4 = "18"
         case pc = "4"
         case ios = "3"
         case android = "21"
-        case playStation5 = "187"
-        case playStation4 = "18"
-        case nintendoSwitch = "7"
-        
+
         static func title(platform: APIQuery.Platforms) -> String {
             switch platform {
             case .pc:
@@ -47,10 +47,10 @@ enum APIQuery: String {
             }
         }
         
-        static func allPlatforms() -> String {
-            let platformList = Platforms.allCases.map { $0.rawValue }
-            return platformList[1...].reduce("") { str, i in str + "," + i}
-        }
+//        static func allPlatforms() -> String {
+//            let platformList = Platforms.allCases.map { $0.rawValue }
+//            return platformList[1...].reduce("") { str, i in str + "," + i}
+//        }
     }
     
     static func dateFormatter(date: Date) -> String {

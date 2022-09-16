@@ -8,13 +8,13 @@
 
 // MARK: TabBarController
 // 신작
-"new_game" = "新作";
+"new_games" = "新作";
 
 // 인기작
-"popular_game" = "人気作";
+"popular_games" = "人気";
 
-// 검색
-"search_game" = "検索";
+// 출시예정작
+"upcoming_games" = "発売予定";
 
 // MARK: MainView
 // 자세히 보기
@@ -34,7 +34,7 @@
 "3years" = "3年以内に発売されたゲーム";
 
 // MARK: SearchView
-"search_placeholder" = "ゲーム検索";
+"search_placeholder" = "%@ ゲーム検索";
 
 // MARK: DetailView
 // 원제

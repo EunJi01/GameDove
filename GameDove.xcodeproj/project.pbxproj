@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B62C783E28D309DC001243D0 /* GamesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C783D28D309DC001243D0 /* GamesCollectionView.swift */; };
 		B62C784128D328EA001243D0 /* GamesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C784028D328EA001243D0 /* GamesCollectionViewController.swift */; };
+		B62C784428D3769B001243D0 /* UpcomingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C784328D3769B001243D0 /* UpcomingGameViewController.swift */; };
 		B686B06C28CA12D70042D727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06B28CA12D70042D727 /* AppDelegate.swift */; };
 		B686B06E28CA12D70042D727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06D28CA12D70042D727 /* SceneDelegate.swift */; };
 		B686B07528CA12D80042D727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B686B07428CA12D80042D727 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		B62C783D28D309DC001243D0 /* GamesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionView.swift; sourceTree = "<group>"; };
 		B62C784028D328EA001243D0 /* GamesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionViewController.swift; sourceTree = "<group>"; };
+		B62C784328D3769B001243D0 /* UpcomingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingGameViewController.swift; sourceTree = "<group>"; };
 		B686B06828CA12D70042D727 /* GameDove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B686B06B28CA12D70042D727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B686B06D28CA12D70042D727 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				B62C784028D328EA001243D0 /* GamesCollectionViewController.swift */,
 				B686B09B28CA19BC0042D727 /* NewGameViewController.swift */,
 				B686B0BE28CB48B60042D727 /* RatingViewController.swift */,
+				B62C784328D3769B001243D0 /* UpcomingGameViewController.swift */,
 				B686B0C428D08D4A0042D727 /* SearchViewController.swift */,
 				B686B0C828D0CA580042D727 /* DetailViewController.swift */,
 			);
@@ -323,6 +326,7 @@
 				B686B0AF28CA4EE50042D727 /* GamesModel.swift in Sources */,
 				B686B0A528CA1FB50042D727 /* UIViewController+Extension.swift in Sources */,
 				B686B0C528D08D4A0042D727 /* SearchViewController.swift in Sources */,
+				B62C784428D3769B001243D0 /* UpcomingGameViewController.swift in Sources */,
 				B686B0BA28CB1DF80042D727 /* Localization.swift in Sources */,
 				B686B0BF28CB48B60042D727 /* RatingViewController.swift in Sources */,
 				B686B0B628CB0BA10042D727 /* APIQuery.swift in Sources */,
@@ -485,7 +489,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "앱 아이콘 이름";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -515,7 +519,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "앱 아이콘 이름";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
