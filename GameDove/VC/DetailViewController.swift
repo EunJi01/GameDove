@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-class DetailViewController: UIViewController {
+class DetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

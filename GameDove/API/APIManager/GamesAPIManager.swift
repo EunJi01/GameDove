@@ -1,5 +1,5 @@
 //
-//  GameListAPIManager.swift
+//  GamesAPIManager.swift
 //  GameDove
 //
 //  Created by 황은지 on 2022/09/09.
@@ -16,6 +16,7 @@ enum APIError: Error {
 
 class GamesAPIManager {
     static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms, baseDate: String, search: String = "", page: String = "1", completion: @escaping (Game?, APIError?) -> Void) {
+        
         let currentDate = APIQuery.dateFormatter(date: Date())
         let nextDate = APIQuery.dateFormatter(date: Date(timeIntervalSinceNow: 86400))
 

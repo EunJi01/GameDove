@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class DetailView: BaseView {
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)

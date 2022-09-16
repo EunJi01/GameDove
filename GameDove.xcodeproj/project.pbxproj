@@ -10,6 +10,10 @@
 		B62C783E28D309DC001243D0 /* GamesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C783D28D309DC001243D0 /* GamesCollectionView.swift */; };
 		B62C784128D328EA001243D0 /* GamesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C784028D328EA001243D0 /* GamesCollectionViewController.swift */; };
 		B62C784428D3769B001243D0 /* UpcomingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C784328D3769B001243D0 /* UpcomingGameViewController.swift */; };
+		B62C784728D4B4DC001243D0 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B62C784628D4B4DC001243D0 /* JGProgressHUD */; };
+		B62C784928D4C0BF001243D0 /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C784828D4C0BF001243D0 /* DetailsModel.swift */; };
+		B62C784D28D4C8BC001243D0 /* ScreenshotsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C784C28D4C8BC001243D0 /* ScreenshotsModel.swift */; };
+		B62C784F28D4C97D001243D0 /* DetailsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C784E28D4C97D001243D0 /* DetailsAPIManager.swift */; };
 		B686B06C28CA12D70042D727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06B28CA12D70042D727 /* AppDelegate.swift */; };
 		B686B06E28CA12D70042D727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06D28CA12D70042D727 /* SceneDelegate.swift */; };
 		B686B07528CA12D80042D727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B686B07428CA12D80042D727 /* Assets.xcassets */; };
@@ -46,6 +50,9 @@
 		B62C783D28D309DC001243D0 /* GamesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionView.swift; sourceTree = "<group>"; };
 		B62C784028D328EA001243D0 /* GamesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionViewController.swift; sourceTree = "<group>"; };
 		B62C784328D3769B001243D0 /* UpcomingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingGameViewController.swift; sourceTree = "<group>"; };
+		B62C784828D4C0BF001243D0 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
+		B62C784C28D4C8BC001243D0 /* ScreenshotsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsModel.swift; sourceTree = "<group>"; };
+		B62C784E28D4C97D001243D0 /* DetailsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAPIManager.swift; sourceTree = "<group>"; };
 		B686B06828CA12D70042D727 /* GameDove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B686B06B28CA12D70042D727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B686B06D28CA12D70042D727 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B62C784728D4B4DC001243D0 /* JGProgressHUD in Frameworks */,
 				B686B0BD28CB3C5E0042D727 /* Kingfisher in Frameworks */,
 				B686B0DD28D205290042D727 /* SkeletonView in Frameworks */,
 				B686B0A128CA1EE20042D727 /* SnapKit in Frameworks */,
@@ -102,6 +110,25 @@
 				B62C783D28D309DC001243D0 /* GamesCollectionView.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B62C784A28D4C883001243D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B686B0AE28CA4EE50042D727 /* GamesModel.swift */,
+				B62C784828D4C0BF001243D0 /* DetailsModel.swift */,
+				B62C784C28D4C8BC001243D0 /* ScreenshotsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B62C784B28D4C892001243D0 /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				B686B0B028CA4EF20042D727 /* GamesAPIManager.swift */,
+				B62C784E28D4C97D001243D0 /* DetailsAPIManager.swift */,
+			);
+			path = APIManager;
 			sourceTree = "<group>";
 		};
 		B686B05F28CA12D70042D727 = {
@@ -215,8 +242,8 @@
 				B686B0B228CA57680042D727 /* APIKey.swift */,
 				B686B0B528CB0BA10042D727 /* APIQuery.swift */,
 				B686B0C228D08B0B0042D727 /* APIPeriod.swift */,
-				B686B0AE28CA4EE50042D727 /* GamesModel.swift */,
-				B686B0B028CA4EF20042D727 /* GamesAPIManager.swift */,
+				B62C784A28D4C883001243D0 /* Model */,
+				B62C784B28D4C892001243D0 /* APIManager */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -241,6 +268,7 @@
 				B686B0A028CA1EE20042D727 /* SnapKit */,
 				B686B0BC28CB3C5E0042D727 /* Kingfisher */,
 				B686B0DC28D205290042D727 /* SkeletonView */,
+				B62C784628D4B4DC001243D0 /* JGProgressHUD */,
 			);
 			productName = GameDove;
 			productReference = B686B06828CA12D70042D727 /* GameDove.app */;
@@ -276,6 +304,7 @@
 				B686B09F28CA1EE20042D727 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B686B0BB28CB3C5E0042D727 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				B686B0DB28D205290042D727 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				B62C784528D4B4DC001243D0 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = B686B06928CA12D70042D727 /* Products */;
 			projectDirPath = "";
@@ -308,12 +337,14 @@
 				B686B09E28CA1EA30042D727 /* GamesCollectionViewCell.swift in Sources */,
 				B686B0CB28D0CA630042D727 /* DetailView.swift in Sources */,
 				B686B0A328CA1FAA0042D727 /* ReusableIdentifier.swift in Sources */,
+				B62C784928D4C0BF001243D0 /* DetailsModel.swift in Sources */,
 				B686B0CD28D0CAC60042D727 /* DetailCollectionViewCell.swift in Sources */,
 				B686B0C928D0CA580042D727 /* DetailViewController.swift in Sources */,
 				B686B0A828CA20880042D727 /* TabBarController.swift in Sources */,
 				B686B06C28CA12D70042D727 /* AppDelegate.swift in Sources */,
 				B686B0B328CA57680042D727 /* APIKey.swift in Sources */,
 				B686B09428CA18E80042D727 /* BaseViewController.swift in Sources */,
+				B62C784F28D4C97D001243D0 /* DetailsAPIManager.swift in Sources */,
 				B686B09C28CA19BC0042D727 /* NewGameViewController.swift in Sources */,
 				B62C784128D328EA001243D0 /* GamesCollectionViewController.swift in Sources */,
 				B686B08F28CA18480042D727 /* BaseView.swift in Sources */,
@@ -323,6 +354,7 @@
 				B686B09728CA19250042D727 /* ColorSet.swift in Sources */,
 				B686B0C328D08B0B0042D727 /* APIPeriod.swift in Sources */,
 				B686B0AC28CA27F00042D727 /* IconSet.swift in Sources */,
+				B62C784D28D4C8BC001243D0 /* ScreenshotsModel.swift in Sources */,
 				B686B0AF28CA4EE50042D727 /* GamesModel.swift in Sources */,
 				B686B0A528CA1FB50042D727 /* UIViewController+Extension.swift in Sources */,
 				B686B0C528D08D4A0042D727 /* SearchViewController.swift in Sources */,
@@ -560,6 +592,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B62C784528D4B4DC001243D0 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		B686B09F28CA1EE20042D727 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -587,6 +627,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B62C784628D4B4DC001243D0 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B62C784528D4B4DC001243D0 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		B686B0A028CA1EE20042D727 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B686B09F28CA1EE20042D727 /* XCRemoteSwiftPackageReference "SnapKit" */;

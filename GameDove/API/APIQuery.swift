@@ -46,11 +46,6 @@ enum APIQuery: String {
                 return "Switch"
             }
         }
-        
-//        static func allPlatforms() -> String {
-//            let platformList = Platforms.allCases.map { $0.rawValue }
-//            return platformList[1...].reduce("") { str, i in str + "," + i}
-//        }
     }
     
     static func dateFormatter(date: Date) -> String {

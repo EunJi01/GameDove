@@ -8,9 +8,12 @@
 import UIKit
 import Kingfisher
 import SnapKit
+import JGProgressHUD
 
 class GamesCollectionViewController: BaseViewController, GamesCollectionView {
+    let hud = JGProgressHUD()
     var games: [GameResults] = []
+    
     var currentPlatform: APIQuery.Platforms = .nintendoSwitch // 첫 화면 기본 플랫폼
     var currentPage = 1
     var currentBaseDate: String = defaultStartDate
@@ -24,6 +27,8 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     }
     
     func fetchGames(platform: APIQuery.Platforms, order: APIQuery.Ordering, baseDate: String) {
+        hud.show(in: view)
+
         GamesAPIManager.requestGames(order: order, platform: platform, baseDate: baseDate, search: currentSearch, page: "\(currentPage)") { games, error in
             guard let games = games else { return }
 
@@ -35,13 +40,16 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
                 self.currentPlatform = platform
                 self.currentBaseDate = baseDate
                 self.collectionView.reloadData()
-                self.scrollToTop() //MARK: 맨 위로 올라가는거 고치기...
+                self.scrollToTop() //MARK: 맨 위로 올라가는거 고치기...(우선순위 낮음)
             }
+            self.hud.dismiss(animated: true)
             self.navigationItem.title = APIQuery.Platforms.title(platform: platform)
         }
     }
 
     func filterPeriod(period: APIPeriod) {
+        hud.show(in: view)
+        
         GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: period.periodDate()) { games, error in
             guard let items = self.navigationItem.leftBarButtonItems else { return }
             items[1].tintColor = period == .all ? ColorSet.shared.buttonColor : .red
@@ -51,6 +59,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             self.games = games.results
             self.scrollToTop()
             self.collectionView.reloadData()
+            self.hud.dismiss(animated: true)
         }
     }
     
@@ -82,6 +91,10 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
 }
 
 extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("선택됨")
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

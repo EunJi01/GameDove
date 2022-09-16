@@ -29,15 +29,22 @@ final class SearchViewController: GamesCollectionViewController {
         return view
     }()
     
+    let noResultsLabel: UILabel = {
+        let view = UILabel()
+        view.text = "검색 결과 없음"
+        view.isHidden = true
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func configure() {
-        [searchBar, collectionView].forEach {
+        [searchBar, collectionView, noResultsLabel].forEach {
             view.addSubview($0)
         }
-
+        
         tapGesture()
         searchBar.delegate = self
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: IconSet.xmark, style: .plain, target: self, action: #selector(dismissView))
@@ -55,6 +62,10 @@ final class SearchViewController: GamesCollectionViewController {
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(view)
         }
+        
+        noResultsLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 
     @objc private func dismissView() {
@@ -66,6 +77,11 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
         
+        // MARK: 검색했을 때 간혈적으로 원하는 order로 나오지 않는 버그 있음ㅠㅠ
+        print("===현재 요청하는 order: \(currentOrder!)")
+        
+        hud.show(in: view)
+        
         GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: currentBaseDate, search: text) { games, error in
             guard let games = games else { return }
             
@@ -73,6 +89,9 @@ extension SearchViewController: UISearchBarDelegate {
             self.games = games.results
             self.collectionView.reloadData()
             self.scrollToTop()
+            self.hud.dismiss(animated: true)
+            
+            self.noResultsLabel.isHidden = self.games.isEmpty ? false : true
         }
     }
 }

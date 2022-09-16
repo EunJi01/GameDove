@@ -16,7 +16,7 @@
 // 출시예정작
 "upcoming_games" = "Upcoming";
 
-// MARK: MainView
+// MARK: MainViewController
 // 자세히 보기
 "inDetail" = "Read more";
 
@@ -33,10 +33,13 @@
 
 "3years" = "Released within 3 years";
 
-// MARK: SearchView --> 신작검색 인기검색 출시예정검색
+// MARK: SearchViewController
 "search_placeholder" = "Search for %@ games";
 
-// MARK: DetailView
+// 검색 결과 없음
+"no_results" = "No match found";
+
+// MARK: DetailViewController
 // 원제
 "name_original" = "Original title";
 

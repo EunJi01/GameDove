@@ -16,7 +16,7 @@
 // 출시예정작
 "upcoming_games" = "発売予定";
 
-// MARK: MainView
+// MARK: MainViewController
 // 자세히 보기
  "inDetail" = "詳しく";
 
@@ -33,10 +33,13 @@
 
 "3years" = "3年以内に発売されたゲーム";
 
-// MARK: SearchView
+// MARK: SearchViewController
 "search_placeholder" = "%@ ゲーム検索";
 
-// MARK: DetailView
+// 검색 결과 없음
+"no_results" = "一致するゲームがありません。";
+
+// MARK: DetailViewController
 // 원제
 "name_original" = "原題";
 

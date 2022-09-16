@@ -16,7 +16,7 @@ class UpcomingGameViewController: GamesCollectionViewController {
     override func configure() {
         view.addSubview(collectionView)
         currentOrder = .upcoming
-        fetchGames(platform: currentPlatform, order: currentOrder, baseDate: defaultEndDate) // MARK: 수정해라!!!
+        fetchGames(platform: currentPlatform, order: currentOrder, baseDate: defaultEndDate)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))
