@@ -9,12 +9,11 @@ import UIKit
 
 struct IconSet {
     static let platformList = UIImage(systemName: "list.triangle") // 플랫폼 리스트 메뉴
-    static let setting = UIImage(systemName: "gearshape") // 설정 (즐겨찾기 탭에 배치)
     static let calendar = UIImage(systemName: "calendar.badge.clock") // 인기작 기간
     static let search = UIImage(systemName: "magnifyingglass") // 검색
     
     static let xmark = UIImage(systemName: "xmark") // 창 닫기
-    static let preview = UIImage(systemName: "film") // 예고편
+    static let archivebox = UIImage(systemName: "archivebox") // 보관함 저장
 }
 
 struct TabBarIconSet {
@@ -27,6 +26,6 @@ struct TabBarIconSet {
     static let upcoming = UIImage(systemName: "books.vertical") // 출시예정작
     static let upcomingSelected = UIImage(systemName: "books.vertical.fill")
     
-    static let star = UIImage(systemName: "star") // 즐겨찾기
-    static let starSelected = UIImage(systemName: "star.fill")
+    static let setting = UIImage(systemName: "gearshape") // 설정
+    static let settingSelected = UIImage(systemName: "gearshape.fill")
 }

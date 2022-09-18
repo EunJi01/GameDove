@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class BaseViewController: UIViewController {
+    let hud = JGProgressHUD()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -17,10 +20,8 @@ class BaseViewController: UIViewController {
     }
     
     private func navigationItemColor() {
-        let navigation = UINavigationBarAppearance()
-        //navigation.backgroundColor = .tertiarySystemFill
-        navigationController?.navigationBar.scrollEdgeAppearance = navigation
         navigationController?.navigationBar.tintColor = ColorSet.shared.buttonColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: ColorSet.shared.buttonColor]
         navigationController?.toolbar.tintColor = ColorSet.shared.buttonColor
     }
     

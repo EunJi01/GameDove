@@ -40,6 +40,9 @@
 "no_results" = "一致するゲームがありません。";
 
 // MARK: DetailViewController
+// 저장 완료 토스트
+"saved" = "ストレージに追加しました。";
+
 // 원제
 "name_original" = "原題";
 
@@ -47,7 +50,7 @@
 "genres" = "ジャンル";
 
 // 플랫폼 => 전체 다 보여주되, 가독성에 신경쓰기
-"platforms" = "플랫폼 일본어로 뭐라하냐ㅠㅠ";
+"platforms" = "プラットフォーム";
 
 // 출시
 "released" = "リリース日";
@@ -57,3 +60,27 @@
 
 // 메타크리틱 점수
 "metacritic" = "メタスコア";
+
+// MARK: SettingsViewController
+"settings" = "設定";
+
+// 메인 플랫폼
+"main_platform" = "メインプラットフォーム";
+
+// 개발자에게 문의하기
+"contact" = "開発者に問い合わせる";
+
+// 리뷰 작성하기
+"review" = "レビュー作成";
+
+// API
+"api" = "API";
+
+// 버전
+"version" = "バージョン";
+
+// 개발자에게 문의하기 실패 -> 매일 등록 안내
+"mail_registration" = "이메일등록";
+
+// 취소 (액션시트)
+"cancel" = "キャンセル";

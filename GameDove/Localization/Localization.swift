@@ -11,8 +11,10 @@ struct LocalizationKey {
     static let newGames = "new_games"
     static let popularGames = "popular_games"
     static let upcomingGames = "upcoming_games"
+    static let settings = "settings"
     static let inDetail = "inDetail"
     
+    static let saved = "saved"
     static let originalName = "name_original"
     static let genres = "genres"
     static let platforms = "platforms"
@@ -28,5 +30,13 @@ struct LocalizationKey {
     static let years3 = "3years"
     static let period = [all, week, month, halfYear, year, years3]
     
+    static let mainPlatform = "main_platform"
+    static let contact = "contact"
+    static let review = "review"
+    static let api = "api"
+    static let version = "version"
+    static let mailRegistration = "mail_registration"
+    
     static let searchPlaceholder = "search_placeholder"
+    static let cancel = "cancel"
 }

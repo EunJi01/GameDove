@@ -15,6 +15,7 @@ enum APIQuery: String {
     case pageSize = "page_size"
     case search
     case page
+    case screenshots
     
     enum Ordering: String {
         case released = "-released"

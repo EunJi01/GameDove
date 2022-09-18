@@ -29,9 +29,10 @@ final class SearchViewController: GamesCollectionViewController {
         return view
     }()
     
-    let noResultsLabel: UILabel = {
+    private let noResultsLabel: UILabel = {
         let view = UILabel()
         view.text = "검색 결과 없음"
+        view.textColor = .lightGray
         view.isHidden = true
         return view
     }()

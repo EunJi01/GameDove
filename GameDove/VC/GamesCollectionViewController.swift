@@ -11,10 +11,9 @@ import SnapKit
 import JGProgressHUD
 
 class GamesCollectionViewController: BaseViewController, GamesCollectionView {
-    let hud = JGProgressHUD()
     var games: [GameResults] = []
     
-    var currentPlatform: APIQuery.Platforms = .nintendoSwitch // 첫 화면 기본 플랫폼
+    var currentPlatform: APIQuery.Platforms = UserDefaults.standard.object(forKey: "mainPlatform") as? APIQuery.Platforms ?? .pc // 첫 화면 기본 플랫폼
     var currentPage = 1
     var currentBaseDate: String = defaultStartDate
     var currentOrder: APIQuery.Ordering!
@@ -24,6 +23,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     func fetchGames(platform: APIQuery.Platforms, order: APIQuery.Ordering, baseDate: String) {
@@ -40,7 +40,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
                 self.currentPlatform = platform
                 self.currentBaseDate = baseDate
                 self.collectionView.reloadData()
-                self.scrollToTop() //MARK: 맨 위로 올라가는거 고치기...(우선순위 낮음)
+                self.scrollToTop()
             }
             self.hud.dismiss(animated: true)
             self.navigationItem.title = APIQuery.Platforms.title(platform: platform)
@@ -92,13 +92,12 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
 
 extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("선택됨")
+        let vc = DetailsViewController()
+        vc.id = "\(games[indexPath.row].id)"
+        vc.hidesBottomBarWhenPushed = true
+        transition(vc, transitionStyle: .push)
     }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return games.count
     }

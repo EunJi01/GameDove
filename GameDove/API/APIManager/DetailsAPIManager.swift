@@ -8,12 +8,15 @@
 import Foundation
 
 class DetailsAPIManager {
-    static func requestDetails(id: String, completion: @escaping (Details?, APIError?) -> Void) {
+    static func requestDetails(id: String, sc: Bool, completion: @escaping (Details?, Screenshots?, APIError?) -> Void) {
         
         let scheme = "https"
         let host = "api.rawg.io"
-        let path = "/api/games/\(id)"
-        // MARK: id까지는 같고 그 다음에 아무것도 없거나 스크린샷인데... 한번에 이쁘게 묶을 수 없을까?
+        var path = "/api/games/\(id)"
+        
+        if sc {
+            path += "/\(APIQuery.screenshots.rawValue)"
+        }
         
         var component = URLComponents()
         component.scheme = scheme
@@ -28,34 +31,39 @@ class DetailsAPIManager {
             DispatchQueue.main.async {
                 guard error == nil else {
                     print("Failed Request")
-                    completion(nil, .failedRequest)
+                    completion(nil, nil, .failedRequest)
                     return
                 }
                 
                 guard let data = data else {
                     print("No Data Returned")
-                    completion(nil, .noData)
+                    completion(nil, nil, .noData)
                     return
                 }
                 
                 guard let response = response as? HTTPURLResponse else {
                     print("Unable Response")
-                    completion(nil, .invalidResponse)
+                    completion(nil, nil, .invalidResponse)
                     return
                 }
                 
                 guard response.statusCode == 200 else {
                     print("Failed Response")
-                    completion(nil, .failedRequest)
+                    completion(nil, nil, .failedRequest)
                     return
                 }
-                
+
                 do {
-                    let Details = try JSONDecoder().decode(Details.self, from: data)
-                    completion(Details, nil)
+                    if sc {
+                        let Screenshots = try JSONDecoder().decode(Screenshots.self, from: data)
+                        completion(nil, Screenshots, nil)
+                    } else {
+                        let Details = try JSONDecoder().decode(Details.self, from: data)
+                        completion(Details, nil, nil)
+                    }
                 } catch {
                     print(error)
-                    completion(nil, .invalidData)
+                    completion(nil, nil, .invalidData)
                 }
             }
         }.resume()

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import MessageUI
+import DeviceKit
 
 extension UIViewController {
+    
     enum TransitionStyle {
         case present // 네비게이션 없이 Present
         case presentNavigation // 네비게이션 임베드 Present
@@ -35,12 +38,28 @@ extension UIViewController {
         }
     }
     
-//    func showDeleteAlert(completionHandler: @escaping (UIAlertAction) -> Void) {
-//        let alert = UIAlertController(title: "메모를 삭제하시겠습니까?", message: "삭제된 메모는 복구할 수 없습니다", preferredStyle: .alert)
-//        let ok = UIAlertAction(title: "삭제", style: .destructive, handler: completionHandler)
-//        let cancel = UIAlertAction(title: "취소", style: .cancel)
-//        alert.addAction(ok)
-//        alert.addAction(cancel)
-//        self.present(alert, animated: true)
-//    }
+    func presentAppstore(id: Int) {
+        guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(id)?action=write-review") else {
+            return
+        }
+        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+    }
+    
+    func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.setToRecipients(["hej0102@naver.com"])
+            mail.setSubject("게임도브 문의 - ")
+            mail.setMessageBody(
+            """
+            OS Version: \(UIDevice.current.systemVersion)
+            Device : \(DeviceKit.Device.current)
+            App Viersion: \(Settings.version.rightDetail())
+            """, isHTML: false)
+            self.present(mail, animated: true)
+        } else {
+            view.makeToast(LocalizationKey.mailRegistration.localized)
+        }
+    }
 }
+

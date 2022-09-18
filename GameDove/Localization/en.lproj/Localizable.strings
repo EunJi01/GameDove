@@ -40,6 +40,9 @@
 "no_results" = "No match found";
 
 // MARK: DetailViewController
+// 저장 완료 토스트
+"saved" = "Added to Storage";
+
 // 원제
 "name_original" = "Original title";
 
@@ -57,3 +60,27 @@
 
 // 메타크리틱 점수
 "metacritic" = "Metascore";
+
+// MARK: SettingsViewController
+"settings" = "Settings";
+
+// 메인 플랫폼
+"main_platform" = "Main Platform";
+
+// 개발자에게 문의하기
+"contact" = "Contact Developer";
+
+// 리뷰 작성하기
+"review" = "Create Review";
+
+// API
+"api" = "API";
+
+// 버전
+"version" = "Version";
+
+// 개발자에게 문의하기 실패 -> 매일 등록 안내
+"mail_registration" = "이메일등록";
+
+// 취소 (액션시트)
+"cancel" = "Cancel";
