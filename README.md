@@ -31,6 +31,7 @@
 #### DetailView (+WebView)
 * ✅ MainView로부터 id를 전달받아 API로부터 상세정보 받아오기
 * ⚠️ 배너 컬렉션뷰 구현 - 자동 스크롤, 페이지 인덱스
+* ⚠️ 레이아웃 제약조건 문제로 엄청나게 많은 로그가 뜸
 #### StorageView
 * 탭바에 보관함 탭을 추가하고, 보관함에 추가한 한 게임들을 모아볼 수 있다.
 * 보관중인 게임은 스와이프를 통해 삭제가 가능하다.
@@ -80,11 +81,11 @@
 | 16 | UpcomingGameView | 출시예정작 뷰 추가 | 2h | 2h |  |
 | 16 | 중간점검 | 버그해결 및 리펙토링 | 3h | 3h |  |
 | 16 | SkeletonView | 로딩 구현 + 사용자 액션 제한 | ~~3h~~ | 2h HUD로 구현 |  |
-| 17 | DetailView | Code Base 레이아웃 | 4h |  |  |
+| 17 | DetailView | Code Base 레이아웃 | 4h | 4h |  |
 | 17 | DetailView | Struct Model 구성 | 1h | 1h |  |
 |  |  |  |  |  |  |
 | **Iteration 4** |  |  |  |  | **~2022.09.21** |
-| 18 | DetailView | 선택된 셀의 정보 받아오기 | 3h |  |  |
+| 18 | DetailView | 선택된 셀의 정보 받아오기 | 3h | 3h |  |
 | 18 | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
 | 19 | DetailView | bannerCollectionView 구성 | 2h | 2h |  |
 | 19 | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h | 3h |  |
@@ -163,5 +164,6 @@
 - 리뷰 작성 버튼을 누르면 앱스토어 링크를 통해 리뷰 화면으로 바로 이동한다. (app id는 app store connet에서 확인 가능하다.)
 - 현재 버전을 체크해서 옵션창에서 보여줄 수 있고, api의 백링크도 설정창에 추가했다.
 - 메인 플랫폼을 설정할 수 있는 얼럿 시트를 구현할 예정이었으나, 플랫폼의 타입이 enum이기 때문에 UserDefaults로는 구현이 불가해서 추후 Rleam을 사용해 구현할 계획이다.
-- bannerCollectionView에 page index를 구현하는 것 까지는 성공했으나 직접 스크롤할 경우 index가 변하지 않는다ㅜㅜ
+- bannerCollectionView에 page index를 구현하는 것 까지는 성공했으나 직접 스크롤할 경우 index가 변하지 않는다.
 - 다만 배너는 출시에 중요한 부분은 아니고, 자동 스크롤을 지원하지 않으면 인덱스가 꼬일 일도 없기 때문에 우선순위가 낮아 나중에 해결하기로 했다.
+- 디테일뷰에서 레이아웃 관련 로그가 정말... 정말 많이 뜬다. 하나씩 지우면서 테스트해봐도 어디서 문제가 발생하는지 잘 모르겠다.ㅠㅠ
