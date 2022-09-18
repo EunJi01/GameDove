@@ -13,7 +13,6 @@ struct IconSet {
     static let search = UIImage(systemName: "magnifyingglass") // 검색
     
     static let xmark = UIImage(systemName: "xmark") // 창 닫기
-    static let archivebox = UIImage(systemName: "archivebox") // 보관함 저장
 }
 
 struct TabBarIconSet {
@@ -25,6 +24,9 @@ struct TabBarIconSet {
     
     static let upcoming = UIImage(systemName: "books.vertical") // 출시예정작
     static let upcomingSelected = UIImage(systemName: "books.vertical.fill")
+    
+    static let archivebox = UIImage(systemName: "archivebox") // 보관함
+    static let archiveboxSelected = UIImage(systemName: "archivebox.fill") // 보관함
     
     static let setting = UIImage(systemName: "gearshape") // 설정
     static let settingSelected = UIImage(systemName: "gearshape.fill")

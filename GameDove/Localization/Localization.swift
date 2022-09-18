@@ -21,6 +21,7 @@ struct LocalizationKey {
     static let released = "released"
     static let playtime = "playtime"
     static let metascore = "metacritic"
+    static let updated = "updated"
     
     static let all = "all"
     static let week = "week"

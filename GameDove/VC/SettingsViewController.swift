@@ -38,7 +38,7 @@ class SettingsViewController: BaseViewController {
         let cancel = UIAlertAction(title: LocalizationKey.cancel.localized, style: .cancel)
         alert.addAction(cancel)
         
-        APIQuery.Platforms.allCases.forEach { platform in // MARK: 플랫폼 저장 기능 추가
+        APIQuery.Platforms.allCases.forEach { platform in // MARK: 플랫폼 저장 기능 추가하기
             let platform = UIAlertAction(title: APIQuery.Platforms.title(platform: platform), style: .default, handler: nil)
             alert.addAction(platform)
         }

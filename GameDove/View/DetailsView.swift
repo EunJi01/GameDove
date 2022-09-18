@@ -48,9 +48,14 @@ class DetailsView: UIView {
         return view
     }()
     
-    lazy var detailsTableView: UITableView = {
-        let view = UITableView()
-        // MARK: 여기다가 뭐 막 장르 이런거 나열할거임
+    lazy var detailsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: width, height: 70)
+        layout.minimumLineSpacing = 10
+        
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.register(DetailsCollectionViewCell.self, forCellWithReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier)
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -65,13 +70,11 @@ class DetailsView: UIView {
     }
     
     func configure() {
-        [titleLabel, bannerCollectionView, pagingIndexView, detailsTableView].forEach {
+        [titleLabel, bannerCollectionView, pagingIndexView, pagingIndexLabel, detailsCollectionView].forEach {
             addSubview($0)
         }
-
-        pagingIndexView.addSubview(pagingIndexLabel)
     }
-    
+
     func setConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
@@ -83,16 +86,21 @@ class DetailsView: UIView {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(width * 0.6)
         }
-        
-        pagingIndexLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+
+        pagingIndexView.snp.makeConstraints { make in
+            make.trailing.equalTo(bannerCollectionView.snp.trailing).inset(12)
+            make.bottom.equalTo(bannerCollectionView.snp.bottom).inset(22)
+            make.height.equalTo(20)
+            make.width.equalTo(50)
         }
         
-        pagingIndexView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(pagingIndexLabel).inset(-10)
-            make.verticalEdges.equalTo(pagingIndexLabel).inset(-4)
-            make.trailing.equalTo(bannerCollectionView).inset(12)
-            make.bottom.equalTo(bannerCollectionView).inset(22)
+        pagingIndexLabel.snp.makeConstraints { make in
+            make.center.equalTo(pagingIndexView.snp.center)
+        }
+        
+        detailsCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(bannerCollectionView.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
 }

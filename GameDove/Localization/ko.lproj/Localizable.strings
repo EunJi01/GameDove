@@ -61,6 +61,9 @@
 // 메타크리틱 점수
 "metacritic" = "메타스코어";
 
+// 업데이트
+"updated" = "업데이트";
+
 // MARK: SettingsViewController
 "settings" = "설정";
 

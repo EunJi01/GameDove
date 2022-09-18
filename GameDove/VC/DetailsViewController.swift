@@ -37,8 +37,10 @@ class DetailsViewController: BaseViewController {
     override func configure() {
         mainView.bannerCollectionView.delegate = self
         mainView.bannerCollectionView.dataSource = self
+        mainView.detailsCollectionView.delegate = self
+        mainView.detailsCollectionView.dataSource = self
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.archivebox, style: .plain, target: self, action: #selector(archiveboxTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: TabBarIconSet.archivebox, style: .plain, target: self, action: #selector(archiveboxTapped))
     }
     
     @objc private func archiveboxTapped() {
@@ -71,7 +73,8 @@ class DetailsViewController: BaseViewController {
             self?.hud.dismiss(animated: true)
             self?.mainView.pagingIndexLabel.text = "1 / \((self?.scList.count ?? 0) + 1)"
             self?.mainView.bannerCollectionView.reloadData()
-            self?.bannerTimer()
+            //self?.bannerTimer()
+            //dump(self?.details)
         }
     }
     
@@ -94,28 +97,41 @@ class DetailsViewController: BaseViewController {
 
 extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return scList.count + 1
+        return collectionView == mainView.bannerCollectionView ? scList.count + 1 : DetailsItem.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.reuseIdentifier, for: indexPath) as? BannerCollectionViewCell else {
+        switch collectionView {
+        case mainView.bannerCollectionView:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.reuseIdentifier, for: indexPath) as? BannerCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            switch indexPath.row {
+            case 0:
+                if let mainImage = mainImage {
+                    let url = URL(string: mainImage)
+                    cell.bannerImageView.kf.setImage(with: url)
+                }
+            default:
+                if !(scList.isEmpty) {
+                    let url = URL(string: scList[indexPath.row - 1].image)
+                    cell.bannerImageView.kf.setImage(with: url)
+                }
+            }
+            return cell
+            
+        case mainView.detailsCollectionView:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? DetailsCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+
+            cell.itemLabel.text = DetailsItem.allCases[indexPath.row].title()
+
+            return cell
+        default:
             return UICollectionViewCell()
         }
-        
-        switch indexPath.row {
-        case 0:
-            if let mainImage = mainImage {
-                let url = URL(string: mainImage)
-                cell.bannerImageView.kf.setImage(with: url)
-            }
-        default:
-            if !(scList.isEmpty) {
-                let url = URL(string: scList[indexPath.row - 1].image)
-                cell.bannerImageView.kf.setImage(with: url)
-            }
-        }
-        
-        return cell
     }
     
     private func scrollViewDidEndDecelerating(_ collectionView: UICollectionView) {

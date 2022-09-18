@@ -10,14 +10,14 @@ import Foundation
 struct Details: Codable {
     let id: Int
     let name: String
+    let image: String
     let originalName: String
-    let metacritic: Int?
+    let genres: [genres]
+    let platformList: [platformList]
     let released: String
     let updated: String
-    let image: String
     let playtime: Int
-    let platformList: [platformList]
-    let genres: [genres]
+    let metacritic: Int?
     
     enum CodingKeys: String, CodingKey {
         case originalName = "name_original"
