@@ -30,24 +30,28 @@
 * ✅ 검색 버튼을 누른 탭의 플랫폼 옵션과 정렬 방식을 유지한 상태로 검색
 #### DetailView (+WebView)
 * ✅ MainView로부터 id를 전달받아 API로부터 상세정보 받아오기
-* 배너 컬렉션뷰 구현 - 자동 스크롤, 페이지 인덱스
+* ⚠️ 배너 컬렉션뷰 구현 - 자동 스크롤, 페이지 인덱스
 #### StorageView
 * 탭바에 보관함 탭을 추가하고, 보관함에 추가한 한 게임들을 모아볼 수 있다.
 * 보관중인 게임은 스와이프를 통해 삭제가 가능하다.
 #### SettingView
 * 메인 플랫폼 설정
-* 메인 기간 설정?
-* 개발자에게 문의하기
-* 리뷰 작성하기
-* API 백링크
+* 메인 기간 설정
+* ✅ 개발자에게 문의하기
+* ✅ 리뷰 작성하기
+* ✅ API 백링크
+* ✅ 버전 체크
 #### 추가 기능
 * ✅ API와 통신중일 때 JGProgressHUD를 이용해 로딩중임을 사용자에게 명시
 * 스와이프 제스쳐를 통해 뒤로가기/창 내리기 지원
 #### 업데이트 (하고싶은...) 기능
 * 스크린샷 등의 이미지는 굳이 고화질로 보여줄 필요 없을 것 같은데, 용량을 줄여보자!
-* 장르 필터 추가 -> 필터가 여러개면 사용자가 헷갈리지 않도록 어떤식으로 알려줄지?
 * DetailView에서 ActivityViewController를 통해 외부에 공유
-* DetailView의 배너 무한 스크롤 
+* DetailView의 배너 무한 스크롤
+* 장르 필터 추가 -> 필터가 여러개면 사용자가 헷갈리지 않도록 어떤식으로 알려줄지?
+#### 문제점
+* ❌ bannerCollectionView : 자동 스크롤 될 때만 nowPage가 증가하기 때문에 사용자가 직접 배너를 넘길 경우 페이지 인덱스가 변하지 않는 문제가 있다.
+* ❌ bannerCollectionView : 사용자가 직접 배너를 넘겨도 타이머는 그대로 동작하기 때문에, 시간이 지나면 의도치 않게 뒤로 돌아가는 등의 문제가 있다.
 -------------
 
 ### 개발 공수
@@ -84,8 +88,8 @@
 | 18 | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
 | 19 | DetailView | bannerCollectionView 구성 | 2h | 2h |  |
 | 19 | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h | 3h |  |
-| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 2h |  |  |
-| 20 | DetailView | bannerCollectionView 자동 스크롤 | ~~3h~~ | 1h |  |
+| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 2h | 2h |  |
+| 20 | DetailView | bannerCollectionView 자동 스크롤 | ~~3h~~ | 1h 버그 있음 |  |
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
 | 21 | DetailView | WebView로 예고편 재생 | 3h | X API 데이터 부족 |  |
@@ -99,7 +103,7 @@
 | 25 | StorageView | didSeletRowAt | 3h |  |  |
 | 26 | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
 | 27 | 추가 기능 | SettingTableView 구현 | ~~3h~~ | 5h |  |
-| 28 | 추가 기능 | UserDefaults로 옵션 저장 | 2h |  |  |
+| 28 | 추가 기능 | Realm에 옵션 저장 | 2h |  |  |
 |  | 추가 기능 | ActivityViewController | 2h |  |  |
 |  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
 |  |  |  |  |  |  |
@@ -151,11 +155,13 @@
 - 게임의 상세정보를 받아오는 API 주소에서 뒷부분에 /screenshots 만 추가하면 스크린샷을 받아올 수 있기 때문에, DetailsAPIManager 메서드를 호출할 때 매개변수로 sc 라는 이름의 Bool 타입을 받아온 후 분기처리를 통해 적합한 데이터를 반환할 수 있도록 구성했다.
 - 상세정보와 스크린샷, API를 두 번 호출해야 하기 때문에 DispatchGroup enter/loave 를 통해 모든 통신이 종료된 후 reload 를 실행했다.
 - 타이머를 활용해 3초마다 자동으로 배너가 스크롤되는 기능을 구현했는데, 사용자가 직접 스크롤 할 경우 타이머 초기화와 무한 스크롤 등의 기능을 추가하면 좋을 것 같다.
-- 뷰를 스크롤뷰로 구성할 예정이기 때문에 자동스크롤에 필요한 메서드인 scrollViewDidEndDecelerating의 매개변수 타입을 UICollectionView로 바꿨는데, 바꾸지 않을 경우 실제로 문제가 발생하는지에 대해서는 나중에 따로 테스트 해보려고 한다.
+- 뷰를 스크롤뷰로 구성할 예정이기 때문에 자동스크롤에 필요한 메서드인 scrollViewDidEndDecelerating의 매개변수 타입을 UICollectionView로 바꿨는데, 바꾸지 않을 경우 실제로 문제가 발생하는지에 대해서는 나중에 따로 테스트 해보려고 한다 --> CollectionView 혹은 TableView로 구성할 것으로 계획이 변경되었기 때문에 이제는 의미가 없다!
 
 #### 09/18
 - SettingsViewController를 구성하고, 각 셀을 선택했을 때의 기능을 구현했다.
 - 문의하기 버튼을 누르면 오픈소스 DeviceKit 를 이용해 현재 OS 버전과 디바이스 이름, 사용중인 App 버전을 Body로 받아온다.
 - 리뷰 작성 버튼을 누르면 앱스토어 링크를 통해 리뷰 화면으로 바로 이동한다. (app id는 app store connet에서 확인 가능하다.)
 - 현재 버전을 체크해서 옵션창에서 보여줄 수 있고, api의 백링크도 설정창에 추가했다.
-- 메인 플랫폼을 설정할 수 있는 얼럿 시트를 구현할 예정이었으나, 플랫폼의 타입이 enum이기 때문에 UserDefaults로는 구현이 불가하다.
+- 메인 플랫폼을 설정할 수 있는 얼럿 시트를 구현할 예정이었으나, 플랫폼의 타입이 enum이기 때문에 UserDefaults로는 구현이 불가해서 추후 Rleam을 사용해 구현할 계획이다.
+- bannerCollectionView에 page index를 구현하는 것 까지는 성공했으나 직접 스크롤할 경우 index가 변하지 않는다ㅜㅜ
+- 다만 배너는 출시에 중요한 부분은 아니고, 자동 스크롤을 지원하지 않으면 인덱스가 꼬일 일도 없기 때문에 우선순위가 낮아 나중에 해결하기로 했다.
