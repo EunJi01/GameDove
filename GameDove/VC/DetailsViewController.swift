@@ -17,7 +17,13 @@ class DetailsViewController: BaseViewController {
     var details: Details?
     var mainImage: String?
     var scList: [ScreenshotsResults] = []
-    var nowPage = 0
+    
+    var nowPage = 0 {
+        didSet {
+            mainView.pagingIndexLabel.text = "\(nowPage + 1) / \(scList.count + 1)"
+            // MARK: 첫 번째는 안나오는 문제,
+        }
+    }
 
     override func loadView() {
         view = mainView
@@ -46,31 +52,32 @@ class DetailsViewController: BaseViewController {
         hud.show(in: view)
         
         group.enter()
-        DetailsAPIManager.requestDetails(id: id, sc: false) { details, non, error in
-            self.details = details
-            self.mainImage = details?.image
-            self.mainView.titleLabel.text = details?.name
+        DetailsAPIManager.requestDetails(id: id, sc: false) { [weak self] details, non, error in
+            self?.details = details
+            self?.mainImage = details?.image
+            self?.mainView.titleLabel.text = details?.name
             group.leave()
         }
 
         group.enter()
-        DetailsAPIManager.requestDetails(id: id, sc: true) { non, sc, error in
+        DetailsAPIManager.requestDetails(id: id, sc: true) { [weak self] non, sc, error in
             if let sc = sc {
-                self.scList = sc.results
+                self?.scList = sc.results
             }
             group.leave()
         }
         
-        group.notify(queue: .main) {
-            self.hud.dismiss(animated: true)
-            self.mainView.bannerCollectionView.reloadData()
-            self.bannerTimer()
+        group.notify(queue: .main) { [weak self] in
+            self?.hud.dismiss(animated: true)
+            self?.mainView.pagingIndexLabel.text = "1 / \((self?.scList.count ?? 0) + 1)"
+            self?.mainView.bannerCollectionView.reloadData()
+            self?.bannerTimer()
         }
     }
     
     private func bannerTimer() {
-        let _: Timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (Timer) in
-            self.bannerMove()
+        let _: Timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] Timer in
+            self?.bannerMove()
         }
     }
 

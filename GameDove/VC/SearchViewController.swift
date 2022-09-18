@@ -83,16 +83,16 @@ extension SearchViewController: UISearchBarDelegate {
         
         hud.show(in: view)
         
-        GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: currentBaseDate, search: text) { games, error in
+        GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: currentBaseDate, search: text) { [weak self] games, error in
             guard let games = games else { return }
             
-            self.currentSearch = text
-            self.games = games.results
-            self.collectionView.reloadData()
-            self.scrollToTop()
-            self.hud.dismiss(animated: true)
+            self?.currentSearch = text
+            self?.games = games.results
+            self?.collectionView.reloadData()
+            self?.scrollToTop()
+            self?.hud.dismiss(animated: true)
             
-            self.noResultsLabel.isHidden = self.games.isEmpty ? false : true
+            self?.noResultsLabel.isHidden = (self?.games.isEmpty ?? false) ? false : true
         }
     }
 }

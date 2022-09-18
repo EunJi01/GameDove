@@ -29,43 +29,44 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     func fetchGames(platform: APIQuery.Platforms, order: APIQuery.Ordering, baseDate: String) {
         hud.show(in: view)
 
-        GamesAPIManager.requestGames(order: order, platform: platform, baseDate: baseDate, search: currentSearch, page: "\(currentPage)") { games, error in
+        GamesAPIManager.requestGames(order: order, platform: platform, baseDate: baseDate, search: currentSearch, page: "\(currentPage)") { [weak self] games, error in
             guard let games = games else { return }
 
-            if self.currentPlatform == platform && self.currentBaseDate == baseDate {
-                self.games.append(contentsOf: games.results)
-                self.collectionView.reloadData()
+            if self?.currentPlatform == platform && self?.currentBaseDate == baseDate {
+                self?.games.append(contentsOf: games.results)
+                self?.collectionView.reloadData()
             } else {
-                self.games = games.results
-                self.currentPlatform = platform
-                self.currentBaseDate = baseDate
-                self.collectionView.reloadData()
-                self.scrollToTop()
+                self?.games = games.results
+                self?.currentPlatform = platform
+                self?.currentBaseDate = baseDate
+                self?.collectionView.reloadData()
+                self?.scrollToTop()
             }
-            self.hud.dismiss(animated: true)
-            self.navigationItem.title = APIQuery.Platforms.title(platform: platform)
+            self?.hud.dismiss(animated: true)
+            self?.navigationItem.title = APIQuery.Platforms.title(platform: platform)
         }
     }
 
     func filterPeriod(period: APIPeriod) {
         hud.show(in: view)
         
-        GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: period.periodDate()) { games, error in
-            guard let items = self.navigationItem.leftBarButtonItems else { return }
+        GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: period.periodDate()) { [weak self] games, error in
+            guard let items = self?.navigationItem.leftBarButtonItems else { return }
             items[1].tintColor = period == .all ? ColorSet.shared.buttonColor : .red
             
             guard let games = games else { return }
-            self.currentBaseDate = period.periodDate()
-            self.games = games.results
-            self.scrollToTop()
-            self.collectionView.reloadData()
-            self.hud.dismiss(animated: true)
+            self?.currentBaseDate = period.periodDate()
+            self?.games = games.results
+            self?.scrollToTop()
+            self?.collectionView.reloadData()
+            self?.hud.dismiss(animated: true)
         }
     }
     
     @objc func platformMenu() -> UIMenu {
         var menuItems: [UIAction] = []
         
+        //MARK: [weak self] 사용하기
         for i in APIQuery.Platforms.allCases {
             let title = APIQuery.Platforms.title(platform: i)
             menuItems.append(UIAction(title: title, image: nil, handler: { _ in self.fetchGames(platform: i, order: self.currentOrder, baseDate: self.currentBaseDate)}))

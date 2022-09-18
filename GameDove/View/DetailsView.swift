@@ -34,6 +34,20 @@ class DetailsView: UIView {
         return view
     }()
     
+    let pagingIndexView: UIView = {
+        let view = UIView()
+        view.backgroundColor = ColorSet.shared.clearBlack
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    let pagingIndexLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 12)
+        return view
+    }()
+    
     lazy var detailsTableView: UITableView = {
         let view = UITableView()
         // MARK: 여기다가 뭐 막 장르 이런거 나열할거임
@@ -51,9 +65,11 @@ class DetailsView: UIView {
     }
     
     func configure() {
-        [titleLabel, bannerCollectionView, detailsTableView].forEach {
+        [titleLabel, bannerCollectionView, pagingIndexView, detailsTableView].forEach {
             addSubview($0)
         }
+
+        pagingIndexView.addSubview(pagingIndexLabel)
     }
     
     func setConstraints() {
@@ -66,6 +82,17 @@ class DetailsView: UIView {
             make.top.equalTo(titleLabel.snp.bottom)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(width * 0.6)
+        }
+        
+        pagingIndexLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        pagingIndexView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(pagingIndexLabel).inset(-10)
+            make.verticalEdges.equalTo(pagingIndexLabel).inset(-4)
+            make.trailing.equalTo(bannerCollectionView).inset(12)
+            make.bottom.equalTo(bannerCollectionView).inset(22)
         }
     }
 }

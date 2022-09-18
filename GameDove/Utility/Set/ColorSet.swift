@@ -14,6 +14,8 @@ final class ColorSet {
     let buttonColor: UIColor = UIColor(named: "buttonColor") ?? .systemIndigo
     let backgroundColor: UIColor = UIColor(named: "backgroundColor") ?? .white
     let objectColor: UIColor = UIColor(named: "objectColor") ?? .white
+    let clearBlack: UIColor = UIColor(named: "clearBlack") ?? .lightGray
+    
 //    lazy var whiteAndBlack: UIColor = darkMode(lightColor: .white, darkColor: .black)
 //    lazy var blackAndWhite: UIColor = darkMode(lightColor: .black, darkColor: .white)
     
