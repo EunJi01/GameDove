@@ -98,7 +98,7 @@
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
 | 25 | StorageView | didSeletRowAt | 3h |  |  |
 | 26 | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
-| 27 | 추가 기능 | SettingTableView 구현 | 3h |  |  |
+| 27 | 추가 기능 | SettingTableView 구현 | ~~3h~~ | 5h |  |
 | 28 | 추가 기능 | UserDefaults로 옵션 저장 | 2h |  |  |
 |  | 추가 기능 | ActivityViewController | 2h |  |  |
 |  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
@@ -154,4 +154,8 @@
 - 뷰를 스크롤뷰로 구성할 예정이기 때문에 자동스크롤에 필요한 메서드인 scrollViewDidEndDecelerating의 매개변수 타입을 UICollectionView로 바꿨는데, 바꾸지 않을 경우 실제로 문제가 발생하는지에 대해서는 나중에 따로 테스트 해보려고 한다.
 
 #### 09/18
-- 
+- SettingsViewController를 구성하고, 각 셀을 선택했을 때의 기능을 구현했다.
+- 문의하기 버튼을 누르면 오픈소스 DeviceKit 를 이용해 현재 OS 버전과 디바이스 이름, 사용중인 App 버전을 Body로 받아온다.
+- 리뷰 작성 버튼을 누르면 앱스토어 링크를 통해 리뷰 화면으로 바로 이동한다. (app id는 app store connet에서 확인 가능하다.)
+- 현재 버전을 체크해서 옵션창에서 보여줄 수 있고, api의 백링크도 설정창에 추가했다.
+- 메인 플랫폼을 설정할 수 있는 얼럿 시트를 구현할 예정이었으나, 플랫폼의 타입이 enum이기 때문에 UserDefaults로는 구현이 불가하다.
