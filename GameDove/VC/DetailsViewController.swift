@@ -73,7 +73,7 @@ class DetailsViewController: BaseViewController {
             self?.hud.dismiss(animated: true)
             self?.mainView.pagingIndexLabel.text = "1 / \((self?.scList.count ?? 0) + 1)"
             self?.mainView.bannerCollectionView.reloadData()
-            //self?.bannerTimer()
+            self?.bannerTimer()
             //dump(self?.details)
         }
     }
@@ -134,7 +134,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
-    private func scrollViewDidEndDecelerating(_ collectionView: UICollectionView) {
-        nowPage = Int(collectionView.contentOffset.x) / Int(collectionView.frame.width)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
 }
