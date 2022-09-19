@@ -24,6 +24,7 @@
 * ✅ API 통신 ⭐️매우 중요⭐️ ---> 우선 신작 모아보기를 구현 후, 마지막에 나누기
 * API 통신 ⭐️매우 중요⭐️ ---> 상태 코드나 연결 상태가 좋지 않을 경우에 대한 대응
 * 날짜 기간 필터를 선택했을 때 사용자가 인식할 수 있도록 UI 변경
+* 로딩 중 네비게이션 바 조작 막기?
 * ✅ 플랫폼 옵션 설정 - API platforms Query
 #### SearchView
 * ✅ 키워드로 검색 - API search Query
@@ -46,10 +47,12 @@
 * ✅ API와 통신중일 때 JGProgressHUD를 이용해 로딩중임을 사용자에게 명시
 * 스와이프 제스쳐를 통해 뒤로가기/창 내리기 지원
 #### 업데이트 (하고싶은...) 기능
+* 원하지 않아도 배너 뷰가 자꾸 넘어가는 것이 불편하다고 생각하는 사용자가 있을 수 있으므로 일시정지/재생 버튼을 만들어보자!
 * 스크린샷 등의 이미지는 굳이 고화질로 보여줄 필요 없을 것 같은데, 용량을 줄여보자!
 * DetailView에서 ActivityViewController를 통해 외부에 공유
 * DetailView의 배너 무한 스크롤
 * 장르 필터 추가 -> 필터가 여러개면 사용자가 헷갈리지 않도록 어떤식으로 알려줄지?
+* 메인 화면/검색 결과에서 보고싶지 않은 게임 차단 기능
 #### 문제점
 * ❌ 
 -------------
@@ -85,25 +88,26 @@
 |  |  |  |  |  |  |
 | **Iteration 4** |  |  |  |  | **~2022.09.21** |
 | 18 | DetailView | 선택된 셀의 정보 받아오기 | 3h | 3h |  |
-| 18 | DetailView | 받아온 정보 뷰에 보여주기 | 1h |  |  |
-| 19 | DetailView | bannerCollectionView 구성 | 2h | 2h |  |
-| 19 | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h | 3h |  |
-| 20 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 2h | 2h |  |
-| 20 | DetailView | bannerCollectionView 자동 스크롤 | ~~3h~~ | 1h 버그 있음 |  |
+| 18 | DetailView | bannerCollectionView 구성 | 2h | 2h |  |
+| 18 | DetailView | 스크린샷 bannerCollectionView에 보여주기 | 3h | 3h |  |
+| 18 | DetailView | bannerCollectionView 현재 페이지/전체 페이지 명시 | 2h | 2h |  |
+| 18 | DetailView | bannerCollectionView 자동 스크롤 | ~~3h~~ | 2h |  |
+| 19 | DetailView | WebView로 예고편 재생 | 3h | X API 데이터 부족 |  |
+| 19 | DetailView | 받아온 정보 뷰에 보여주기 | ~~1h~~ | 2h 추가 예정 |  |
+| 19 | DetailView | UI 수정 | 4h | 4h |  |
+| 20 | RealmModel | Realm 스키마 구성 | 1h |  |  |
+| 20 | SettingView | 메인 플랫폼 저장 구현 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
-| 21 | DetailView | WebView로 예고편 재생 | 3h | X API 데이터 부족 |  |
-| 22 | RealmModel | Realm 스키마 구성 | 1h |  |  |
-| 22 | DetailView | 보관 버튼 구현 (Realm 저장) | 3h |  |  |
-| 23 | StorageView | Code Base 레이아웃 | 1h |  |  |
-| 23 | StorageView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
-| 24 | StorageView | 스와이프로 삭제 기능 구현 | 2h |  |  |
+| 21 | DetailView | 보관 버튼 구현 (Realm 저장) | 3h |  |  |
+| 22 | StorageView | Code Base 레이아웃 | 1h |  |  |
+| 22 | StorageView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
+| 23 | StorageView | 스와이프로 삭제 기능 구현 | 2h |  |  |
+| 23 | StorageView | didSeletRowAt | 3h |  |  |
+| 24 | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
 |  |  |  |  |  |  |
 | **Iteration 6** |  |  |  |  | **~2022.09.28** |
-| 25 | StorageView | didSeletRowAt | 3h |  |  |
-| 26 | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
 | 27 | 추가 기능 | SettingTableView 구현 | ~~3h~~ | 5h |  |
-| 28 | 추가 기능 | Realm에 옵션 저장 | 2h |  |  |
 |  | 추가 기능 | ActivityViewController | 2h |  |  |
 |  | 추가 기능 | 오픈API 호출횟수 개선 | 3h |  |  |
 |  |  |  |  |  |  |
@@ -171,3 +175,10 @@
 - 배너의 인덱스가 꼬이는 이유를 찾아냈다! 17일에 작성한 마지막 항목이 문제였다.
 - 매개변수 타입을 바꿔서 사용했기 때문에 더 이상 scrollView의 메서드가 아니게 되어버린, 그냥 private 함수가 되어버렸던 것이다ㅜㅜ
 - 사실 해당 함수에 대해 이해가 잘 되지 않고 있었는데, 팀 회의를 하며 팀원분 의견을 듣고 떠올리게 되었다. (감사합니다!!)
+- 또 잘못 생각했던게 nowPage에 관한 코드는 스크롤뷰의 width와 x 길이를 가지고 판단하는 것이기 때문에 두 스크롤뷰의 방향이 다르다면 걱정 할 필요 없었던 것 같다.
+- 만약 스크롤뷰의 방향이 같다면, 스크롤뷰 (컬렉션/테이블) 의 이름으로 조건을 걸거나 가드문으로 타입 캐스팅을 해주면 될 것 같다!
+- 레이아웃 디버그 로그가 너무 많이 뜨는데… Rleam 설치해서 빌드 속도 느려지기 전에 고쳐야한다고 생각해서 열심히 서치해봤다.
+- https://www.wtfautolayout.com/ 에 로그를 복붙하면 직관적으로 알려주긴 하지만, 변수명까지 나오지는 않기 때문에 어렵다…
+- 위의 해석본(?)을 봐도 모르겠어서, 뷰 계층을 확인해보니 왼쪽이나 윗쪽에 보라색 표시로 문제가 있는 객체에 대해 알려준다.
+- 그리고 로그의 이상한 숫자와 영어의 조합이 있을텐데, 이것을 오른쪽의 Address를 비교해보면 문제를 알 수 있다.
+- 하지만… 아직도… 못고쳤다…!
