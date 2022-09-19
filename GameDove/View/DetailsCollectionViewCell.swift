@@ -12,12 +12,13 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     let itemLabel: UILabel = {
         let view = UILabel()
         view.textColor = ColorSet.shared.buttonColor
-        view.font = .boldSystemFont(ofSize: 17)
+        view.font = .boldSystemFont(ofSize: 20)
         return view
     }()
     
     let itemDataLabel: UILabel = {
         let view = UILabel()
+        view.numberOfLines = 2
         return view
     }()
     
@@ -43,8 +44,9 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         }
         
         itemDataLabel.snp.makeConstraints { make in
-            make.top.equalTo(itemLabel.snp.bottom).offset(8)
-            make.leading.equalTo(itemLabel.snp.leading)
+            make.top.equalTo(itemLabel.snp.top).offset(1)
+            make.leading.equalTo(itemLabel.snp.trailing).offset(12)
+            make.trailing.equalToSuperview().inset(12)
         }
     }
 }

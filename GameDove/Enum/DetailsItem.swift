@@ -19,7 +19,7 @@ enum DetailsItem: CaseIterable {
     func title() -> String {
         switch self {
         case .originalName:
-            return LocalizationKey.originalName.localized
+            return LocalizationKey.title.localized
         case .genres:
             return LocalizationKey.genres.localized
         case .platformList:
@@ -40,19 +40,24 @@ enum DetailsItem: CaseIterable {
         case .originalName:
             return details.originalName
         case .genres:
-            // MARK: 배열 데이터 스트링 변환
-            return ""
+            let list = details.genres.map { $0.name }
+            return list.reduce("") { str, i in
+                list.first == i ? str + i : str + "   |   " + i
+            }
         case .platformList:
-            // MARK: 배열 데이터 스트링 변환
-            return ""
+            let platformList = details.platformList.map { $0.platform }
+            let list = platformList.map { $0.name }
+            return list.reduce("") { str, i in
+                list.first == i ? str + i : str + "   |   " + i
+            }
         case .released:
             return details.released
         case .updated:
             return details.updated
         case .playtime:
-            return "\(details.playtime)"
+            return details.playtime == 0 ? LocalizationKey.noData.localized : "\(details.playtime)"
         case .metacritic:
-            guard let metascore = details.metacritic else { return "" }
+            guard let metascore = details.metacritic else { return LocalizationKey.noData.localized }
             return "\(metascore)"
         }
     }

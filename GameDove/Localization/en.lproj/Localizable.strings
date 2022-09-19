@@ -43,13 +43,13 @@
 // 저장 완료 토스트
 "saved" = "Added to Storage";
 
-// 원제
-"name_original" = "Original title";
+// 제목
+"title" = "Title";
 
-// 장르 => 3~4개 정도
+// 장르
 "genres" = "Genres";
 
-// 플랫폼 => 전체 다 보여주되, 가독성에 신경쓰기
+// 플랫폼
 "platforms" = "Platforms";
 
 // 출시
@@ -64,6 +64,9 @@
 // 업데이트
 "updated" = "Updated";
 
+// 정보 없음
+"no_data" = "No data";
+
 // MARK: SettingsViewController
 "settings" = "Settings";
 
@@ -75,9 +78,6 @@
 
 // 리뷰 작성하기
 "review" = "Create Review";
-
-// API
-"api" = "API";
 
 // 버전
 "version" = "Version";

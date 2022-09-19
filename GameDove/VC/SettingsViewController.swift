@@ -58,13 +58,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case .contact:
             sendMail()
         case .review:
-            presentAppstore(id: 1645004525)
+            openAppstore(id: 1645004525)
             return
         case .api:
+            openWeb(urlStr: "https://rawg.io")
             return
         case .version:
             return
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,6 +85,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = set.title()
         cell.rightLabel.text = set.rightDetail()
         cell.selectionStyle = .none
+        
+        if Settings.allCases[indexPath.row].rightDetail() == "RAWG" {
+            cell.rightLabel.textColor = .systemBlue
+        }
         
         return cell
     }

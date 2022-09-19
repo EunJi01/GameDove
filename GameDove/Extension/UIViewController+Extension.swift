@@ -38,11 +38,16 @@ extension UIViewController {
         }
     }
     
-    func presentAppstore(id: Int) {
+    func openAppstore(id: Int) {
         guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(id)?action=write-review") else {
             return
         }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+    }
+    
+    func openWeb(urlStr: String) {
+        guard let url = URL(string: urlStr) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     func sendMail() {

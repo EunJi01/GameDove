@@ -51,7 +51,7 @@
 		B686B0CB28D0CA630042D727 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B0CA28D0CA630042D727 /* DetailsView.swift */; };
 		B686B0CD28D0CAC60042D727 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B0CC28D0CAC60042D727 /* BannerCollectionViewCell.swift */; };
 		B6BA9A2D28D749D300A6206D /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA9A2C28D749D300A6206D /* StorageViewController.swift */; };
-		B6BA9A2F28D74A1F00A6206D /* StorageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA9A2E28D74A1F00A6206D /* StorageCollectionViewCell.swift */; };
+		B6BA9A2F28D74A1F00A6206D /* StorageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA9A2E28D74A1F00A6206D /* StorageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,7 +100,7 @@
 		B686B0CA28D0CA630042D727 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		B686B0CC28D0CAC60042D727 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6BA9A2C28D749D300A6206D /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
-		B6BA9A2E28D74A1F00A6206D /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6BA9A2E28D74A1F00A6206D /* StorageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,7 +243,7 @@
 				B686B0CC28D0CAC60042D727 /* BannerCollectionViewCell.swift */,
 				B62C785928D63D44001243D0 /* SettingsTableViewCell.swift */,
 				B62C786328D72DA7001243D0 /* DetailsCollectionViewCell.swift */,
-				B6BA9A2E28D74A1F00A6206D /* StorageCollectionViewCell.swift */,
+				B6BA9A2E28D74A1F00A6206D /* StorageTableViewCell.swift */,
 				B686B0CA28D0CA630042D727 /* DetailsView.swift */,
 			);
 			path = View;
@@ -392,7 +392,7 @@
 				B686B0AC28CA27F00042D727 /* IconSet.swift in Sources */,
 				B62C784D28D4C8BC001243D0 /* ScreenshotsModel.swift in Sources */,
 				B686B0AF28CA4EE50042D727 /* GamesModel.swift in Sources */,
-				B6BA9A2F28D74A1F00A6206D /* StorageCollectionViewCell.swift in Sources */,
+				B6BA9A2F28D74A1F00A6206D /* StorageTableViewCell.swift in Sources */,
 				B6BA9A2D28D749D300A6206D /* StorageViewController.swift in Sources */,
 				B686B0A528CA1FB50042D727 /* UIViewController+Extension.swift in Sources */,
 				B686B0C528D08D4A0042D727 /* SearchViewController.swift in Sources */,

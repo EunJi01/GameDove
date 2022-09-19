@@ -79,7 +79,8 @@ extension SearchViewController: UISearchBarDelegate {
         guard let text = searchBar.text else { return }
         
         // MARK: 검색했을 때 간혈적으로 원하는 order로 나오지 않는 버그 있음ㅠㅠ
-        print("===현재 요청하는 order: \(currentOrder!)")
+        print("===현재 요청하는 오더: \(currentOrder!)")
+        print("===현재 요청하는 플랫폼: \(currentPlatform)")
         
         hud.show(in: view)
         

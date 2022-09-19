@@ -9,26 +9,24 @@ import UIKit
 import SnapKit
 
 class DetailsView: UIView {
-    let width = UIScreen.main.bounds.width
     
     let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = .boldSystemFont(ofSize: 26)
+        view.font = .boldSystemFont(ofSize: 30)
         view.adjustsFontSizeToFitWidth = true
-        view.minimumScaleFactor = 0.5
         view.textColor = ColorSet.shared.buttonColor
         return view
     }()
 
     lazy var bannerCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: width, height: width * 0.55)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(BannerCollectionViewCell.self, forCellWithReuseIdentifier: BannerCollectionViewCell.reuseIdentifier)
         view.isPagingEnabled = true
+        view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clear
         
         return view
@@ -50,9 +48,7 @@ class DetailsView: UIView {
     
     lazy var detailsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: width, height: 70)
         layout.minimumLineSpacing = 10
-        
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(DetailsCollectionViewCell.self, forCellWithReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier)
         view.backgroundColor = .clear
@@ -84,7 +80,7 @@ class DetailsView: UIView {
         bannerCollectionView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(width * 0.6)
+            make.height.equalTo(UIScreen.main.bounds.width * 0.6)
         }
 
         pagingIndexView.snp.makeConstraints { make in

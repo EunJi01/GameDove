@@ -27,7 +27,6 @@ class GamesCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .black
-        view.text = "Title"
         view.font = .boldSystemFont(ofSize: 20)
         return view
     }()

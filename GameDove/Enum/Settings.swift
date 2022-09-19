@@ -26,7 +26,7 @@ enum Settings: CaseIterable {
         case .review:
             return LocalizationKey.review.localized
         case .api:
-            return LocalizationKey.api.localized
+            return "API"
         case .version:
             return LocalizationKey.version.localized
         }
@@ -41,7 +41,7 @@ enum Settings: CaseIterable {
         case .review:
             return ""
         case .api:
-            return "https://rawg.io"
+            return "RAWG"
         case .version:
             var currentVersion: String {
                 guard let dictionary = Bundle.main.infoDictionary,

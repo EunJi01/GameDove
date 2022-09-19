@@ -15,13 +15,14 @@ struct LocalizationKey {
     static let inDetail = "inDetail"
     
     static let saved = "saved"
-    static let originalName = "name_original"
+    static let title = "title"
     static let genres = "genres"
     static let platforms = "platforms"
     static let released = "released"
     static let playtime = "playtime"
     static let metascore = "metacritic"
     static let updated = "updated"
+    static let noData = "no_data"
     
     static let all = "all"
     static let week = "week"
@@ -34,7 +35,6 @@ struct LocalizationKey {
     static let mainPlatform = "main_platform"
     static let contact = "contact"
     static let review = "review"
-    static let api = "api"
     static let version = "version"
     static let mailRegistration = "mail_registration"
     

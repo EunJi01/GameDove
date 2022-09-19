@@ -21,7 +21,6 @@ class DetailsViewController: BaseViewController {
     var nowPage = 0 {
         didSet {
             mainView.pagingIndexLabel.text = "\(nowPage + 1) / \(scList.count + 1)"
-            // MARK: 첫 번째는 안나오는 문제,
         }
     }
 
@@ -32,6 +31,7 @@ class DetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDetails()
+        print("id : " + id!)
     }
     
     override func configure() {
@@ -73,8 +73,8 @@ class DetailsViewController: BaseViewController {
             self?.hud.dismiss(animated: true)
             self?.mainView.pagingIndexLabel.text = "1 / \((self?.scList.count ?? 0) + 1)"
             self?.mainView.bannerCollectionView.reloadData()
+            self?.mainView.detailsCollectionView.reloadData()
             self?.bannerTimer()
-            //dump(self?.details)
         }
     }
     
@@ -95,7 +95,7 @@ class DetailsViewController: BaseViewController {
     }
 }
 
-extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionView == mainView.bannerCollectionView ? scList.count + 1 : DetailsItem.allCases.count
     }
@@ -128,6 +128,9 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
 
             cell.itemLabel.text = DetailsItem.allCases[indexPath.row].title()
 
+            guard let data = details else { return cell }
+            cell.itemDataLabel.text = DetailsItem.allCases[indexPath.row].itemData(details: data)
+            
             return cell
         default:
             return UICollectionViewCell()
@@ -136,5 +139,25 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = UIScreen.main.bounds.width
+
+        switch collectionView {
+        case mainView.bannerCollectionView:
+            return CGSize(width: width, height: width * 0.55)
+
+        case mainView.detailsCollectionView:
+            //guard let data = details else { return CGSize(width: width, height: 50) }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? DetailsCollectionViewCell else {
+                return .zero
+            }
+            let height = cell.itemDataLabel.frame.height + 40
+            return CGSize(width: width, height: height)
+            
+        default:
+            return .zero
+        }
     }
 }
