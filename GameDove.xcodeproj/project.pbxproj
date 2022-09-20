@@ -26,7 +26,7 @@
 		B66B925428D992F7000C8D8B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925328D992F7000C8D8B /* RealmModel.swift */; };
 		B66B925A28D993CE000C8D8B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B66B925928D993CE000C8D8B /* Realm */; };
 		B66B925C28D993CE000C8D8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B66B925B28D993CE000C8D8B /* RealmSwift */; };
-		B66B925E28D9AB3A000C8D8B /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925D28D9AB3A000C8D8B /* SettingRepository.swift */; };
+		B66B925E28D9AB3A000C8D8B /* MainPlatformRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925D28D9AB3A000C8D8B /* MainPlatformRepository.swift */; };
 		B66B926028D9AB4E000C8D8B /* StorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925F28D9AB4E000C8D8B /* StorageRepository.swift */; };
 		B686B06C28CA12D70042D727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06B28CA12D70042D727 /* AppDelegate.swift */; };
 		B686B06E28CA12D70042D727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06D28CA12D70042D727 /* SceneDelegate.swift */; };
@@ -75,7 +75,7 @@
 		B66B924828D7FD45000C8D8B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B66B924C28D956D5000C8D8B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		B66B925328D992F7000C8D8B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
-		B66B925D28D9AB3A000C8D8B /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
+		B66B925D28D9AB3A000C8D8B /* MainPlatformRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlatformRepository.swift; sourceTree = "<group>"; };
 		B66B925F28D9AB4E000C8D8B /* StorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepository.swift; sourceTree = "<group>"; };
 		B686B06828CA12D70042D727 /* GameDove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B686B06B28CA12D70042D727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			children = (
 				B66B925328D992F7000C8D8B /* RealmModel.swift */,
 				B66B925F28D9AB4E000C8D8B /* StorageRepository.swift */,
-				B66B925D28D9AB3A000C8D8B /* SettingRepository.swift */,
+				B66B925D28D9AB3A000C8D8B /* MainPlatformRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 				B686B0A528CA1FB50042D727 /* UIViewController+Extension.swift in Sources */,
 				B686B0C528D08D4A0042D727 /* SearchViewController.swift in Sources */,
 				B62C785A28D63D44001243D0 /* SettingsTableViewCell.swift in Sources */,
-				B66B925E28D9AB3A000C8D8B /* SettingRepository.swift in Sources */,
+				B66B925E28D9AB3A000C8D8B /* MainPlatformRepository.swift in Sources */,
 				B62C784428D3769B001243D0 /* UpcomingGameViewController.swift in Sources */,
 				B66B924D28D956D5000C8D8B /* UIImage+Extension.swift in Sources */,
 				B62C786428D72DA7001243D0 /* DetailsCollectionViewCell.swift in Sources */,

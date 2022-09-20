@@ -1,5 +1,5 @@
 //
-//  SettingRepository.swift
+//  MainPlatformRepository.swift
 //  GameDove
 //
 //  Created by 황은지 on 2022/09/20.

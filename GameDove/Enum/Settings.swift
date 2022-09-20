@@ -35,7 +35,8 @@ enum Settings: CaseIterable {
     func rightDetail() -> String {
         switch self {
         case .mainPlatform:
-            return UserDefaults.standard.string(forKey: "mainPlatform") ?? "없음" // MARK: 기본 설정 스위치로 구현
+            guard let platform = MainPlatformRepository().fetch().first?.title else { return "" }
+            return platform
         case .contact:
             return ""
         case .review:

@@ -9,6 +9,7 @@ import UIKit
 import Toast
 
 class SettingsViewController: BaseViewController {
+    let repository = MainPlatformRepository()
     
     private lazy var settingTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
@@ -25,6 +26,18 @@ class SettingsViewController: BaseViewController {
     override func configure() {
         view.addSubview(settingTableView)
         navigationController?.navigationBar.topItem?.title = LocalizationKey.settings.localized
+        
+        if repository.fetch().first == nil {
+            do {
+                try repository.localRealm.write {
+                    let platform = APIQuery.Platforms.nintendoSwitch
+                    let defaultPlatform = MainPlatform(id: platform.rawValue, title: platform.title)
+                    repository.localRealm.add(defaultPlatform)
+                }
+            } catch let error {
+                print(error)
+            }
+        }
     }
     
     override func setConstraints() {
@@ -39,10 +52,25 @@ class SettingsViewController: BaseViewController {
         alert.addAction(cancel)
         
         APIQuery.Platforms.allCases.forEach { platform in // MARK: 플랫폼 저장 기능 추가하기
-            let platform = UIAlertAction(title: platform.rawValue, style: .default, handler: nil)
+            let platform = UIAlertAction(title: platform.title, style: .default, handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.changeMainPlatform(platform: platform)
+            })
             alert.addAction(platform)
         }
         present(alert, animated: true)
+    }
+    
+    private func changeMainPlatform(platform: APIQuery.Platforms) {
+        do {
+            try repository.localRealm.write {
+                repository.updateItem(id: platform.rawValue, title: platform.title)
+                settingTableView.reloadData()
+                // MARK: 플랫폼 변경 후 게임 탭에서 바로 바뀐 플랫폼으로 변경 필요
+            }
+        } catch let error {
+            print(error)
+        }
     }
 }
 
@@ -65,10 +93,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case .version:
             return
         }
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
