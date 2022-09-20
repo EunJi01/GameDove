@@ -102,9 +102,10 @@
 |  |  |  |  |  |  |
 | **Iteration 5** |  |  |  |  | **~2022.09.25** |
 | 21 | DetailView | 보관 버튼 구현 (Realm 저장) | 3h |  |  |
-| 22 | StorageView | Code Base 레이아웃 | 1h |  |  |
+| 21 | RatingGameView | periodMenu 이미지 체크박스 추가 | 3h |  |  |
+| 21 | StorageView | Code Base 레이아웃 | 1h | 1h |  |
 | 22 | StorageView | Realm 데이터 테이블뷰에 보여주기 | 2h |  |  |
-| 23 | StorageView | 스와이프로 삭제 기능 구현 | 2h |  |  |
+| 22 | StorageView | 스와이프로 삭제 기능 구현 | 2h |  |  |
 | 23 | StorageView | didSeletRowAt | 3h |  |  |
 | 24 | API 통신 | 네트워크 상태에 따른 대응 | 3h |  |  |
 |  |  |  |  |  |  |
