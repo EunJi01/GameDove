@@ -18,7 +18,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     
     let itemDataLabel: UILabel = {
         let view = UILabel()
-        view.numberOfLines = 2
+        view.numberOfLines = 0
         return view
     }()
     
@@ -40,7 +40,8 @@ class DetailsCollectionViewCell: UICollectionViewCell {
 
     private func setConstraints() {
         itemLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(12)
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(12)
         }
         
         itemDataLabel.snp.makeConstraints { make in

@@ -23,6 +23,7 @@ struct LocalizationKey {
     static let metascore = "metacritic"
     static let updated = "updated"
     static let noData = "no_data"
+    static let failedImage = "failed_image"
     
     static let all = "all"
     static let week = "week"

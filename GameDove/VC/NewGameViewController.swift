@@ -16,7 +16,7 @@ final class NewGameViewController: GamesCollectionViewController {
     override func configure() {
         view.addSubview(collectionView)
         currentOrder = .released
-        fetchGames(platform: currentPlatform, order: currentOrder, baseDate: currentBaseDate)
+        fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))

@@ -12,13 +12,14 @@ import JGProgressHUD
 
 class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     var games: [GameResults] = []
+    let mainPlatform = MainPlatformRepository().fetch().first
     
-    var currentPlatform: APIQuery.Platforms = UserDefaults.standard.object(forKey: "mainPlatform") as? APIQuery.Platforms ?? .pc // 첫 화면 기본 플랫폼
     var currentPage = 1
     var currentBaseDate: String = defaultStartDate
     var currentOrder: APIQuery.Ordering!
     var currentSearch = ""
-    
+    lazy var currentPlatformID: String = mainPlatform?.id ?? APIQuery.Platforms.nintendoSwitch.rawValue
+
     lazy var collectionView: UICollectionView = addCollectionView()
     
     override func viewDidLoad() {
@@ -26,31 +27,31 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
-    func fetchGames(platform: APIQuery.Platforms, order: APIQuery.Ordering, baseDate: String) {
+    func fetchGames(platformID: String, order: APIQuery.Ordering, baseDate: String) {
         hud.show(in: view)
 
-        GamesAPIManager.requestGames(order: order, platform: platform, baseDate: baseDate, search: currentSearch, page: "\(currentPage)") { [weak self] games, error in
+        GamesAPIManager.requestGames(order: order, platformID: platformID, baseDate: baseDate, search: currentSearch, page: "\(currentPage)") { [weak self] games, error in
             guard let games = games else { return }
 
-            if self?.currentPlatform == platform && self?.currentBaseDate == baseDate {
+            if self?.currentPlatformID == platformID && self?.currentBaseDate == baseDate {
                 self?.games.append(contentsOf: games.results)
                 self?.collectionView.reloadData()
             } else {
                 self?.games = games.results
-                self?.currentPlatform = platform
+                self?.currentPlatformID = platformID
                 self?.currentBaseDate = baseDate
                 self?.collectionView.reloadData()
                 self?.scrollToTop()
             }
             self?.hud.dismiss(animated: true)
-            self?.navigationItem.title = APIQuery.Platforms.title(platform: platform)
+            self?.navigationItem.title = APIQuery.Platforms(rawValue: platformID)?.title
         }
     }
 
     func filterPeriod(period: APIPeriod) {
         hud.show(in: view)
         
-        GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: period.periodDate()) { [weak self] games, error in
+        GamesAPIManager.requestGames(order: currentOrder, platformID: currentPlatformID, baseDate: period.periodDate()) { [weak self] games, error in
             guard let items = self?.navigationItem.leftBarButtonItems else { return }
             items[1].tintColor = period == .all ? ColorSet.shared.buttonColor : .red
             
@@ -65,11 +66,12 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     
     @objc func platformMenu() -> UIMenu {
         var menuItems: [UIAction] = []
-        
-        //MARK: [weak self] 사용하기
+
         for i in APIQuery.Platforms.allCases {
-            let title = APIQuery.Platforms.title(platform: i)
-            menuItems.append(UIAction(title: title, image: nil, handler: { _ in self.fetchGames(platform: i, order: self.currentOrder, baseDate: self.currentBaseDate)}))
+            let title = i.title
+            menuItems.append(UIAction(title: title, image: nil, handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.fetchGames(platformID: i.rawValue, order: self.currentOrder, baseDate: self.currentBaseDate)}))
         }
         
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
@@ -79,13 +81,13 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     @objc func presentSearch() {
         let vc = SearchViewController()
         vc.currentOrder = currentOrder
-        vc.currentPlatform = currentPlatform
+        vc.currentPlatformID = currentPlatformID
         vc.currentBaseDate = currentBaseDate
-        vc.navigationItem.title = APIQuery.Platforms.title(platform: currentPlatform)
+        vc.navigationItem.title = APIQuery.Platforms(rawValue: currentPlatformID)?.title
         transition(vc, transitionStyle: .presentFullNavigation)
     }
     
-    func scrollToTop() { // 옵션 변경 시 뷰 최상단으로 이동
+    func scrollToTop() {
         guard games.count > 0 else { return }
         collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
@@ -109,8 +111,17 @@ extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionV
         cell.titleLabel.text = games[indexPath.row].name
         cell.releasedLabel.text = games[indexPath.row].released
         if let urlStr = games[indexPath.row].image {
-            let url = URL(string: urlStr)
-            cell.mainImageView.kf.setImage(with: url)
+            guard let url = URL(string: urlStr) else { return cell }
+            KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+                switch result {
+                case .success(let value):
+                    let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
+                    cell.mainImageView.image = newImage
+                case .failure(let error):
+                    print("Error: \(error)")
+                    self?.view.makeToast(LocalizationKey.failedImage.localized)
+                }
+            }
         }
             
         return cell
@@ -120,10 +131,10 @@ extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionV
 extension GamesCollectionViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if (currentPage * 40 - 5) == indexPath.item {
+            if (currentPage * 20 - 10) == indexPath.item {
                 currentPage += 1
                 print(currentPage)
-                fetchGames(platform: currentPlatform, order: currentOrder, baseDate: currentBaseDate)
+                fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
             }
             print("===\(indexPaths)")
         }

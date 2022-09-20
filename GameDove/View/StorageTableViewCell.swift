@@ -5,8 +5,6 @@
 //  Created by 황은지 on 2022/09/18.
 //
 
-import Foundation
-
 import UIKit
 import SnapKit
 
@@ -43,13 +41,13 @@ class StorageTableViewCell: UITableViewCell {
 
     private func setConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(20)
-            make.top.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(18)
+            make.top.equalTo(16)
         }
         
         releasedLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel)
-            make.top.equalTo(titleLabel.snp.bottom).offset(6)
+            make.top.equalTo(titleLabel.snp.bottom).offset(3)
         }
     }
 }

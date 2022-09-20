@@ -115,8 +115,24 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
                 }
             default:
                 if !(scList.isEmpty) {
-                    let url = URL(string: scList[indexPath.row - 1].image)
-                    cell.bannerImageView.kf.setImage(with: url)
+                    guard let url = URL(string: scList[indexPath.row - 1].image) else { return cell }
+                    KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+                        switch result { // 이미지 리사이즈
+                        case .success(let value):
+                            let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
+                            cell.bannerImageView.image = newImage
+                        case .failure(let error):
+                            print("Error: \(error)")
+                            self?.view.makeToast(LocalizationKey.failedImage.localized)
+                        }
+                    }
+                    cell.bannerImageView.kf.indicatorType = .activity
+                    cell.bannerImageView.kf.setImage(
+                      with: url,
+                      placeholder: nil,
+                      options: nil,
+                      completionHandler: nil
+                    )
                 }
             }
             return cell
@@ -127,7 +143,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
             }
 
             cell.itemLabel.text = DetailsItem.allCases[indexPath.row].title()
-
+            
             guard let data = details else { return cell }
             cell.itemDataLabel.text = DetailsItem.allCases[indexPath.row].itemData(details: data)
             
@@ -149,13 +165,13 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
             return CGSize(width: width, height: width * 0.55)
 
         case mainView.detailsCollectionView:
-            //guard let data = details else { return CGSize(width: width, height: 50) }
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? DetailsCollectionViewCell else {
                 return .zero
             }
+
             let height = cell.itemDataLabel.frame.height + 40
             return CGSize(width: width, height: height)
-            
+
         default:
             return .zero
         }

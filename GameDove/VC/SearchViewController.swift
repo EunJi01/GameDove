@@ -80,11 +80,11 @@ extension SearchViewController: UISearchBarDelegate {
         
         // MARK: 검색했을 때 간혈적으로 원하는 order로 나오지 않는 버그 있음ㅠㅠ
         print("===현재 요청하는 오더: \(currentOrder!)")
-        print("===현재 요청하는 플랫폼: \(currentPlatform)")
+        print("===현재 요청하는 플랫폼: \(APIQuery.Platforms(rawValue: currentPlatformID)?.title ?? "없음")")
         
         hud.show(in: view)
         
-        GamesAPIManager.requestGames(order: currentOrder, platform: currentPlatform, baseDate: currentBaseDate, search: text) { [weak self] games, error in
+        GamesAPIManager.requestGames(order: currentOrder, platformID: currentPlatformID, baseDate: currentBaseDate, search: text) { [weak self] games, error in
             guard let games = games else { return }
             
             self?.currentSearch = text

@@ -39,13 +39,12 @@ class SettingsViewController: BaseViewController {
         alert.addAction(cancel)
         
         APIQuery.Platforms.allCases.forEach { platform in // MARK: 플랫폼 저장 기능 추가하기
-            let platform = UIAlertAction(title: APIQuery.Platforms.title(platform: platform), style: .default, handler: nil)
+            let platform = UIAlertAction(title: platform.rawValue, style: .default, handler: nil)
             alert.addAction(platform)
         }
         present(alert, animated: true)
     }
 }
-
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

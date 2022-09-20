@@ -30,21 +30,21 @@ enum APIQuery: String {
         case pc = "4"
         case ios = "3"
         case android = "21"
-
-        static func title(platform: APIQuery.Platforms) -> String {
-            switch platform {
+        
+        var title: String {
+            switch self {
+            case .nintendoSwitch:
+                return "Switch"
+            case .playStation5:
+                return "PS5"
+            case .playStation4:
+                return "PS4"
             case .pc:
                 return "PC"
             case .ios:
                 return "iOS"
             case .android:
                 return "Android"
-            case .playStation5:
-                return "PS5"
-            case .playStation4:
-                return "PS4"
-            case .nintendoSwitch:
-                return "Switch"
             }
         }
     }

@@ -67,6 +67,9 @@
 // 정보 없음
 "no_data" = "No data";
 
+// 이미지 로드 실패
+"failed_image" = "Failed to load image";
+
 // MARK: SettingsViewController
 "settings" = "Settings";
 

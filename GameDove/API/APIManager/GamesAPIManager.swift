@@ -15,7 +15,7 @@ enum APIError: Error {
 }
 
 class GamesAPIManager {
-    static func requestGames(order: APIQuery.Ordering, platform: APIQuery.Platforms, baseDate: String, search: String = "", page: String = "1", completion: @escaping (Game?, APIError?) -> Void) {
+    static func requestGames(order: APIQuery.Ordering, platformID: String, baseDate: String, search: String = "", page: String = "1", completion: @escaping (Game?, APIError?) -> Void) {
         
         let currentDate = APIQuery.dateFormatter(date: Date())
         let nextDate = APIQuery.dateFormatter(date: Date(timeIntervalSinceNow: 86400))
@@ -30,9 +30,9 @@ class GamesAPIManager {
         component.path = path
         component.queryItems = [
             URLQueryItem(name: APIQuery.key.rawValue, value: APIKey.RAWG),
-            URLQueryItem(name: APIQuery.pageSize.rawValue, value: "40"),
+            URLQueryItem(name: APIQuery.pageSize.rawValue, value: "20"),
             URLQueryItem(name: APIQuery.ordering.rawValue, value: order.rawValue),
-            URLQueryItem(name: APIQuery.platforms.rawValue, value: platform.rawValue),
+            URLQueryItem(name: APIQuery.platforms.rawValue, value: platformID),
             URLQueryItem(name:APIQuery.search.rawValue , value: search),
             URLQueryItem(name: APIQuery.page.rawValue, value: page)
         ]

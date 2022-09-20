@@ -16,7 +16,7 @@ final class RatingViewController: GamesCollectionViewController {
     override func configure() {
         view.addSubview(collectionView)
         currentOrder = .metacritic
-        fetchGames(platform: currentPlatform, order: currentOrder, baseDate: currentBaseDate)
+        fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
         
         let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
         let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())

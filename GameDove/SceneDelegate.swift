@@ -18,10 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc = TabBarController()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-        
-//        if UserDefaults.standard.string(forKey: "mainPlatform") == nil {
-//            UserDefaults.standard.set(APIQuery.Platforms.nintendoSwitch, forKey: "mainPlatform")
-//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
