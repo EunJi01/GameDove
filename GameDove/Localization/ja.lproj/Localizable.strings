@@ -39,9 +39,12 @@
 // 검색 결과 없음
 "no_results" = "一致するゲームがありません。";
 
-// MARK: DetailViewController
+// MARK: DetailsViewController
 // 저장 완료 토스트
-"saved" = "ストレージに追加しました。";
+"stored" = "ストレージに追加しました。";
+
+// 저장 실패 토스트
+"failed_store" = "既にストレージにあります。";
 
 // 제목
 "title" = "タイトル";

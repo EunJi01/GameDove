@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class StorageViewController: BaseViewController {
+    let repository = StorageRepository()
+    var tasks: Results<Storage>!
+    
     lazy var storageTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.register(StorageTableViewCell.self, forCellReuseIdentifier: StorageTableViewCell.reuseIdentifier)
@@ -22,6 +26,10 @@ class StorageViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchRealm()
+    }
+    
     override func configure() {
         view.addSubview(storageTableView)
     }
@@ -31,11 +39,16 @@ class StorageViewController: BaseViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+    private func fetchRealm() {
+        tasks = repository.fetch()
+        storageTableView.reloadData()
+    }
 }
 
 extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,11 +56,30 @@ extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.titleLabel.text = "TITLE"
-        cell.releasedLabel.text = "released"
+        cell.titleLabel.text = tasks[indexPath.row].title
+        cell.releasedLabel.text = tasks[indexPath.row].released
         cell.selectionStyle = .none
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, _ in
+            guard let self = self else { return }
+            self.repository.deleteGame(game: self.tasks[indexPath.row])
+            self.fetchRealm()
+        }
+
+        delete.image = IconSet.trash
+        delete.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailsViewController()
+        vc.id = "\(tasks[indexPath.row].id)"
+        vc.hidesBottomBarWhenPushed = true
+        transition(vc, transitionStyle: .push)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

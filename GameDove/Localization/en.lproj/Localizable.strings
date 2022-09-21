@@ -39,9 +39,12 @@
 // 검색 결과 없음
 "no_results" = "No match found";
 
-// MARK: DetailViewController
+// MARK: DetailsViewController
 // 저장 완료 토스트
-"saved" = "Added to Storage";
+"stored" = "Added to Storage";
+
+// 저장 실패 토스트
+"failed_store" = "It's already in the Storage";
 
 // 제목
 "title" = "Title";

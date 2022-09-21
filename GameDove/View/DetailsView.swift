@@ -101,6 +101,7 @@ class DetailsView: UIView {
         
         detailsCollectionView.snp.makeConstraints { make in
             make.top.equalTo(bannerCollectionView.snp.bottom)
+            make.bottom.equalToSuperview()
             make.horizontalEdges.bottom.equalToSuperview()
         }
     }

@@ -66,7 +66,7 @@ class SettingsViewController: BaseViewController {
             try repository.localRealm.write {
                 repository.updateItem(id: platform.rawValue, title: platform.title)
                 settingTableView.reloadData()
-                // MARK: 플랫폼 변경 후 게임 탭에서 바로 바뀐 플랫폼으로 변경 필요
+                // MARK: 플랫폼 변경이 완료되었습니다. 변경하신 옵션은 다음 실행부터 적용됩니다.
             }
         } catch let error {
             print(error)

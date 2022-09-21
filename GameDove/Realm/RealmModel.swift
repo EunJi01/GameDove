@@ -9,12 +9,10 @@ import Foundation
 import RealmSwift
 
 class Storage: Object {
-    @Persisted var id: Int
+    @Persisted(primaryKey: true) var id: Int
     @Persisted var title: String
     @Persisted var released: String
     @Persisted var regdate = Date()
-    
-    @Persisted(primaryKey: true) var objectID: ObjectId
     
     convenience init(id: Int, title: String, released: String) {
         self.init()
@@ -29,7 +27,7 @@ class MainPlatform: Object {
     @Persisted var id: String
     @Persisted var title: String
     
-    @Persisted(primaryKey: true) var objectID: String = "mainPlatform"
+    @Persisted(primaryKey: true) var setting: String = "setting"
     
     convenience init(id: String, title: String) {
         self.init()

@@ -48,12 +48,18 @@ class DetailsViewController: BaseViewController {
     @objc private func archiveboxTapped() {
         do {
             try repository.localRealm.write {
-                // MARK: 중복 추가 막아야함 + 모델 여러개 되나?
+                guard let details = details else { return }
+                if repository.canStore(id: details.id) {
+                    let newTask = Storage(id: details.id, title: details.name, released: details.released)
+                    repository.localRealm.add(newTask)
+                    view.makeToast(LocalizationKey.stored.localized)
+                } else {
+                    view.makeToast(LocalizationKey.failedStore.localized)
+                }
             }
         } catch let error {
             print(error)
         }
-        view.makeToast(LocalizationKey.saved.localized)
     }
     
     private func fetchDetails() {
@@ -166,20 +172,4 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//
-//        case mainView.detailsCollectionView:
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? DetailsCollectionViewCell else {
-//                return .zero
-//            }
-//
-//            let height = cell.itemDataLabel.frame.height + 40
-//            return CGSize(width: width, height: height)
-//
-//        default:
-//            return .zero
-//        }
-//    }
 }

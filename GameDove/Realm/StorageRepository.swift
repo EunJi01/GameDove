@@ -10,23 +10,30 @@ import RealmSwift
 
 protocol StorageRepositoryType {
     func fetch() -> Results<Storage>!
-    func deleteItem(item: Storage)
+    func deleteGame(game: Storage)
 }
 
 class StorageRepository: StorageRepositoryType {
-    let localRealm = try! Realm()
+    let localRealm = try! Realm() // MARK: 나중에 do-catch로 바꾸기
     
     func fetch() -> Results<Storage>! {
         return localRealm.objects(Storage.self).sorted(byKeyPath: "regdate", ascending: false)
     }
 
-    func deleteItem(item: Storage) {
+    func deleteGame(game: Storage) {
         do {
             try localRealm.write {
-                localRealm.delete(item)
+                localRealm.delete(game)
             }
         } catch let error {
             print(error)
         }
+    }
+    
+    func canStore(id: Int) -> Bool {
+        guard localRealm.objects(Storage.self).filter("id == \(id)").isEmpty else {
+            return false
+        }
+        return true
     }
 }

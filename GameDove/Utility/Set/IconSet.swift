@@ -13,6 +13,7 @@ struct IconSet {
     static let search = UIImage(systemName: "magnifyingglass") // 검색
     
     static let xmark = UIImage(systemName: "xmark") // 창 닫기
+    static let trash = UIImage(systemName: "trash.fill") // 삭제
 }
 
 struct TabBarIconSet {
