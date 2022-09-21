@@ -34,20 +34,21 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     
     private func configure() {
         [itemLabel, itemDataLabel].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
     }
 
     private func setConstraints() {
         itemLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(12)
+            make.top.equalToSuperview().inset(12)
+            make.leading.equalToSuperview().inset(12)
         }
         
         itemDataLabel.snp.makeConstraints { make in
             make.top.equalTo(itemLabel.snp.top).offset(1)
             make.leading.equalTo(itemLabel.snp.trailing).offset(12)
             make.trailing.equalToSuperview().inset(12)
+            make.bottom.equalToSuperview().inset(12)
         }
     }
 }

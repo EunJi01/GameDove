@@ -30,7 +30,7 @@ final class RatingViewController: GamesCollectionViewController {
         }
     }
     
-    @objc private func periodMenu() -> UIMenu {
+    @objc private func periodMenu() -> UIMenu { // MARK: 선택한 옵션 이미지 체크 띄우기
         var menuItems: [UIAction] = []
 
         for i in 0...LocalizationKey.period.count - 1 {

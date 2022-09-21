@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class DetailsView: UIView {
+    let width = UIScreen.main.bounds.width
     
     let titleLabel: UILabel = {
         let view = UILabel()
@@ -22,13 +23,14 @@ class DetailsView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-
+        layout.itemSize = CGSize(width: width, height: width * 0.55)
+        
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(BannerCollectionViewCell.self, forCellWithReuseIdentifier: BannerCollectionViewCell.reuseIdentifier)
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clear
-        
+
         return view
     }()
     
@@ -49,9 +51,12 @@ class DetailsView: UIView {
     lazy var detailsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(DetailsCollectionViewCell.self, forCellWithReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier)
         view.backgroundColor = .clear
+        
         return view
     }()
     

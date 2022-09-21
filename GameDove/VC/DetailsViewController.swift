@@ -12,6 +12,7 @@ import JGProgressHUD
 
 class DetailsViewController: BaseViewController {
     let mainView = DetailsView()
+    let repository = StorageRepository()
     
     var id: String?
     var details: Details?
@@ -32,6 +33,7 @@ class DetailsViewController: BaseViewController {
         super.viewDidLoad()
         fetchDetails()
         print("id : " + id!)
+        print("Realm is located at:", repository.localRealm.configuration.fileURL!)
     }
     
     override func configure() {
@@ -44,6 +46,13 @@ class DetailsViewController: BaseViewController {
     }
     
     @objc private func archiveboxTapped() {
+        do {
+            try repository.localRealm.write {
+                // MARK: 중복 추가 막아야함 + 모델 여러개 되나?
+            }
+        } catch let error {
+            print(error)
+        }
         view.makeToast(LocalizationKey.saved.localized)
     }
     
@@ -146,6 +155,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             guard let data = details else { return cell }
             cell.itemDataLabel.text = DetailsItem.allCases[indexPath.row].itemData(details: data)
+            cell.contentView.widthAnchor.constraint(equalToConstant: mainView.width).isActive = true
             
             return cell
         default:
@@ -157,23 +167,19 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
         nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width
-
-        switch collectionView {
-        case mainView.bannerCollectionView:
-            return CGSize(width: width, height: width * 0.55)
-
-        case mainView.detailsCollectionView:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? DetailsCollectionViewCell else {
-                return .zero
-            }
-
-            let height = cell.itemDataLabel.frame.height + 40
-            return CGSize(width: width, height: height)
-
-        default:
-            return .zero
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//
+//        case mainView.detailsCollectionView:
+//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailsCollectionViewCell.reuseIdentifier, for: indexPath) as? DetailsCollectionViewCell else {
+//                return .zero
+//            }
+//
+//            let height = cell.itemDataLabel.frame.height + 40
+//            return CGSize(width: width, height: height)
+//
+//        default:
+//            return .zero
+//        }
+//    }
 }
