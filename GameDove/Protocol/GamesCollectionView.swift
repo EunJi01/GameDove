@@ -17,7 +17,7 @@ extension GamesCollectionView where Self: UICollectionViewDataSource, Self: UICo
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 300)
         
         let gamesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        gamesCollectionView.backgroundColor = ColorSet.shared.backgroundColor
+        gamesCollectionView.backgroundColor = ColorSet.shared.background
         gamesCollectionView.dataSource = self
         gamesCollectionView.delegate = self
         gamesCollectionView.prefetchDataSource = self

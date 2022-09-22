@@ -11,14 +11,14 @@ import SnapKit
 class StorageTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let view = UILabel()
-        view.textColor = ColorSet.shared.buttonColor
+        view.textColor = ColorSet.shared.button
         view.font = .boldSystemFont(ofSize: 22)
         return view
     }()
     
     let releasedLabel: UILabel = {
         let view = UILabel()
-        view.textColor = .lightGray
+        view.textColor = ColorSet.shared.gray
         view.font = .systemFont(ofSize: 15)
         return view
     }()

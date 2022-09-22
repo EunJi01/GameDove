@@ -54,4 +54,11 @@ enum APIQuery: String {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
     }
+    
+    static func dateFormatter(released: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        guard let result = formatter.date(from: released) else { return Date() }
+        return result
+    }
 }

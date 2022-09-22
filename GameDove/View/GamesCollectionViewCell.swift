@@ -10,9 +10,9 @@ import UIKit
 class GamesCollectionViewCell: UICollectionViewCell {
     let cellBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = ColorSet.shared.objectColor
+        view.backgroundColor = ColorSet.shared.objectBack
         view.clipsToBounds = true
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = ColorSet.shared.gray.cgColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
         return view
@@ -20,7 +20,7 @@ class GamesCollectionViewCell: UICollectionViewCell {
     
     let mainImageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = ColorSet.shared.gray
         return view
     }()
     
@@ -33,7 +33,7 @@ class GamesCollectionViewCell: UICollectionViewCell {
     
     let separateView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = ColorSet.shared.gray
         return view
     }()
     

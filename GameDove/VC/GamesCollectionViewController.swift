@@ -53,7 +53,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         
         GamesAPIManager.requestGames(order: currentOrder, platformID: currentPlatformID, baseDate: period.periodDate()) { [weak self] games, error in
             guard let items = self?.navigationItem.leftBarButtonItems else { return }
-            items[1].tintColor = period == .all ? ColorSet.shared.buttonColor : .red
+            items[1].tintColor = period == .all ? ColorSet.shared.button : ColorSet.shared.buttonActive
             
             guard let games = games else { return }
             self?.currentBaseDate = period.periodDate()

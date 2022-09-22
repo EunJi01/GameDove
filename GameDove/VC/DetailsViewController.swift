@@ -42,10 +42,10 @@ class DetailsViewController: BaseViewController {
         mainView.detailsCollectionView.delegate = self
         mainView.detailsCollectionView.dataSource = self
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: TabBarIconSet.archivebox, style: .plain, target: self, action: #selector(archiveboxTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.trayDown, style: .plain, target: self, action: #selector(trayTapped))
     }
     
-    @objc private func archiveboxTapped() {
+    @objc private func trayTapped() {
         do {
             try repository.localRealm.write {
                 guard let details = details else { return }
@@ -162,6 +162,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
             guard let data = details else { return cell }
             cell.itemDataLabel.text = DetailsItem.allCases[indexPath.row].itemData(details: data)
             cell.contentView.widthAnchor.constraint(equalToConstant: mainView.width).isActive = true
+            cell.itemLabel.textColor = ColorSet.shared.button
             
             return cell
         default:

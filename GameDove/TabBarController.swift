@@ -25,12 +25,11 @@ final class TabBarController: UITabBarController {
         firstNav.tabBarItem = UITabBarItem(title: LocalizationKey.newGames.localized, image: TabBarIconSet.newly, selectedImage: TabBarIconSet.newlySelected)
         secondNav.tabBarItem = UITabBarItem(title: LocalizationKey.popularGames.localized, image: TabBarIconSet.rating, selectedImage: TabBarIconSet.ratingSelected)
         thirdNav.tabBarItem = UITabBarItem(title: LocalizationKey.upcomingGames.localized, image: TabBarIconSet.upcoming, selectedImage: TabBarIconSet.upcomingSelected)
-        fourthNav.tabBarItem = UITabBarItem(title: "임시", image: TabBarIconSet.archivebox, selectedImage: TabBarIconSet.archiveboxSelected)
+        fourthNav.tabBarItem = UITabBarItem(title: LocalizationKey.storage.localized, image: TabBarIconSet.tray, selectedImage: TabBarIconSet.traySelected)
         fifthNav.tabBarItem = UITabBarItem(title: LocalizationKey.settings.localized, image: TabBarIconSet.setting, selectedImage: TabBarIconSet.settingSelected)
 
         setViewControllers([firstNav, secondNav, thirdNav, fourthNav, fifthNav], animated: true)
         hidesBottomBarWhenPushed = true // 네비게이션VC로 푸쉬했을 때 밑에 바가 사라지는 것
-        tabBar.tintColor = ColorSet.shared.buttonColor
-        
+        tabBar.tintColor = ColorSet.shared.button
     }
 }

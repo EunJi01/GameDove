@@ -11,8 +11,8 @@ import SnapKit
 class DetailsCollectionViewCell: UICollectionViewCell {
     let itemLabel: UILabel = {
         let view = UILabel()
-        view.textColor = ColorSet.shared.buttonColor
         view.font = .boldSystemFont(ofSize: 20)
+        view.textColor = .clear
         return view
     }()
     

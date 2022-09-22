@@ -32,6 +32,7 @@ class StorageViewController: BaseViewController {
     
     override func configure() {
         view.addSubview(storageTableView)
+        navigationController?.navigationBar.topItem?.title = "보관중인 게임(임시)"
     }
     
     override func setConstraints() {
@@ -43,6 +44,13 @@ class StorageViewController: BaseViewController {
     private func fetchRealm() {
         tasks = repository.fetch()
         storageTableView.reloadData()
+    }
+    
+    private func isUpcoming(released: String) -> Bool {
+        let releaseDate = APIQuery.dateFormatter(released: released)
+        let result = releaseDate > Date()
+        
+        return result ? true : false
     }
 }
 
@@ -56,9 +64,12 @@ extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.selectionStyle = .none
         cell.titleLabel.text = tasks[indexPath.row].title
         cell.releasedLabel.text = tasks[indexPath.row].released
-        cell.selectionStyle = .none
+        
+        let isupcoming = isUpcoming(released: tasks[indexPath.row].released)
+        cell.releasedLabel.textColor = isupcoming ? ColorSet.shared.buttonActive : ColorSet.shared.gray
         
         return cell
     }

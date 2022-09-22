@@ -8,6 +8,7 @@
 import UIKit
 
 final class RatingViewController: GamesCollectionViewController {
+    //var currentPeriod: APIPeriod?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +31,19 @@ final class RatingViewController: GamesCollectionViewController {
         }
     }
     
-    @objc private func periodMenu() -> UIMenu { // MARK: 선택한 옵션 이미지 체크 띄우기
+    @objc private func periodMenu() -> UIMenu {
         var menuItems: [UIAction] = []
 
         for i in 0...LocalizationKey.period.count - 1 {
-            let title = LocalizationKey.period[i].localized
             let period = APIPeriod.allCases[i]
-            menuItems.append(UIAction(title: title, image: nil, handler: { _ in self.filterPeriod(period: period)}))
+
+            //let image: UIImage? = period == currentPeriod ? IconSet.check : nil
+            
+            let title = LocalizationKey.period[i].localized
+            menuItems.append(UIAction(title: title, image: nil, handler: { _ in
+                self.filterPeriod(period: period)
+                //self.currentPeriod = period
+            }))
         }
         
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)

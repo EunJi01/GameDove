@@ -16,13 +16,13 @@ class BaseViewController: UIViewController {
         configure()
         setConstraints()
         navigationItemColor()
-        view.backgroundColor = ColorSet.shared.backgroundColor
+        view.backgroundColor = ColorSet.shared.background
     }
     
     private func navigationItemColor() {
-        navigationController?.navigationBar.tintColor = ColorSet.shared.buttonColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: ColorSet.shared.buttonColor]
-        navigationController?.toolbar.tintColor = ColorSet.shared.buttonColor
+        navigationController?.navigationBar.tintColor = ColorSet.shared.button
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: ColorSet.shared.button]
+        navigationController?.toolbar.tintColor = ColorSet.shared.button
     }
     
     func tapGesture() {

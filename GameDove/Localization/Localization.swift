@@ -12,6 +12,7 @@ struct LocalizationKey {
     static let newGames = "new_games"
     static let popularGames = "popular_games"
     static let upcomingGames = "upcoming_games"
+    static let storage = "storage"
     static let settings = "settings"
     static let inDetail = "inDetail"
 
@@ -47,4 +48,5 @@ struct LocalizationKey {
     static let version = "version"
     static let mailRegistration = "mail_registration"
     static let cancel = "cancel"
+    static let changedMainPlatform = "changed_main_platform"
 }

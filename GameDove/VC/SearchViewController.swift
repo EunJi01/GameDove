@@ -32,7 +32,7 @@ final class SearchViewController: GamesCollectionViewController {
     private let noResultsLabel: UILabel = {
         let view = UILabel()
         view.text = "검색 결과 없음"
-        view.textColor = .lightGray
+        view.textColor = ColorSet.shared.gray
         view.isHidden = true
         return view
     }()

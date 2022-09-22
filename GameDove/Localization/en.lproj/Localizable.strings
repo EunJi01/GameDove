@@ -16,6 +16,12 @@
 // 출시예정작
 "upcoming_games" = "Upcoming";
 
+// 보관함
+"storage" = "Storage";
+
+// 설정
+"settings" = "Settings";
+
 // MARK: MainViewController
 // 자세히 보기
 "inDetail" = "Read more";
@@ -74,8 +80,6 @@
 "failed_image" = "Failed to load image";
 
 // MARK: SettingsViewController
-"settings" = "Settings";
-
 // 메인 플랫폼
 "main_platform" = "Main Platform";
 
@@ -93,3 +97,6 @@
 
 // 취소 (액션시트)
 "cancel" = "Cancel";
+
+// 메인 플랫폼 변경
+"changed_main_platform" = "The main platform has been changed.\nThis will take effect from the next run.";

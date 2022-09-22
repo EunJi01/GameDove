@@ -66,7 +66,7 @@ class SettingsViewController: BaseViewController {
             try repository.localRealm.write {
                 repository.updateItem(id: platform.rawValue, title: platform.title)
                 settingTableView.reloadData()
-                // MARK: 플랫폼 변경이 완료되었습니다. 변경하신 옵션은 다음 실행부터 적용됩니다.
+                view.makeToast(LocalizationKey.changedMainPlatform.localized)
             }
         } catch let error {
             print(error)
@@ -109,8 +109,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.rightLabel.text = set.rightDetail()
         cell.selectionStyle = .none
         
-        if Settings.allCases[indexPath.row].rightDetail() == "RAWG" {
-            cell.rightLabel.textColor = .systemBlue
+        if Settings.allCases[indexPath.row] == .api || Settings.allCases[indexPath.row] == .mainPlatform {
+            cell.rightLabel.textColor = ColorSet.shared.buttonActive
         }
         
         return cell

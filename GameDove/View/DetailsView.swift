@@ -15,7 +15,7 @@ class DetailsView: UIView {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 30)
         view.adjustsFontSizeToFitWidth = true
-        view.textColor = ColorSet.shared.buttonColor
+        view.textColor = ColorSet.shared.button
         return view
     }()
 

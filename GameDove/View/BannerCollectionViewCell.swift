@@ -11,7 +11,7 @@ import SnapKit
 class BannerCollectionViewCell: UICollectionViewCell {
     let bannerImageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = ColorSet.shared.gray
         return view
     }()
     
