@@ -18,7 +18,6 @@ class StorageTableViewCell: UITableViewCell {
     
     let releasedLabel: UILabel = {
         let view = UILabel()
-        view.textColor = ColorSet.shared.gray
         view.font = .systemFont(ofSize: 15)
         return view
     }()

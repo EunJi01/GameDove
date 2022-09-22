@@ -42,7 +42,37 @@ class DetailsViewController: BaseViewController {
         mainView.detailsCollectionView.delegate = self
         mainView.detailsCollectionView.dataSource = self
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.trayDown, style: .plain, target: self, action: #selector(trayTapped))
+        let trayButton = UIBarButtonItem(image: IconSet.trayDown, style: .plain, target: self, action: #selector(trayTapped))
+        let shareButton = UIBarButtonItem(image: IconSet.share, style: .plain, target: self, action: #selector(shareButtonTapped))
+        navigationItem.rightBarButtonItems = [trayButton, shareButton]
+    }
+    
+    @objc private func shareButtonTapped() {
+        guard let details = details,
+              let mainImage = mainImage,
+              let url = URL(string: mainImage) else {
+            return
+        }
+        
+        var image: UIImage?
+
+        KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+            switch result { // 이미지 리사이즈
+            case .success(let value):
+                image = value.image.resize(newWidth: UIScreen.main.bounds.width)
+            case .failure(let error):
+                print("Error: \(error)")
+                self?.view.makeToast(LocalizationKey.failedImage.localized)
+            }
+        }
+        
+        let title = LocalizationKey.title.localized + " : " + details.name
+        let released = LocalizationKey.released.localized + " : " + details.released
+        let app = "- " + "CFBundleDisplayName".localized
+        let activityVC = UIActivityViewController(activityItems: [image ?? "", title, released, app],
+                                                  applicationActivities: nil)
+        activityVC.excludedActivityTypes = [.mail, .markupAsPDF, .assignToContact]
+        self.present(activityVC, animated: true)
     }
     
     @objc private func trayTapped() {
@@ -141,6 +171,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
                             self?.view.makeToast(LocalizationKey.failedImage.localized)
                         }
                     }
+
                     cell.bannerImageView.kf.indicatorType = .activity
                     cell.bannerImageView.kf.setImage(
                       with: url,

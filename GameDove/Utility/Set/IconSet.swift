@@ -11,7 +11,9 @@ struct IconSet {
     static let platformList = UIImage(systemName: "list.triangle") // 플랫폼 리스트 메뉴
     static let calendar = UIImage(systemName: "calendar.badge.clock") // 인기작 기간
     static let search = UIImage(systemName: "magnifyingglass") // 검색
+    
     static let trayDown = UIImage(systemName: "tray.and.arrow.down.fill") // 보관하기
+    static let share = UIImage(systemName: "square.and.arrow.up") // 공유하기
     
     static let xmark = UIImage(systemName: "xmark") // 창 닫기
     static let trash = UIImage(systemName: "trash.fill") // 삭제

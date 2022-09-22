@@ -32,7 +32,7 @@ class StorageViewController: BaseViewController {
     
     override func configure() {
         view.addSubview(storageTableView)
-        navigationController?.navigationBar.topItem?.title = "보관중인 게임(임시)"
+        navigationController?.navigationBar.topItem?.title = LocalizationKey.storage.localized
     }
     
     override func setConstraints() {

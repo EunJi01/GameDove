@@ -38,6 +38,11 @@ extension UIViewController {
         }
     }
     
+    func setPanGesture() {
+//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureDismiss(_:)))
+//        self.view.addGestureRecognizer(panGesture)
+    }
+    
     func openAppstore(id: Int) {
         guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(id)?action=write-review") else {
             return

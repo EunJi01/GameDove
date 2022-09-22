@@ -19,6 +19,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     let itemDataLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
+        view.font = .systemFont(ofSize: 16)
         return view
     }()
     
