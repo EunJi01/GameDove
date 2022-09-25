@@ -49,4 +49,6 @@ struct LocalizationKey {
     static let mailRegistration = "mail_registration"
     static let cancel = "cancel"
     static let changedMainPlatform = "changed_main_platform"
+    
+    static let errorAlert = "error_alert"
 }

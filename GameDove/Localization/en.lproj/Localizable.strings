@@ -93,10 +93,13 @@
 "version" = "Version";
 
 // 개발자에게 문의하기 실패 -> 매일 등록 안내
-"mail_registration" = "이메일등록";
+"mail_registration" = "Please register your email and try again";
 
 // 취소 (액션시트)
 "cancel" = "Cancel";
 
 // 메인 플랫폼 변경
 "changed_main_platform" = "The main platform has been changed.\nThis will take effect from the next run.";
+
+// 통신 실패
+"error_alert" = "Network communication failed";

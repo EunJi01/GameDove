@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum APIError: Error {
-    case invalidResponse
-    case noData
-    case failedRequest
-    case invalidData
-}
-
 class GamesAPIManager {
     static func requestGames(order: APIQuery.Ordering, platformID: String, baseDate: String, search: String = "", page: String = "1", completion: @escaping (Game?, APIError?) -> Void) {
         

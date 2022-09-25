@@ -38,11 +38,6 @@ extension UIViewController {
         }
     }
     
-    func setPanGesture() {
-//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureDismiss(_:)))
-//        self.view.addGestureRecognizer(panGesture)
-    }
-    
     func openAppstore(id: Int) {
         guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(id)?action=write-review") else {
             return
@@ -70,6 +65,13 @@ extension UIViewController {
         } else {
             view.makeToast(LocalizationKey.mailRegistration.localized)
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: LocalizationKey.cancel.localized, style: .cancel)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
     }
 }
 

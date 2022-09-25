@@ -28,6 +28,7 @@
 		B66B925C28D993CE000C8D8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B66B925B28D993CE000C8D8B /* RealmSwift */; };
 		B66B925E28D9AB3A000C8D8B /* MainPlatformRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925D28D9AB3A000C8D8B /* MainPlatformRepository.swift */; };
 		B66B926028D9AB4E000C8D8B /* StorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925F28D9AB4E000C8D8B /* StorageRepository.swift */; };
+		B66B926228DD8B94000C8D8B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B926128DD8B94000C8D8B /* APIError.swift */; };
 		B686B06C28CA12D70042D727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06B28CA12D70042D727 /* AppDelegate.swift */; };
 		B686B06E28CA12D70042D727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B686B06D28CA12D70042D727 /* SceneDelegate.swift */; };
 		B686B07528CA12D80042D727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B686B07428CA12D80042D727 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		B66B925328D992F7000C8D8B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		B66B925D28D9AB3A000C8D8B /* MainPlatformRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlatformRepository.swift; sourceTree = "<group>"; };
 		B66B925F28D9AB4E000C8D8B /* StorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepository.swift; sourceTree = "<group>"; };
+		B66B926128DD8B94000C8D8B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		B686B06828CA12D70042D727 /* GameDove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B686B06B28CA12D70042D727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B686B06D28CA12D70042D727 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				B686B0B228CA57680042D727 /* APIKey.swift */,
 				B686B0B528CB0BA10042D727 /* APIQuery.swift */,
 				B686B0C228D08B0B0042D727 /* APIPeriod.swift */,
+				B66B926128DD8B94000C8D8B /* APIError.swift */,
 				B62C784A28D4C883001243D0 /* APIModel */,
 				B62C784B28D4C892001243D0 /* APIManager */,
 			);
@@ -420,6 +423,7 @@
 				B62C785628D63AD5001243D0 /* SettingsViewController.swift in Sources */,
 				B686B0AC28CA27F00042D727 /* IconSet.swift in Sources */,
 				B62C784D28D4C8BC001243D0 /* ScreenshotsModel.swift in Sources */,
+				B66B926228DD8B94000C8D8B /* APIError.swift in Sources */,
 				B686B0AF28CA4EE50042D727 /* GamesModel.swift in Sources */,
 				B6BA9A2F28D74A1F00A6206D /* StorageTableViewCell.swift in Sources */,
 				B6BA9A2D28D749D300A6206D /* StorageViewController.swift in Sources */,
@@ -514,7 +518,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -569,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -594,7 +598,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -624,7 +628,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

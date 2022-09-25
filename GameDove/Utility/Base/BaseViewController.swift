@@ -10,6 +10,7 @@ import JGProgressHUD
 
 class BaseViewController: UIViewController {
     let hud = JGProgressHUD()
+    var initialTouchPoint = CGPoint(x: 0, y: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,21 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.tintColor = ColorSet.shared.button
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: ColorSet.shared.button]
         navigationController?.toolbar.tintColor = ColorSet.shared.button
+    }
+    
+    func errorAlert(error: APIError) {
+        let message = LocalizationKey.errorAlert.localized
+        
+        switch error {
+        case .invalidResponse:
+            showAlert(title: "Invalid Response", message: message)
+        case .noData:
+            showAlert(title: "No Data", message: message)
+        case .failedRequest:
+            showAlert(title: "Failed Request", message: message)
+        case .invalidData:
+            showAlert(title: "Invalid Data", message: message)
+        }
     }
     
     func tapGesture() {

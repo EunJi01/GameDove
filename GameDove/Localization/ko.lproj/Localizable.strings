@@ -93,10 +93,13 @@
 "version" = "버전";
 
 // 개발자에게 문의하기 실패 -> 매일 등록 안내 토스트
-"mail_registration" = "이메일등록";
+"mail_registration" = "이메일 등록 후 다시 시도해주세요";
 
 // 취소 (액션시트)
 "cancel" = "취소";
 
 // 메인 플랫폼 변경
-"changed_main_platform" = "메인 플랫폼이 변경되었습니다.\n다음 실행부터 적용됩니다.";
+"changed_main_platform" = "메인 플랫폼이 변경되었습니다.\n다음 실행부터 적용됩니다";
+
+// 통신 실패
+"error_alert" = "네트워크 통신에 실패했습니다";

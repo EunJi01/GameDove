@@ -15,7 +15,6 @@ class SettingsTableViewCell: UITableViewCell {
     
     let rightLabel: UILabel = {
         let view = UILabel()
-        view.textColor = ColorSet.shared.gray
         return view
     }()
     

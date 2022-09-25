@@ -42,7 +42,6 @@ final class RatingViewController: GamesCollectionViewController {
             let title = LocalizationKey.period[i].localized
             menuItems.append(UIAction(title: title, image: nil, handler: { _ in
                 self.filterPeriod(period: period)
-                //self.currentPeriod = period
             }))
         }
         

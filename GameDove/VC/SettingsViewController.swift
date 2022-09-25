@@ -111,6 +111,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if Settings.allCases[indexPath.row] == .api || Settings.allCases[indexPath.row] == .mainPlatform {
             cell.rightLabel.textColor = ColorSet.shared.buttonActive
+        } else {
+            cell.rightLabel.textColor = ColorSet.shared.gray
         }
         
         return cell

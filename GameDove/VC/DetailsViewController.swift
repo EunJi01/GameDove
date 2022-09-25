@@ -99,7 +99,12 @@ class DetailsViewController: BaseViewController {
         hud.show(in: view)
         
         group.enter()
-        DetailsAPIManager.requestDetails(id: id, sc: false) { [weak self] details, non, error in
+        DetailsAPIManager.requestDetails(id: id, sc: false) { [weak self] details, _, error in
+            
+            if let error = error {
+                self?.errorAlert(error: error)
+            }
+            
             self?.details = details
             self?.mainImage = details?.image
             self?.mainView.titleLabel.text = details?.name
@@ -107,8 +112,11 @@ class DetailsViewController: BaseViewController {
         }
 
         group.enter()
-        DetailsAPIManager.requestDetails(id: id, sc: true) { [weak self] non, sc, error in
-            if let sc = sc {
+        DetailsAPIManager.requestDetails(id: id, sc: true) { [weak self] _, sc, error in
+            
+            if let error = error {
+                self?.errorAlert(error: error)
+            } else if let sc = sc {
                 self?.scList = sc.results
             }
             group.leave()

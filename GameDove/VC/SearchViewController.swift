@@ -39,14 +39,14 @@ final class SearchViewController: GamesCollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tapGesture()
     }
     
     override func configure() {
         [searchBar, collectionView, noResultsLabel].forEach {
             view.addSubview($0)
         }
-        
-        tapGesture()
+    
         searchBar.delegate = self
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: IconSet.xmark, style: .plain, target: self, action: #selector(dismissView))
     }
@@ -84,6 +84,11 @@ extension SearchViewController: UISearchBarDelegate {
         hud.show(in: view)
         
         GamesAPIManager.requestGames(order: currentOrder, platformID: currentPlatformID, baseDate: currentBaseDate, search: text) { [weak self] games, error in
+            
+            if let error = error {
+                self?.errorAlert(error: error)
+            }
+            
             guard let games = games else { return }
             
             self?.currentSearch = text

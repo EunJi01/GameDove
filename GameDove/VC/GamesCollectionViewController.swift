@@ -31,6 +31,11 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         hud.show(in: view)
 
         GamesAPIManager.requestGames(order: order, platformID: platformID, baseDate: baseDate, search: currentSearch, page: "\(currentPage)") { [weak self] games, error in
+            
+            if let error = error {
+                self?.errorAlert(error: error)
+            }
+            
             guard let games = games else { return }
 
             if self?.currentPlatformID == platformID && self?.currentBaseDate == baseDate {
@@ -52,6 +57,11 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         hud.show(in: view)
         
         GamesAPIManager.requestGames(order: currentOrder, platformID: currentPlatformID, baseDate: period.periodDate()) { [weak self] games, error in
+            
+            if let error = error {
+                self?.errorAlert(error: error)
+            }
+            
             guard let items = self?.navigationItem.leftBarButtonItems else { return }
             items[1].tintColor = period == .all ? ColorSet.shared.button : ColorSet.shared.buttonActive
             
