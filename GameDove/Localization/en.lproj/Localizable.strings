@@ -89,6 +89,9 @@
 // 리뷰 작성하기
 "review" = "Create Review";
 
+// 라이선스
+"licenses" = "Licenses";
+
 // 버전
 "version" = "Version";
 

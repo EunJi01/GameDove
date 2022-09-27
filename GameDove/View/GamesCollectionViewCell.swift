@@ -62,10 +62,10 @@ class GamesCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        mainImageView.image = nil
-//    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mainImageView.image = nil
+    }
     
     func configure() {
         addSubview(cellBackgroundView)

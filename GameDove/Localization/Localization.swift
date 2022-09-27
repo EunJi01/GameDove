@@ -45,6 +45,7 @@ struct LocalizationKey {
     static let mainPlatform = "main_platform"
     static let contact = "contact"
     static let review = "review"
+    static let licenses = "licenses"
     static let version = "version"
     static let mailRegistration = "mail_registration"
     static let cancel = "cancel"

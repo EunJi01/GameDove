@@ -13,6 +13,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 20)
         view.textColor = .clear
+        view.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         return view
     }()
     
