@@ -9,9 +9,11 @@ import UIKit
 
 protocol GamesCollectionView {
     func addCollectionView() -> UICollectionView
+    func addReloadButton() -> UIButton
 }
 
 extension GamesCollectionView where Self: UICollectionViewDataSource, Self: UICollectionViewDelegate, Self: UICollectionViewDataSourcePrefetching {
+    
     func addCollectionView() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 300)
@@ -24,5 +26,17 @@ extension GamesCollectionView where Self: UICollectionViewDataSource, Self: UICo
         gamesCollectionView.register(GamesCollectionViewCell.self, forCellWithReuseIdentifier: GamesCollectionViewCell.reuseIdentifier)
         
         return gamesCollectionView
+    }
+    
+    func addReloadButton() -> UIButton {
+        let reloadButton = UIButton()
+        reloadButton.tintColor = ColorSet.shared.buttonActive
+        reloadButton.setImage(IconSet.reload, for: .normal)
+        reloadButton.contentMode = .scaleAspectFit
+        reloadButton.contentHorizontalAlignment = .fill
+        reloadButton.contentVerticalAlignment = .fill
+        reloadButton.backgroundColor = .white
+        reloadButton.layer.cornerRadius = 24
+        return reloadButton
     }
 }

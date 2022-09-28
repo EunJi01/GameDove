@@ -18,6 +18,7 @@ struct IconSet {
     static let xmark = UIImage(systemName: "xmark") // 창 닫기
     static let trash = UIImage(systemName: "trash.fill") // 삭제
     static let check = UIImage(systemName: "checkmark") // 체크 옵션
+    static let reload = UIImage(systemName: "arrow.triangle.2.circlepath.circle.fill") // 새로고침
 }
 
 struct TabBarIconSet {
@@ -31,7 +32,7 @@ struct TabBarIconSet {
     static let upcomingSelected = UIImage(systemName: "books.vertical.fill")
     
     static let tray = UIImage(systemName: "tray.full") // 보관함
-    static let traySelected = UIImage(systemName: "tray.full.fill") // 보관함
+    static let traySelected = UIImage(systemName: "tray.full.fill")
     
     static let setting = UIImage(systemName: "gearshape") // 설정
     static let settingSelected = UIImage(systemName: "gearshape.fill")

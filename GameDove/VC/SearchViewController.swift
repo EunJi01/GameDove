@@ -43,7 +43,7 @@ final class SearchViewController: GamesCollectionViewController {
     }
     
     override func configure() {
-        [searchBar, collectionView, noResultsLabel].forEach {
+        [searchBar, collectionView, noResultsLabel, reloadButton].forEach {
             view.addSubview($0)
         }
     
@@ -66,6 +66,11 @@ final class SearchViewController: GamesCollectionViewController {
         
         noResultsLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
+        }
+        
+        reloadButton.snp.makeConstraints { make in
+            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.width.height.equalTo(44)
         }
     }
 

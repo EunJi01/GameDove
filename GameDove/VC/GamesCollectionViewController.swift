@@ -22,10 +22,16 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     lazy var currentPlatformID: String = mainPlatform?.id ?? APIQuery.Platforms.nintendoSwitch.rawValue
 
     lazy var collectionView: UICollectionView = addCollectionView()
+    lazy var reloadButton: UIButton = addReloadButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        reloadButton.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func reloadButtonTapped() {
+        fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
     }
     
     func fetchGames(platformID: String, order: APIQuery.Ordering, baseDate: String) {
@@ -109,7 +115,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         return menu
     }
     
-    func resetMenu() {
+    private func resetMenu() {
         let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
         let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
         navigationItem.leftBarButtonItems = [platformMenu, periodMenu]

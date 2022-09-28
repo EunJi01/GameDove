@@ -15,6 +15,8 @@ class UpcomingGameViewController: GamesCollectionViewController {
     
     override func configure() {
         view.addSubview(collectionView)
+        view.addSubview(reloadButton)
+        
         currentOrder = .upcoming
         fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: defaultEndDate)
         
@@ -25,6 +27,11 @@ class UpcomingGameViewController: GamesCollectionViewController {
     override func setConstraints() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        reloadButton.snp.makeConstraints { make in
+            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.width.height.equalTo(44)
         }
     }
 }
