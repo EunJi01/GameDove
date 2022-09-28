@@ -18,7 +18,7 @@ struct IconSet {
     static let xmark = UIImage(systemName: "xmark") // 창 닫기
     static let trash = UIImage(systemName: "trash.fill") // 삭제
     static let check = UIImage(systemName: "checkmark") // 체크 옵션
-    static let reload = UIImage(systemName: "arrow.triangle.2.circlepath.circle.fill") // 새로고침
+    static let reload = UIImage(systemName: "arrow.triangle.2.circlepath") // 새로고침
 }
 
 struct TabBarIconSet {

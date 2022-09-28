@@ -15,23 +15,20 @@ class UpcomingGameViewController: GamesCollectionViewController {
     
     override func configure() {
         view.addSubview(collectionView)
-        view.addSubview(reloadButton)
         
         currentOrder = .upcoming
         fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: defaultEndDate)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))
+
+        let searchButton = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))
+        let reloadButton = UIBarButtonItem(image: IconSet.reload, style: .plain, target: self, action: #selector(reloadButtonTapped))
+        navigationItem.rightBarButtonItems = [searchButton, reloadButton]
     }
     
     override func setConstraints() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        reloadButton.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.width.height.equalTo(44)
         }
     }
 }
