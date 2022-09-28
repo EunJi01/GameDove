@@ -32,6 +32,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     
     @objc private func reloadButtonTapped() {
         fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
+        scrollToTop()
     }
     
     func fetchGames(platformID: String, order: APIQuery.Ordering, baseDate: String) {

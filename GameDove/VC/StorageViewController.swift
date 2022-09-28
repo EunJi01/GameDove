@@ -67,6 +67,7 @@ extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.titleLabel.text = tasks[indexPath.row].title
         cell.releasedLabel.text = tasks[indexPath.row].released
+        cell.backgroundColor = .clear
         
         let isupcoming = isUpcoming(released: tasks[indexPath.row].released)
         cell.releasedLabel.textColor = isupcoming ? ColorSet.shared.buttonActive : ColorSet.shared.gray

@@ -38,6 +38,7 @@ struct LocalizationKey {
 
     // SearchViewController
     static let searchPlaceholder = "search_placeholder"
+    static let noResults = "no_results"
     
     // SettingsViewController
     static let stored = "stored"
