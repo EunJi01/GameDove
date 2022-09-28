@@ -27,7 +27,7 @@ class GamesCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .black
-        view.font = .boldSystemFont(ofSize: 20)
+        view.font = UIFont().pretendardBoldFont(size: 20)
         return view
     }()
     
@@ -40,14 +40,14 @@ class GamesCollectionViewCell: UICollectionViewCell {
     let inDetailLabel: UILabel = {
         let view = UILabel()
         view.text = LocalizationKey.inDetail.localized
-        view.font = .systemFont(ofSize: 12)
+        view.font = UIFont().pretendardRegularFont(size: 12)
         view.textColor = .gray
         return view
     }()
     
     let releasedLabel: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 12)
+        view.font = UIFont().pretendardRegularFont(size: 12)
         view.textColor = .black
         return view
     }()

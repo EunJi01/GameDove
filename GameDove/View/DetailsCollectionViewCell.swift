@@ -11,7 +11,7 @@ import SnapKit
 class DetailsCollectionViewCell: UICollectionViewCell {
     let itemLabel: UILabel = {
         let view = UILabel()
-        view.font = .boldSystemFont(ofSize: 20)
+        view.font = UIFont().pretendardMediumFont(size: 17)
         view.textColor = .clear
         view.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         return view
@@ -20,7 +20,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     let itemDataLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
-        view.font = .systemFont(ofSize: 16)
+        view.font = UIFont().pretendardMediumFont(size: 17)
         return view
     }()
     
@@ -47,7 +47,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         }
         
         itemDataLabel.snp.makeConstraints { make in
-            make.top.equalTo(itemLabel.snp.top).offset(1)
+            make.top.equalTo(itemLabel.snp.top)
             make.leading.equalTo(itemLabel.snp.trailing).offset(12)
             make.trailing.equalToSuperview().inset(12)
             make.bottom.equalToSuperview().inset(12)

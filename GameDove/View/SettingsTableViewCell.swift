@@ -10,11 +10,13 @@ import UIKit
 class SettingsTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let view = UILabel()
+        view.font = UIFont().pretendardRegularFont(size: 17)
         return view
     }()
     
     let rightLabel: UILabel = {
         let view = UILabel()
+        view.font = UIFont().pretendardRegularFont(size: 17)
         return view
     }()
     

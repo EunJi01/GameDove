@@ -30,13 +30,13 @@ extension GamesCollectionView where Self: UICollectionViewDataSource, Self: UICo
     
     func addReloadButton() -> UIButton {
         let reloadButton = UIButton()
-        reloadButton.tintColor = ColorSet.shared.buttonActive
+        reloadButton.tintColor = ColorSet.shared.background
         reloadButton.setImage(IconSet.reload, for: .normal)
         reloadButton.contentMode = .scaleAspectFit
         reloadButton.contentHorizontalAlignment = .fill
         reloadButton.contentVerticalAlignment = .fill
-        reloadButton.backgroundColor = .white
-        reloadButton.layer.cornerRadius = 24
+        reloadButton.backgroundColor = ColorSet.shared.button
+        reloadButton.layer.cornerRadius = 22
         return reloadButton
     }
 }

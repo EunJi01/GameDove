@@ -25,6 +25,7 @@ final class SearchViewController: GamesCollectionViewController {
             break
         }
         
+        view.barTintColor = ColorSet.shared.background
         view.placeholder = LocalizationKey.searchPlaceholder.localized(with: order.lowercased())
         return view
     }()
