@@ -23,7 +23,7 @@ class GamesAPIManager {
         component.path = path
         component.queryItems = [
             URLQueryItem(name: APIQuery.key.rawValue, value: APIKey.RAWG),
-            URLQueryItem(name: APIQuery.pageSize.rawValue, value: "20"),
+            URLQueryItem(name: APIQuery.pageSize.rawValue, value: "40"),
             URLQueryItem(name: APIQuery.ordering.rawValue, value: order.rawValue),
             URLQueryItem(name: APIQuery.platforms.rawValue, value: platformID),
             URLQueryItem(name:APIQuery.search.rawValue , value: search),

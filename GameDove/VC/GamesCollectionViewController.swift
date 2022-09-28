@@ -69,8 +69,8 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             guard let games = games else { return }
             self?.currentBaseDate = period.periodDate()
             self?.games = games.results
-            self?.scrollToTop()
             self?.collectionView.reloadData()
+            self?.scrollToTop()
             self?.hud.dismiss(animated: true)
         }
     }
@@ -168,7 +168,7 @@ extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionV
 extension GamesCollectionViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if (currentPage * 20 - 10) == indexPath.item {
+            if (currentPage * 40 - 10) == indexPath.item {
                 currentPage += 1
                 print(currentPage)
                 fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
