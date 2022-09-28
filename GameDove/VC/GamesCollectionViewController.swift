@@ -18,6 +18,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     var currentBaseDate: String = defaultStartDate
     var currentOrder: APIQuery.Ordering!
     var currentSearch = ""
+    var currentPeriod: APIPeriod = .all
     lazy var currentPlatformID: String = mainPlatform?.id ?? APIQuery.Platforms.nintendoSwitch.rawValue
 
     lazy var collectionView: UICollectionView = addCollectionView()
@@ -63,7 +64,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             }
             
             guard let items = self?.navigationItem.leftBarButtonItems else { return }
-            items[1].tintColor = period == .all ? ColorSet.shared.button : ColorSet.shared.buttonActive
+            items[1].tintColor = period == .all ? ColorSet.shared.button : .orange
             
             guard let games = games else { return }
             self?.currentBaseDate = period.periodDate()
@@ -86,6 +87,32 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
         return menu
+    }
+    
+    @objc func periodMenu() -> UIMenu {
+        var menuItems: [UIAction] = []
+
+        for i in 0...LocalizationKey.period.count - 1 {
+            let period = APIPeriod.allCases[i]
+
+            let image: UIImage? = period == currentPeriod ? IconSet.check : nil
+            
+            let title = LocalizationKey.period[i].localized
+            menuItems.append(UIAction(title: title, image: image, handler: { [weak self] _ in
+                self?.filterPeriod(period: period)
+                self?.currentPeriod = period
+                self?.resetMenu()
+            }))
+        }
+        
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
+        return menu
+    }
+    
+    func resetMenu() {
+        let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
+        let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
+        navigationItem.leftBarButtonItems = [platformMenu, periodMenu]
     }
     
     @objc func presentSearch() {

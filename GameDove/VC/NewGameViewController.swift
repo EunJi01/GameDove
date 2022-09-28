@@ -18,7 +18,9 @@ final class NewGameViewController: GamesCollectionViewController {
         currentOrder = .released
         fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
+        let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
+        let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
+        navigationItem.leftBarButtonItems = [platformMenu, periodMenu]
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))
     }
     

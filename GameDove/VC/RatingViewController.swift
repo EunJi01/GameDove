@@ -8,7 +8,6 @@
 import UIKit
 
 final class RatingViewController: GamesCollectionViewController {
-    var currentPeriod: APIPeriod = .all
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,31 +28,5 @@ final class RatingViewController: GamesCollectionViewController {
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
-    }
-    
-    @objc private func periodMenu() -> UIMenu {
-        var menuItems: [UIAction] = []
-
-        for i in 0...LocalizationKey.period.count - 1 {
-            let period = APIPeriod.allCases[i]
-
-            let image: UIImage? = period == currentPeriod ? IconSet.check : nil
-            
-            let title = LocalizationKey.period[i].localized
-            menuItems.append(UIAction(title: title, image: image, handler: { _ in
-                self.filterPeriod(period: period)
-                self.currentPeriod = period
-                self.resetMenu()
-            }))
-        }
-        
-        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
-        return menu
-    }
-    
-    private func resetMenu() {
-        let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
-        let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
-        navigationItem.leftBarButtonItems = [platformMenu, periodMenu]
     }
 }
