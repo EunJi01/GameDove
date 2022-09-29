@@ -23,15 +23,15 @@ class Storage: Object {
     }
 }
 
-class MainPlatform: Object {
-    @Persisted var id: String
-    @Persisted var title: String
+class MainSettings: Object {
+    @Persisted var platformID: String
+    @Persisted var platformTitle: String
     
     @Persisted(primaryKey: true) var setting: String = "setting"
     
     convenience init(id: String, title: String) {
         self.init()
-        self.id = id
-        self.title = title
+        self.platformID = id
+        self.platformTitle = title
     }
 }

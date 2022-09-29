@@ -35,7 +35,7 @@ enum Settings: CaseIterable {
     func rightDetail() -> String {
         switch self {
         case .mainPlatform:
-            guard let platform = MainPlatformRepository().fetch().first?.title else { return "" }
+            guard let platform = MainPlatformRepository().fetch().first?.platformTitle else { return "" }
             return platform
         case .contact:
             return ""

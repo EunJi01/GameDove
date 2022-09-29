@@ -8,21 +8,21 @@
 import Foundation
 import RealmSwift
 
-protocol MainPlatformRepositoryType {
-    func fetch() -> Results<MainPlatform>!
+protocol SettingsRepositoryType {
+    func fetch() -> Results<MainSettings>!
     func updateItem(id: String, title: String)
 }
 
-class MainPlatformRepository: MainPlatformRepositoryType {
+class MainPlatformRepository: SettingsRepositoryType {
     let localRealm = try! Realm()
     
-    func fetch() -> Results<MainPlatform>! {
-        return localRealm.objects(MainPlatform.self)
+    func fetch() -> Results<MainSettings>! {
+        return localRealm.objects(MainSettings.self)
     }
 
     func updateItem(id: String, title: String) {
-        guard let setting = localRealm.objects(MainPlatform.self).first else { return }
-        setting.id = id
-        setting.title = title
+        guard let setting = localRealm.objects(MainSettings.self).first else { return }
+        setting.platformID = id
+        setting.platformTitle = title
     }
 }

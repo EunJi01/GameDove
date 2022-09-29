@@ -19,7 +19,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     var currentOrder: APIQuery.Ordering!
     var currentSearch = ""
     var currentPeriod: APIPeriod = .all
-    lazy var currentPlatformID: String = mainPlatform?.id ?? APIQuery.Platforms.nintendoSwitch.rawValue
+    lazy var currentPlatformID: String = mainPlatform?.platformID ?? APIQuery.Platforms.nintendoSwitch.rawValue
 
     lazy var collectionView: UICollectionView = addCollectionView()
     
