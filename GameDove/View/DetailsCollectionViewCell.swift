@@ -20,7 +20,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     let itemDataLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
-        view.font = UIFont().pretendardMediumFont(size: 17)
+        view.font = UIFont().pretendardRegularFont(size: 17)
         return view
     }()
     
