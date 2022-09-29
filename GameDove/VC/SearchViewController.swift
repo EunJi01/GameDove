@@ -41,6 +41,7 @@ final class SearchViewController: GamesCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tapGesture()
+        currentSearch = "검색"
     }
     
     override func configure() {
