@@ -40,12 +40,12 @@ class StorageTableViewCell: UITableViewCell {
 
     private func setConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(18)
+            make.horizontalEdges.equalToSuperview().inset(18)
             make.top.equalTo(16)
         }
         
         releasedLabel.snp.makeConstraints { make in
-            make.leading.equalTo(titleLabel)
+            make.horizontalEdges.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
         }
     }
