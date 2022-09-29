@@ -8,7 +8,7 @@
 import UIKit
 import Toast
 
-class SettingsViewController: BaseViewController {
+final class SettingsViewController: BaseViewController {
     let repository = MainPlatformRepository()
     
     private lazy var settingTableView: UITableView = {

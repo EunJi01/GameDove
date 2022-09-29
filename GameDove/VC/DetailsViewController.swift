@@ -10,7 +10,7 @@ import Kingfisher
 import Toast
 import JGProgressHUD
 
-class DetailsViewController: BaseViewController {
+final class DetailsViewController: BaseViewController {
     let mainView = DetailsView()
     let repository = StorageRepository()
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UpcomingGameViewController: GamesCollectionViewController {
+final class UpcomingGameViewController: GamesCollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

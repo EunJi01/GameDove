@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class StorageViewController: BaseViewController {
+final class StorageViewController: BaseViewController {
     let repository = StorageRepository()
     var tasks: Results<Storage>!
     
