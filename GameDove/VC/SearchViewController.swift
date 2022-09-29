@@ -91,6 +91,7 @@ extension SearchViewController: UISearchBarDelegate {
             
             if let error = error {
                 self?.errorAlert(error: error)
+                self?.hud.dismiss(animated: true)
             }
             
             guard let games = games else { return }

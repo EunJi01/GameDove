@@ -35,6 +35,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             
             if let error = error {
                 self?.errorAlert(error: error)
+                self?.hud.dismiss(animated: true)
             }
             
             guard let games = games else { return }
@@ -61,6 +62,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             
             if let error = error {
                 self?.errorAlert(error: error)
+                self?.hud.dismiss(animated: true)
             }
             
             guard let items = self?.navigationItem.leftBarButtonItems else { return }
