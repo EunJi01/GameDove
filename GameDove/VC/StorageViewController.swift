@@ -40,7 +40,7 @@ final class StorageViewController: BaseViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
+
     private func fetchRealm() {
         tasks = repository.fetch()
         storageTableView.reloadData()

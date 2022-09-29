@@ -28,7 +28,8 @@ class GamesAPIManager {
             URLQueryItem(name: APIQuery.platforms.rawValue, value: platformID),
             URLQueryItem(name:APIQuery.search.rawValue , value: search),
             URLQueryItem(name: APIQuery.page.rawValue, value: page),
-            URLQueryItem(name: APIQuery.searchPrecise.rawValue, value: "true")
+            URLQueryItem(name: APIQuery.searchPrecise.rawValue, value: "true"),
+            URLQueryItem(name: "search_exact", value: "true")
         ]
         
         if baseDate == defaultEndDate {
