@@ -64,10 +64,13 @@
 * ✅ API와 통신중일 때 JGProgressHUD를 이용해 로딩중임을 사용자에게 명시
 * ✅ 스크린샷 등의 이미지는 굳이 고화질로 보여줄 필요 없을 것 같은데, 용량을 줄여보자!
 * ✅ 출시예정작을 보관함에 추가할 경우 releasedLabel 색 바꾸기
-#### 업데이트 (하고싶은...) 기능
+#### 업데이트 예정 기능
+* 플랫폼 변경 버튼이 아닌, 네비게이션 바 타이틀을 터치했을 때 플랫폼을 변경할 수 있도록 개선
+* 검색 화면에서 search 버튼을 눌렀을 때 키보드가 내려가도록 개선
 * 장르 필터 추가
-* 메인 기간 설정
 * 출시예정작을 보관함에 추가할 경우 출시일에 노티 띄우기
+* func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+* 위의 메서드를 사용해서 배너 컬렉션뷰가 넘어가기 전 미리 kf로 이미지를 받아올 수 있도록 개선
 #### 그 외
 * 이미지 한박자 늦게 바뀌거나 중복되는 에러...
 -------------
