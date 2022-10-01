@@ -65,11 +65,10 @@
 * ✅ 스크린샷 등의 이미지는 굳이 고화질로 보여줄 필요 없을 것 같은데, 용량을 줄여보자!
 * ✅ 출시예정작을 보관함에 추가할 경우 releasedLabel 색 바꾸기
 #### 업데이트 예정 기능
-* 검색 화면에서 search 버튼을 눌렀을 때 키보드가 내려가도록 개선
-* 플랫폼 변경 버튼이 아닌, 네비게이션 바 타이틀을 터치했을 때 플랫폼을 변경할 수 있도록 개선
-* 신작 탭의 기간 메뉴를 년도로 변경 (신작 탭을 3년으로 변경할 경우 3년 전 신작을 확인하기 어려운 문제)
-* func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
-* 위의 메서드를 사용해서 배너 컬렉션뷰가 넘어가기 전 미리 kf로 이미지를 받아올 수 있도록 개선
+* ✅ 검색 화면에서 search 버튼을 눌렀을 때 키보드가 내려가도록 개선
+* ✅ func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+* ✅ 위의 메서드를 사용해서 배너 컬렉션뷰가 넘어가기 전 미리 kf로 이미지를 받아올 수 있도록 개선
+* * 플랫폼 변경 버튼이 아닌, 네비게이션 바 타이틀을 터치했을 때 플랫폼을 변경할 수 있도록 개선
 * 장르 필터 추가
 * 출시예정작을 보관함에 추가할 경우 출시일에 노티 띄우기
 #### 그 외
@@ -250,3 +249,9 @@
 #### 09/29
 - 검색 화면에서 아무것도 검색하지 않은 상태로 새로고침 버튼을 누를 경우, 검색어 쿼리가 “” 이기 때문에 모든 게임이 로드되는 문제가 발견됐다.
 - 따라서 SearchViewController의 viewDidLoad에서 쿼리를 “검색” 으로 입력해서 아무 결과도 나오지 않게 변경했다.
+
+#### 10/01
+- 리젝…당했다…ㅠㅠ 리젝에 관한 내용은 블로그에 작성할 예정이다.
+- 리젝 당한김에 수정하고 싶었던 부분을 수정했다.
+- 검색 화면에서 search버튼을 누를 시 키보드가 내려가도록 개선했다.
+- 팀원분이 알려주신 CollectionViews willDisplay 메서드를 이용해, 배너 컬렉션뷰의 다음 이미지를 미리 로드하도록 개선했다. (이거 진짜 짱이다!!)
