@@ -20,8 +20,7 @@ final class NewGameViewController: GamesCollectionViewController {
         fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
         
         let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
-        let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
-        navigationItem.leftBarButtonItems = [platformMenu, periodMenu]
+        navigationItem.leftBarButtonItem = platformMenu
         
         let searchButton = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))
         let reloadButton = UIBarButtonItem(image: IconSet.reload, style: .plain, target: self, action: #selector(reloadButtonTapped))

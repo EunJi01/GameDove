@@ -167,27 +167,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
                     cell.bannerImageView.kf.setImage(with: url)
                 }
             default:
-                if !(scList.isEmpty) {
-                    guard let url = URL(string: scList[indexPath.row - 1].image) else { return cell }
-                    KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
-                        switch result { // 이미지 리사이즈
-                        case .success(let value):
-                            let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
-                            cell.bannerImageView.image = newImage
-                        case .failure(let error):
-                            print("Error: \(error)")
-                            self?.view.makeToast(LocalizationKey.failedImage.localized)
-                        }
-                    }
-
-                    cell.bannerImageView.kf.indicatorType = .activity
-                    cell.bannerImageView.kf.setImage(
-                      with: url,
-                      placeholder: nil,
-                      options: nil,
-                      completionHandler: nil
-                    )
-                }
+                print("넘어옴 = \(indexPath.row)")
             }
             return cell
             
@@ -211,5 +191,35 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("넘어가기전 = \(indexPath.row)")
+        
+        
+        if let cell = cell as? BannerCollectionViewCell {
+            if !(scList.isEmpty) {
+                guard indexPath.row > 0 else { return }
+                guard let url = URL(string: scList[indexPath.row - 1].image) else { return }
+                KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+                    switch result { // 이미지 리사이즈
+                    case .success(let value):
+                        let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
+                        cell.bannerImageView.image = newImage
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        self?.view.makeToast(LocalizationKey.failedImage.localized)
+                    }
+                }
+
+                cell.bannerImageView.kf.indicatorType = .activity
+                cell.bannerImageView.kf.setImage(
+                  with: url,
+                  placeholder: nil,
+                  options: nil,
+                  completionHandler: nil
+                )
+            }
+        }
     }
 }

@@ -30,7 +30,6 @@ enum APIQuery: String {
         case playStation4 = "18"
         case pc = "4"
         case ios = "3"
-        case android = "21"
         
         var title: String {
             switch self {
@@ -44,8 +43,6 @@ enum APIQuery: String {
                 return "PC"
             case .ios:
                 return "iOS"
-            case .android:
-                return "Android"
             }
         }
     }

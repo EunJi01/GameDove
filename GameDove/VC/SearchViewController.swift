@@ -104,5 +104,6 @@ extension SearchViewController: UISearchBarDelegate {
             
             self?.noResultsLabel.isHidden = (self?.games.isEmpty ?? false) ? false : true
         }
+        view.endEditing(true)
     }
 }
