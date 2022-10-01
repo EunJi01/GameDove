@@ -68,7 +68,7 @@
 * ✅ 검색 화면에서 search 버튼을 눌렀을 때 키보드가 내려가도록 개선
 * ✅ func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
 * ✅ 위의 메서드를 사용해서 배너 컬렉션뷰가 넘어가기 전 미리 kf로 이미지를 받아올 수 있도록 개선
-* * 플랫폼 변경 버튼이 아닌, 네비게이션 바 타이틀을 터치했을 때 플랫폼을 변경할 수 있도록 개선
+* 플랫폼 변경 버튼이 아닌, 네비게이션 바 타이틀을 터치했을 때 플랫폼을 변경할 수 있도록 개선
 * 장르 필터 추가
 * 출시예정작을 보관함에 추가할 경우 출시일에 노티 띄우기
 #### 그 외
