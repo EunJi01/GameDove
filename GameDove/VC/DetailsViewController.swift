@@ -160,14 +160,11 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
                 return UICollectionViewCell()
             }
             
-            switch indexPath.row {
-            case 0:
+            if indexPath.row == 0 {
                 if let mainImage = mainImage {
                     let url = URL(string: mainImage)
                     cell.bannerImageView.kf.setImage(with: url)
                 }
-            default:
-                print("넘어옴 = \(indexPath.row)")
             }
             return cell
             
@@ -194,9 +191,6 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("넘어가기전 = \(indexPath.row)")
-        
-        
         if let cell = cell as? BannerCollectionViewCell {
             if !(scList.isEmpty) {
                 guard indexPath.row > 0 else { return }
