@@ -19,13 +19,26 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     var currentOrder: APIQuery.Ordering!
     var currentSearch = ""
     var currentPeriod: APIPeriod = .all
-    lazy var currentPlatformID: String = mainPlatform?.platformID ?? APIQuery.Platforms.nintendoSwitch.rawValue
+    lazy var currentPlatformID: String = mainPlatform?.platformID ?? APIQuery.Platforms.ios.rawValue
 
     lazy var collectionView: UICollectionView = addCollectionView()
+    var platformButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        button.setTitleColor(ColorSet.shared.button, for: .normal)
+        button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        button.titleLabel?.font = UIFont().pretendardBoldFont(size: 17)
+        button.showsMenuAsPrimaryAction = true
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+        button.semanticContentAttribute = .forceRightToLeft
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationItem.titleView = platformButton
+        platformButton.menu = platformMenu()
     }
     
     func fetchGames(platformID: String, order: APIQuery.Ordering, baseDate: String) {
@@ -51,7 +64,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
                 self?.scrollToTop()
             }
             self?.hud.dismiss(animated: true)
-            self?.navigationItem.title = APIQuery.Platforms(rawValue: platformID)?.title
+            self?.platformButton.setTitle(APIQuery.Platforms(rawValue: platformID)?.title, for: .normal)
         }
     }
 
@@ -112,9 +125,8 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     }
     
     private func resetMenu() {
-        let platformMenu = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
         let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
-        navigationItem.leftBarButtonItems = [platformMenu, periodMenu]
+        navigationItem.leftBarButtonItems = [periodMenu]
     }
     
     @objc func presentSearch() {

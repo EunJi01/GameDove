@@ -8,7 +8,7 @@
 import UIKit
 
 struct IconSet {
-    static let platformList = UIImage(systemName: "list.triangle") // 플랫폼 리스트 메뉴
+    static let sideMenu = UIImage(systemName: "list.triangle") // 사이드 메뉴
     static let calendar = UIImage(systemName: "calendar.badge.clock") // 인기작 기간
     static let search = UIImage(systemName: "magnifyingglass") // 검색
     

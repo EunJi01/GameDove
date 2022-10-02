@@ -19,8 +19,6 @@ final class UpcomingGameViewController: GamesCollectionViewController {
         currentOrder = .upcoming
         fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: defaultEndDate)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: nil, image: IconSet.platformList, primaryAction: nil, menu: platformMenu())
-
         let searchButton = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))
         let reloadButton = UIBarButtonItem(image: IconSet.reload, style: .plain, target: self, action: #selector(reloadButtonTapped))
         navigationItem.rightBarButtonItems = [searchButton, reloadButton]
