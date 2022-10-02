@@ -20,7 +20,7 @@ enum APIQuery: String {
     
     enum Ordering: String {
         case released = "-released"
-        case metacritic = "-metacritic"
+        case rating = "-rating"
         case upcoming = "released"
     }
     

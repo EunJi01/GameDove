@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 import JGProgressHUD
+import SideMenu
 
 class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     var games: [GameResults] = []
@@ -26,8 +27,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         button.setTitleColor(ColorSet.shared.button, for: .normal)
-        button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-        button.titleLabel?.font = UIFont().pretendardBoldFont(size: 17)
+        button.titleLabel?.font = UIFont().pretendardBoldFont(size: 19)
         button.showsMenuAsPrimaryAction = true
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
         button.semanticContentAttribute = .forceRightToLeft
@@ -64,8 +64,18 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
                 self?.scrollToTop()
             }
             self?.hud.dismiss(animated: true)
+            self?.platformButton.setImage(IconSet.down, for: .normal)
             self?.platformButton.setTitle(APIQuery.Platforms(rawValue: platformID)?.title, for: .normal)
         }
+    }
+    
+    @objc func sideMenuTapped() {
+        let menu = SideMenuNavigationController(rootViewController: SideMenuViewController())
+        menu.leftSide = true
+        menu.isNavigationBarHidden = true
+        menu.presentationStyle = .viewSlideOut
+        menu.pushStyle = .popWhenPossible
+        present(menu, animated: true, completion: nil)
     }
 
     func filterPeriod(period: APIPeriod) {
@@ -126,7 +136,8 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     
     private func resetMenu() {
         let periodMenu = UIBarButtonItem(title: nil, image: IconSet.calendar, primaryAction: nil, menu: periodMenu())
-        navigationItem.leftBarButtonItems = [periodMenu]
+        let sidemenu = UIBarButtonItem(image: IconSet.sideMenu, style: .plain, target: self, action: #selector(sideMenuTapped))
+        navigationItem.leftBarButtonItems = [sidemenu, periodMenu]
     }
     
     @objc func presentSearch() {
@@ -134,7 +145,6 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         vc.currentOrder = currentOrder
         vc.currentPlatformID = currentPlatformID
         vc.currentBaseDate = currentBaseDate
-        vc.navigationItem.title = APIQuery.Platforms(rawValue: currentPlatformID)?.title
         transition(vc, transitionStyle: .presentFullNavigation)
     }
     
@@ -179,7 +189,6 @@ extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionV
                 }
             }
         }
-            
         return cell
     }
 }

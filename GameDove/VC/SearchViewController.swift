@@ -15,7 +15,7 @@ final class SearchViewController: GamesCollectionViewController {
         var order = ""
         
         switch currentOrder {
-        case .metacritic:
+        case .rating:
             order = LocalizationKey.popularGames.localized
         case .released:
             order = LocalizationKey.newGames.localized
@@ -42,6 +42,8 @@ final class SearchViewController: GamesCollectionViewController {
         super.viewDidLoad()
         tapGesture()
         currentSearch = "검색"
+        platformButton.setImage(IconSet.down, for: .normal)
+        platformButton.setTitle(APIQuery.Platforms(rawValue: currentPlatformID)?.title, for: .normal)
     }
     
     override func configure() {

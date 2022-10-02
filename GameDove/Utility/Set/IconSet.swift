@@ -11,6 +11,7 @@ struct IconSet {
     static let sideMenu = UIImage(systemName: "list.triangle") // 사이드 메뉴
     static let calendar = UIImage(systemName: "calendar.badge.clock") // 인기작 기간
     static let search = UIImage(systemName: "magnifyingglass") // 검색
+    static let down = UIImage(systemName: "chevron.down") // 플랫폼 변경 (아래로 내리기)
     
     static let trayDown = UIImage(systemName: "tray.and.arrow.down.fill") // 보관하기
     static let share = UIImage(systemName: "square.and.arrow.up") // 공유하기
@@ -30,10 +31,9 @@ struct TabBarIconSet {
     
     static let upcoming = UIImage(systemName: "books.vertical") // 출시예정작
     static let upcomingSelected = UIImage(systemName: "books.vertical.fill")
-    
-    static let tray = UIImage(systemName: "tray.full") // 보관함
-    static let traySelected = UIImage(systemName: "tray.full.fill")
-    
+}
+
+struct SideMenuIconSet {
+    static let storage = UIImage(systemName: "tray.full") // 보관함
     static let setting = UIImage(systemName: "gearshape") // 설정
-    static let settingSelected = UIImage(systemName: "gearshape.fill")
 }

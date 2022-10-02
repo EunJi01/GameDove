@@ -19,8 +19,11 @@ final class NewGameViewController: GamesCollectionViewController {
         currentOrder = .released
         fetchGames(platformID: currentPlatformID, order: currentOrder, baseDate: currentBaseDate)
         
+        let sidemenu = UIBarButtonItem(image: IconSet.sideMenu, style: .plain, target: self, action: #selector(sideMenuTapped))
         let searchButton = UIBarButtonItem(image: IconSet.search, style: .plain, target: self, action: #selector(presentSearch))
         let reloadButton = UIBarButtonItem(image: IconSet.reload, style: .plain, target: self, action: #selector(reloadButtonTapped))
+        
+        navigationItem.leftBarButtonItems = [sidemenu]
         navigationItem.rightBarButtonItems = [searchButton, reloadButton]
     }
     

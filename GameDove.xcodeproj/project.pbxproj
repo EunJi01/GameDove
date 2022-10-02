@@ -21,6 +21,8 @@
 		B62C786228D6F32E001243D0 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = B62C786128D6F32E001243D0 /* DeviceKit */; };
 		B62C786428D72DA7001243D0 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C786328D72DA7001243D0 /* DetailsCollectionViewCell.swift */; };
 		B62C786728D73A9B001243D0 /* DetailsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C786628D73A9B001243D0 /* DetailsItem.swift */; };
+		B666DF5828E9985E001F6741 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = B666DF5728E9985E001F6741 /* SideMenu */; };
+		B666DF5A28E9A80E001F6741 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B666DF5928E9A80E001F6741 /* SideMenuViewController.swift */; };
 		B66B924928D7FD45000C8D8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66B924828D7FD45000C8D8B /* LaunchScreen.storyboard */; };
 		B66B924D28D956D5000C8D8B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B924C28D956D5000C8D8B /* UIImage+Extension.swift */; };
 		B66B925428D992F7000C8D8B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925328D992F7000C8D8B /* RealmModel.swift */; };
@@ -77,6 +79,7 @@
 		B62C785E28D6A232001243D0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B62C786328D72DA7001243D0 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B62C786628D73A9B001243D0 /* DetailsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItem.swift; sourceTree = "<group>"; };
+		B666DF5928E9A80E001F6741 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		B66B924828D7FD45000C8D8B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B66B924C28D956D5000C8D8B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		B66B925328D992F7000C8D8B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 			files = (
 				B66B925A28D993CE000C8D8B /* Realm in Frameworks */,
 				B62C785D28D693F8001243D0 /* Toast in Frameworks */,
+				B666DF5828E9985E001F6741 /* SideMenu in Frameworks */,
 				B66B925C28D993CE000C8D8B /* RealmSwift in Frameworks */,
 				B62C786228D6F32E001243D0 /* DeviceKit in Frameworks */,
 				B62C784728D4B4DC001243D0 /* JGProgressHUD in Frameworks */,
@@ -250,13 +254,14 @@
 			isa = PBXGroup;
 			children = (
 				B62C784028D328EA001243D0 /* GamesCollectionViewController.swift */,
-				B686B09B28CA19BC0042D727 /* NewGameViewController.swift */,
 				B686B0BE28CB48B60042D727 /* RatingViewController.swift */,
+				B686B09B28CA19BC0042D727 /* NewGameViewController.swift */,
 				B62C784328D3769B001243D0 /* UpcomingGameViewController.swift */,
 				B686B0C428D08D4A0042D727 /* SearchViewController.swift */,
 				B62C785528D63AD5001243D0 /* SettingsViewController.swift */,
 				B686B0C828D0CA580042D727 /* DetailsViewController.swift */,
 				B6BA9A2C28D749D300A6206D /* StorageViewController.swift */,
+				B666DF5928E9A80E001F6741 /* SideMenuViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				B62C786128D6F32E001243D0 /* DeviceKit */,
 				B66B925928D993CE000C8D8B /* Realm */,
 				B66B925B28D993CE000C8D8B /* RealmSwift */,
+				B666DF5728E9985E001F6741 /* SideMenu */,
 			);
 			productName = GameDove;
 			productReference = B686B06828CA12D70042D727 /* GameDove.app */;
@@ -388,6 +394,7 @@
 				B62C785B28D693F8001243D0 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				B62C786028D6F32E001243D0 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				B66B925828D993CE000C8D8B /* XCRemoteSwiftPackageReference "realm-swift" */,
+				B666DF5628E9985D001F6741 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = B686B06928CA12D70042D727 /* Products */;
 			projectDirPath = "";
@@ -459,6 +466,7 @@
 				B66B924D28D956D5000C8D8B /* UIImage+Extension.swift in Sources */,
 				B62C786428D72DA7001243D0 /* DetailsCollectionViewCell.swift in Sources */,
 				B686B0BA28CB1DF80042D727 /* Localization.swift in Sources */,
+				B666DF5A28E9A80E001F6741 /* SideMenuViewController.swift in Sources */,
 				B686B0BF28CB48B60042D727 /* RatingViewController.swift in Sources */,
 				B686B0B628CB0BA10042D727 /* APIQuery.swift in Sources */,
 				B686B0B128CA4EF20042D727 /* GamesAPIManager.swift in Sources */,
@@ -715,6 +723,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		B666DF5628E9985D001F6741 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		B66B925828D993CE000C8D8B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -756,6 +772,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B62C786028D6F32E001243D0 /* XCRemoteSwiftPackageReference "DeviceKit" */;
 			productName = DeviceKit;
+		};
+		B666DF5728E9985E001F6741 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B666DF5628E9985D001F6741 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
 		};
 		B66B925928D993CE000C8D8B /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
