@@ -8,7 +8,7 @@
 - CustomFont
 - Code Base UI
 - MVC, UIKit, AutoLayout
-- SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit
+- SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit, SideMenu
 
 ## 앱 소개
 #### GamesView
@@ -136,6 +136,8 @@
 | **Iteration 7** |  |  |  |  | **~2022.10.02** |
 | 29 |  | 앱스토어 심사 제출 | 1h | 1h |  |
 | 01 |  | 리젝... 그리고 수정 | 1h | 1h |  |
+| 02 |  | SideMenu를 통한 탭바 나누기 | 1h | 1h |  |
+| 02 |  | NavigationTitle Button 구현 | 1h | 1h |  |
 |  |  |  |  |  |  |
 | **Iteration 8** |  |  |  |  | **~2022.10.05** |
 |  |  | 출시 전 테스트 |  |  |  |
@@ -255,3 +257,7 @@
 - 리젝 당한김에 수정하고 싶었던 부분을 수정했다.
 - 검색 화면에서 search버튼을 누를 시 키보드가 내려가도록 개선했다.
 - 팀원분이 알려주신 CollectionViews willDisplay 메서드를 이용해, 배너 컬렉션뷰의 다음 이미지를 미리 로드하도록 개선했다. (이거 진짜 짱이다!!)
+
+#### 10/02
+- 플랫폼 변경이 자연스럽도록 NavigationItem.titleView를 UIButton으로 구현하였다.
+- 탭바의 갯수가 다소 많다고 느껴졌기 때문에, SideMenu 라이브러리를 활용해 탭바를 쪼개는 작업을 했다.
