@@ -53,4 +53,6 @@ struct LocalizationKey {
     static let changedMainPlatform = "changed_main_platform"
     
     static let errorAlert = "error_alert"
+    static let deleteAll = "delete_all"
+    static let delete = "delete"
 }

@@ -34,7 +34,7 @@ final class SideMenuViewController: BaseViewController {
             view.addSubview($0)
             $0.tintColor = ColorSet.shared.button
             $0.setTitleColor(ColorSet.shared.button, for: .normal)
-            $0.titleLabel?.font = UIFont().pretendardRegularFont(size: 17)
+            $0.titleLabel?.font = UIFont().pretendardRegularFont(size: 19)
             $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
             $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
         }

@@ -30,7 +30,7 @@ final class SettingsViewController: BaseViewController {
         if repository.fetch().first == nil {
             do {
                 try repository.localRealm.write {
-                    let platform = APIQuery.Platforms.nintendoSwitch
+                    let platform = APIQuery.Platforms.ios
                     let defaultPlatform = MainSettings(id: platform.rawValue, title: platform.title)
                     repository.localRealm.add(defaultPlatform)
                 }

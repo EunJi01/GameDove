@@ -17,7 +17,8 @@ struct IconSet {
     static let share = UIImage(systemName: "square.and.arrow.up") // 공유하기
     
     static let xmark = UIImage(systemName: "xmark") // 창 닫기
-    static let trash = UIImage(systemName: "trash.fill") // 삭제
+    static let trash = UIImage(systemName: "trash") // 삭제1
+    static let trashFill = UIImage(systemName: "trash.fill") // 삭제2
     static let check = UIImage(systemName: "checkmark") // 체크 옵션
     static let reload = UIImage(systemName: "arrow.triangle.2.circlepath") // 새로고침
 }

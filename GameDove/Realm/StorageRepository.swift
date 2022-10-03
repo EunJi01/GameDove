@@ -11,6 +11,8 @@ import RealmSwift
 protocol StorageRepositoryType {
     func fetch() -> Results<Storage>!
     func deleteGame(game: Storage)
+    func deleteAll()
+    func canStore(id: Int) -> Bool
 }
 
 class StorageRepository: StorageRepositoryType {
@@ -24,6 +26,17 @@ class StorageRepository: StorageRepositoryType {
         do {
             try localRealm.write {
                 localRealm.delete(game)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func deleteAll() {
+        do {
+            try localRealm.write {
+                let games = localRealm.objects(Storage.self)
+                localRealm.delete(games)
             }
         } catch let error {
             print(error)

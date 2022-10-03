@@ -106,3 +106,9 @@
 
 // 통신 실패
 "error_alert" = "Network communication failed";
+
+// 보관함 전체삭제 얼럿
+"delete_all" = "Are you sure you want to delete all storage games?";
+
+// 삭제
+"delete" = "Delete";

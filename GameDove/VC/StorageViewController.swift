@@ -24,21 +24,34 @@ final class StorageViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         fetchRealm()
     }
-    
+
     override func configure() {
         view.addSubview(storageTableView)
         navigationController?.navigationBar.topItem?.title = LocalizationKey.storage.localized
+        let deleteAll = UIBarButtonItem(image: IconSet.trash, style: .plain, target: self, action: #selector(showDeleteAlert))
+        deleteAll.tintColor = .systemRed
+        navigationItem.rightBarButtonItems = [deleteAll]
     }
     
     override func setConstraints() {
         storageTableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    @objc private func showDeleteAlert() {
+        let alert = UIAlertController(title: nil, message: LocalizationKey.deleteAll.localized, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: LocalizationKey.cancel.localized, style: .cancel)
+        let delete = UIAlertAction(title: LocalizationKey.delete.localized, style: .destructive) { [weak self] _ in
+            self?.repository.deleteAll()
+            self?.storageTableView.reloadData()
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        self.present(alert, animated: true)
     }
 
     private func fetchRealm() {
@@ -82,7 +95,7 @@ extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
             self.fetchRealm()
         }
 
-        delete.image = IconSet.trash
+        delete.image = IconSet.trashFill
         delete.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [delete])
     }
