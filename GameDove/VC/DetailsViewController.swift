@@ -17,7 +17,7 @@ final class DetailsViewController: BaseViewController {
     var id: String?
     var details: Details?
     var mainImage: String?
-    var scList: [ScreenshotsResults] = []
+    var scList: [UIImage] = []
     
     var nowPage = 0 {
         didSet {
@@ -100,24 +100,38 @@ final class DetailsViewController: BaseViewController {
         
         group.enter()
         DetailsAPIManager.requestDetails(id: id, sc: false) { [weak self] details, _, error in
-            
             if let error = error {
                 self?.errorAlert(error: error)
+            } else {
+                self?.details = details
+                self?.mainImage = details?.image
+                self?.mainView.titleLabel.text = details?.name
             }
-            
-            self?.details = details
-            self?.mainImage = details?.image
-            self?.mainView.titleLabel.text = details?.name
             group.leave()
         }
 
         group.enter()
         DetailsAPIManager.requestDetails(id: id, sc: true) { [weak self] _, sc, error in
-            
             if let error = error {
                 self?.errorAlert(error: error)
             } else if let sc = sc {
-                self?.scList = sc.results
+                sc.results.forEach {
+                    guard let url = URL(string: $0.image) else { return }
+                    
+                    group.enter()
+                    KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+                        switch result {
+                        case .success(let value):
+                            let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
+                            self?.scList.append(newImage)
+                            print(self?.scList.count) // --> 엄청 오래 걸리는건 아닌데... 체감 될 정도
+                        case .failure(let error):
+                            print("Error: \(error)")
+                            self?.view.makeToast(LocalizationKey.failedImage.localized)
+                        }
+                        group.leave()
+                    }
+                }
             }
             group.leave()
         }
@@ -148,7 +162,7 @@ final class DetailsViewController: BaseViewController {
     }
 }
 
-extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionView == mainView.bannerCollectionView ? scList.count + 1 : DetailsItem.allCases.count
     }
@@ -165,6 +179,8 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
                     let url = URL(string: mainImage)
                     cell.bannerImageView.kf.setImage(with: url)
                 }
+            } else if !(scList.isEmpty) {
+                cell.bannerImageView.image = scList[indexPath.row - 1]
             }
             return cell
             
@@ -190,30 +206,12 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
         nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? BannerCollectionViewCell {
-            if !(scList.isEmpty) {
-                guard indexPath.row > 0 else { return }
-                guard let url = URL(string: scList[indexPath.row - 1].image) else { return }
-                KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
-                    switch result { // 이미지 리사이즈
-                    case .success(let value):
-                        let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
-                        cell.bannerImageView.image = newImage
-                    case .failure(let error):
-                        print("Error: \(error)")
-                        self?.view.makeToast(LocalizationKey.failedImage.localized)
-                    }
-                }
-
-                cell.bannerImageView.kf.indicatorType = .activity
-                cell.bannerImageView.kf.setImage(
-                  with: url,
-                  placeholder: nil,
-                  options: nil,
-                  completionHandler: nil
-                )
-            }
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        if let cell = cell as? BannerCollectionViewCell {
+//            if !(scList.isEmpty) {
+//                guard indexPath.row > 0 else { return }
+//                cell.bannerImageView.image = scList[indexPath.row - 1]
+//            }
+//        }
+//    }
 }
