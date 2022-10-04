@@ -123,6 +123,7 @@ final class DetailsViewController: BaseViewController {
         }
         
         group.notify(queue: .main) { [weak self] in
+            self?.scList.removeAll(where: { $0 == self?.mainImage })
             self?.hud.dismiss(animated: true)
             self?.mainView.pagingIndexLabel.text = "1 / \((self?.scList.count ?? 0) + 1)"
             self?.mainView.bannerCollectionView.reloadData()
@@ -140,7 +141,6 @@ final class DetailsViewController: BaseViewController {
                 case .success(let value):
                     let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
                     self?.imageList.append(newImage)
-                    self?.mainView.bannerCollectionView.reloadData()
                 case .failure(let error):
                     print("Error: \(error)")
                     self?.view.makeToast(LocalizationKey.failedImage.localized)
