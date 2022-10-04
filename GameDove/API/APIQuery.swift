@@ -17,6 +17,7 @@ enum APIQuery: String {
     case page
     case screenshots
     case searchPrecise = "search_precise"
+    case searchExact = "search_exact"
     
     enum Ordering: String {
         case released = "-released"

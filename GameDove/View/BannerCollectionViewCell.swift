@@ -28,6 +28,11 @@ class BannerCollectionViewCell: UICollectionViewCell {
     private func configure() {
         addSubview(bannerImageView)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bannerImageView.image = nil
+    }
 
     private func setConstraints() {
         bannerImageView.snp.makeConstraints { make in

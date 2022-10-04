@@ -17,7 +17,8 @@ final class DetailsViewController: BaseViewController {
     var id: String?
     var details: Details?
     var mainImage: String?
-    var scList: [UIImage] = []
+    var scList: [String] = []
+    var imageList: [UIImage] = []
     var timer: Timer?
     
     var nowPage = 0 {
@@ -58,7 +59,7 @@ final class DetailsViewController: BaseViewController {
         var image: UIImage?
 
         KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
-            switch result { // 이미지 리사이즈
+            switch result {
             case .success(let value):
                 image = value.image.resize(newWidth: UIScreen.main.bounds.width)
             case .failure(let error):
@@ -116,23 +117,7 @@ final class DetailsViewController: BaseViewController {
             if let error = error {
                 self?.errorAlert(error: error)
             } else if let sc = sc {
-                sc.results.forEach {
-                    guard let url = URL(string: $0.image) else { return }
-                    
-                    group.enter()
-                    KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
-                        switch result {
-                        case .success(let value):
-                            let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
-                            self?.scList.append(newImage)
-                            print(self?.scList.count) // --> 엄청 오래 걸리는건 아닌데... 체감 될 정도
-                        case .failure(let error):
-                            print("Error: \(error)")
-                            self?.view.makeToast(LocalizationKey.failedImage.localized)
-                        }
-                        group.leave()
-                    }
-                }
+                self?.scList = sc.results.map { $0.image }
             }
             group.leave()
         }
@@ -143,6 +128,24 @@ final class DetailsViewController: BaseViewController {
             self?.mainView.bannerCollectionView.reloadData()
             self?.mainView.detailsCollectionView.reloadData()
             self?.bannerTimer()
+            self?.fetchImage()
+        }
+    }
+    
+    private func fetchImage() {
+        scList.forEach {
+            guard let url = URL(string: $0) else { return }
+            KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+                switch result {
+                case .success(let value):
+                    let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
+                    self?.imageList.append(newImage)
+                    self?.mainView.bannerCollectionView.reloadData()
+                case .failure(let error):
+                    print("Error: \(error)")
+                    self?.view.makeToast(LocalizationKey.failedImage.localized)
+                }
+            }
         }
     }
     
@@ -185,8 +188,8 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
                     let url = URL(string: mainImage)
                     cell.bannerImageView.kf.setImage(with: url)
                 }
-            } else if !(scList.isEmpty) {
-                cell.bannerImageView.image = scList[indexPath.row - 1]
+            } else if imageList.count >= indexPath.row {
+                cell.bannerImageView.image = imageList[indexPath.row - 1]
             }
             return cell
             
