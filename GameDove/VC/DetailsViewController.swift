@@ -18,6 +18,7 @@ final class DetailsViewController: BaseViewController {
     var details: Details?
     var mainImage: String?
     var scList: [UIImage] = []
+    var timer: Timer?
     
     var nowPage = 0 {
         didSet {
@@ -146,8 +147,9 @@ final class DetailsViewController: BaseViewController {
     }
     
     private func bannerTimer() {
-        let _: Timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] Timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] Timer in
             self?.bannerMove()
+            print(#function)
         }
     }
 
@@ -159,6 +161,10 @@ final class DetailsViewController: BaseViewController {
         }
         nowPage += 1
         mainView.bannerCollectionView.scrollToItem(at: NSIndexPath(item: nowPage, section: 0) as IndexPath, at: .right, animated: true)
+    }
+    
+    deinit {
+        timer?.invalidate()
     }
 }
 
@@ -203,15 +209,9 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView == mainView.bannerCollectionView else { return }
         nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        timer?.invalidate()
+        bannerTimer()
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        if let cell = cell as? BannerCollectionViewCell {
-//            if !(scList.isEmpty) {
-//                guard indexPath.row > 0 else { return }
-//                cell.bannerImageView.image = scList[indexPath.row - 1]
-//            }
-//        }
-//    }
 }
