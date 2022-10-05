@@ -8,7 +8,7 @@
 - CustomFont
 - Code Base UI
 - MVC, UIKit, AutoLayout
-- SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit, SideMenu
+- SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit, SideMenu, Firebase
 
 ## 앱 소개
 #### GamesView
@@ -134,18 +134,19 @@
 |  | 기능 개선 | 폰트 변경 | ~~1h~~ | 2h |  |
 |  |  |  |  |  |  |
 | **Iteration 7** |  |  |  |  | **~2022.10.02** |
-| 29 |  | 앱스토어 심사 제출 | 1h | 1h |  |
-| 01 |  | 리젝... 그리고 수정 | 1h | 1h |  |
-| 02 |  | SideMenu를 통한 탭바 나누기 | 1h | 1h |  |
-| 02 |  | NavigationTitle Button 구현 | 1h | 1h |  |
+| 29 | 1.0 | 앱스토어 심사 제출 | 1h | 1h |  |
+| 01 | 1.0 | 리젝... 그리고 수정 | 1h | 1h |  |
+| 02 | 1.1 | SideMenu를 통한 탭바 나누기 | 1h | 1h |  |
+| 02 | 1.1 | NavigationTitle Button 구현 | 1h | 1h |  |
 |  |  |  |  |  |  |
 | **Iteration 8** |  |  |  |  | **~2022.10.05** |
-| 03 |  | 보관중인 게임 전체삭제 버튼 추가 | 1h | 1h |  |
-| 03 |  | 자잘한 오류 수정 | 1h | 1h |  |
-| 04 | DeteilView | 배너 자동스크롤 타이머 초기화 | 1h | 1h |  |
-| 04 | DeteilView | 배너 이미지 로딩시간 개선 | 2h | 2h |  |
-| 05 | DeteilView | 배너 이미지 변환 비동기 구현 | 2h | 2h |  |
-| 05 | DeteilView | 배너 이미지 중복 사진 제거 | 1h | 1h |  |
+| 03 | 1.1.1 | 보관중인 게임 전체삭제 버튼 추가 | 1h | 1h |  |
+| 03 | 1.1.1 | 자잘한 오류 수정 | 1h | 1h |  |
+| 04 | 1.1.1 | 배너 자동스크롤 타이머 초기화 | 1h | 1h |  |
+| 04 | 1.1.1 | 배너 이미지 로딩시간 개선 | 2h | 2h |  |
+| 05 | 1.1.2 | 배너 이미지 변환 비동기 구현 | 2h | 2h |  |
+| 05 | 1.1.2 | 배너 이미지 중복 사진 제거 | 1h | 1h |  |
+| 05 | 1.1.2 | Firebase 설정 | 1h | 1h |  |
 |  |  |  |  |  |  |
 -------------
 #### 09/13 
@@ -289,3 +290,4 @@
 - fetchImage에서는 반복문을 통해 비동기로 이미지를 변환하고, 이를 cellForRowAt에서 image로 설정한다.
 - 단, 이미지가 미처 변환되지 못했을 때에는 크래쉬가 발생할 수 있으므로 imageList.count >= indexPath.row 라는 조건을 설정한다.
 - 메인이미지와 스크린샷 이미지가 중복되는 경우가 많기 때문에 네트워크 통신이 끝났을 때 scList.removeAll(where: { $0 == mainImage }) 를 통해 중복된 url을 제거하는 코드를 추가했다.
+- Firebase를 다운받아 설정하고, Analytics와 Crashlytics로 정보를 받아오도록 했으며, 플랫폼을 바꿀 때의 이벤트 로깅을 추가했다.
