@@ -23,6 +23,9 @@
 		B62C786728D73A9B001243D0 /* DetailsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C786628D73A9B001243D0 /* DetailsItem.swift */; };
 		B666DF5828E9985E001F6741 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = B666DF5728E9985E001F6741 /* SideMenu */; };
 		B666DF5A28E9A80E001F6741 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B666DF5928E9A80E001F6741 /* SideMenuViewController.swift */; };
+		B666DF8D28ED3074001F6741 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = B666DF8C28ED3074001F6741 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		B666DF8F28ED3074001F6741 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B666DF8E28ED3074001F6741 /* FirebaseCrashlytics */; };
+		B666DF9128ED3A06001F6741 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B666DF9028ED3A06001F6741 /* GoogleService-Info.plist */; };
 		B66B924928D7FD45000C8D8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66B924828D7FD45000C8D8B /* LaunchScreen.storyboard */; };
 		B66B924D28D956D5000C8D8B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B924C28D956D5000C8D8B /* UIImage+Extension.swift */; };
 		B66B925428D992F7000C8D8B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B925328D992F7000C8D8B /* RealmModel.swift */; };
@@ -80,6 +83,7 @@
 		B62C786328D72DA7001243D0 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B62C786628D73A9B001243D0 /* DetailsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItem.swift; sourceTree = "<group>"; };
 		B666DF5928E9A80E001F6741 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		B666DF9028ED3A06001F6741 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B66B924828D7FD45000C8D8B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B66B924C28D956D5000C8D8B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		B66B925328D992F7000C8D8B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				B62C786228D6F32E001243D0 /* DeviceKit in Frameworks */,
 				B62C784728D4B4DC001243D0 /* JGProgressHUD in Frameworks */,
 				B686B0BD28CB3C5E0042D727 /* Kingfisher in Frameworks */,
+				B666DF8F28ED3074001F6741 /* FirebaseCrashlytics in Frameworks */,
+				B666DF8D28ED3074001F6741 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				B686B0A128CA1EE20042D727 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +222,7 @@
 				B686B09828CA19790042D727 /* VC */,
 				B66B924828D7FD45000C8D8B /* LaunchScreen.storyboard */,
 				B686B07428CA12D80042D727 /* Assets.xcassets */,
+				B666DF9028ED3A06001F6741 /* GoogleService-Info.plist */,
 				B686B07928CA12D80042D727 /* Info.plist */,
 			);
 			path = GameDove;
@@ -341,6 +348,7 @@
 				B686B06428CA12D70042D727 /* Sources */,
 				B686B06528CA12D70042D727 /* Frameworks */,
 				B686B06628CA12D70042D727 /* Resources */,
+				B666DF8828ED2E5D001F6741 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -356,6 +364,8 @@
 				B66B925928D993CE000C8D8B /* Realm */,
 				B66B925B28D993CE000C8D8B /* RealmSwift */,
 				B666DF5728E9985E001F6741 /* SideMenu */,
+				B666DF8C28ED3074001F6741 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				B666DF8E28ED3074001F6741 /* FirebaseCrashlytics */,
 			);
 			productName = GameDove;
 			productReference = B686B06828CA12D70042D727 /* GameDove.app */;
@@ -395,6 +405,7 @@
 				B62C786028D6F32E001243D0 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				B66B925828D993CE000C8D8B /* XCRemoteSwiftPackageReference "realm-swift" */,
 				B666DF5628E9985D001F6741 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				B666DF8B28ED3074001F6741 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = B686B06928CA12D70042D727 /* Products */;
 			projectDirPath = "";
@@ -412,6 +423,7 @@
 			files = (
 				B686B08228CA14690042D727 /* Localizable.strings in Resources */,
 				B6A1E98728E464AF00941B1B /* Pretendard-Regular.otf in Resources */,
+				B666DF9128ED3A06001F6741 /* GoogleService-Info.plist in Resources */,
 				B6A1E98828E464AF00941B1B /* Pretendard-Bold.otf in Resources */,
 				B6A1E98928E464AF00941B1B /* Pretendard-Medium.otf in Resources */,
 				B66B924928D7FD45000C8D8B /* LaunchScreen.storyboard in Resources */,
@@ -421,6 +433,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B666DF8828ED2E5D001F6741 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B686B06428CA12D70042D727 /* Sources */ = {
@@ -621,7 +655,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2RFRSG9M26;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GameDove/Info.plist;
@@ -651,7 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2RFRSG9M26;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GameDove/Info.plist;
@@ -731,6 +766,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		B666DF8B28ED3074001F6741 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		B66B925828D993CE000C8D8B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -777,6 +820,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B666DF5628E9985D001F6741 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		B666DF8C28ED3074001F6741 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B666DF8B28ED3074001F6741 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		B666DF8E28ED3074001F6741 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B666DF8B28ED3074001F6741 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		B66B925928D993CE000C8D8B /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

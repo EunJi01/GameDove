@@ -10,6 +10,7 @@ import Kingfisher
 import SnapKit
 import JGProgressHUD
 import SideMenu
+import FirebaseAnalytics
 
 class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     var games: [GameResults] = []
@@ -21,7 +22,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     var currentSearch = ""
     var currentPeriod: APIPeriod = .all
     lazy var currentPlatformID: String = mainPlatform?.platformID ?? APIQuery.Platforms.ios.rawValue
-
+    
     lazy var collectionView: UICollectionView = addCollectionView()
     var platformButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -43,7 +44,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     
     func fetchGames(platformID: String, order: APIQuery.Ordering, baseDate: String) {
         hud.show(in: view)
-
+        
         GamesAPIManager.requestGames(order: order, platformID: platformID, baseDate: baseDate, search: currentSearch, page: "\(currentPage)") { [weak self] games, error in
             
             if let error = error {
@@ -52,7 +53,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             }
             
             guard let games = games else { return }
-
+            
             if self?.currentPlatformID == platformID && self?.currentBaseDate == baseDate {
                 self?.games.append(contentsOf: games.results)
                 self?.collectionView.reloadData()
@@ -77,7 +78,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         menu.pushStyle = .popWhenPossible
         present(menu, animated: true, completion: nil)
     }
-
+    
     func filterPeriod(period: APIPeriod) {
         hud.show(in: view)
         
@@ -94,20 +95,26 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             guard let games = games else { return }
             self?.currentBaseDate = period.periodDate()
             self?.games = games.results
-            self?.collectionView.reloadData()
             self?.scrollToTop()
+            self?.collectionView.reloadData()
+            
             self?.hud.dismiss(animated: true)
         }
     }
     
     @objc func platformMenu() -> UIMenu {
         var menuItems: [UIAction] = []
-
+        
         for i in APIQuery.Platforms.allCases {
             let title = i.title
             menuItems.append(UIAction(title: title, image: nil, handler: { [weak self] _ in
                 guard let self = self else { return }
-                self.fetchGames(platformID: i.rawValue, order: self.currentOrder, baseDate: self.currentBaseDate)}))
+                self.fetchGames(platformID: i.rawValue, order: self.currentOrder, baseDate: self.currentBaseDate)
+                
+                Analytics.logEvent("Changed Platform", parameters: [
+                    "title": title
+                ])
+            }))
         }
         
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
@@ -116,10 +123,10 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
     
     @objc func periodMenu() -> UIMenu {
         var menuItems: [UIAction] = []
-
+        
         for i in 0...LocalizationKey.period.count - 1 {
             let period = APIPeriod.allCases[i]
-
+            
             let image: UIImage? = period == currentPeriod ? IconSet.check : nil
             
             let title = LocalizationKey.period[i].localized
@@ -166,7 +173,7 @@ extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionV
         vc.hidesBottomBarWhenPushed = true
         transition(vc, transitionStyle: .push)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return games.count
     }
