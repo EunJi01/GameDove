@@ -95,9 +95,8 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
             guard let games = games else { return }
             self?.currentBaseDate = period.periodDate()
             self?.games = games.results
-            self?.scrollToTop()
             self?.collectionView.reloadData()
-            
+            self?.scrollToTop()
             self?.hud.dismiss(animated: true)
         }
     }
@@ -183,6 +182,7 @@ extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionV
         
         cell.titleLabel.text = games[indexPath.row].name
         cell.releasedLabel.text = games[indexPath.row].released
+        
         if let urlStr = games[indexPath.row].image {
             guard let url = URL(string: urlStr) else { return cell }
             KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
