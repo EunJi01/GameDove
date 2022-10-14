@@ -52,6 +52,15 @@ class GamesCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    let metascoreLabel: UILabel = {
+        let view = UILabel()
+        view.backgroundColor = ColorSet.shared.objectBack
+        view.textColor = .black
+        view.font = UIFont().pretendardMediumFont(size: 14)
+        view.textAlignment = .center
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -69,7 +78,7 @@ class GamesCollectionViewCell: UICollectionViewCell {
     
     func configure() {
         addSubview(cellBackgroundView)
-        [mainImageView, titleLabel, separateView, inDetailLabel, releasedLabel].forEach {
+        [mainImageView, titleLabel, separateView, inDetailLabel, releasedLabel, metascoreLabel].forEach {
             cellBackgroundView.addSubview($0)
         }
     }
@@ -106,6 +115,13 @@ class GamesCollectionViewCell: UICollectionViewCell {
         releasedLabel.snp.makeConstraints { make in
             make.top.equalTo(separateView.snp.bottom).offset(8)
             make.leading.equalTo(separateView)
+        }
+        
+        metascoreLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(mainImageView.snp.bottom).inset(12)
+            make.trailing.equalTo(mainImageView.snp.trailing).inset(12)
+            make.height.equalTo(24)
+            make.width.equalTo(38)
         }
     }
 }

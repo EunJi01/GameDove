@@ -68,6 +68,7 @@
 		B6A1E98928E464AF00941B1B /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A1E98628E464AF00941B1B /* Pretendard-Medium.otf */; };
 		B6BA9A2D28D749D300A6206D /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA9A2C28D749D300A6206D /* StorageViewController.swift */; };
 		B6BA9A2F28D74A1F00A6206D /* StorageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA9A2E28D74A1F00A6206D /* StorageTableViewCell.swift */; };
+		B6C93E2728FA927B00F2F96F /* MetascoreGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C93E2628FA927B00F2F96F /* MetascoreGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		B6A1E98628E464AF00941B1B /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		B6BA9A2C28D749D300A6206D /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		B6BA9A2E28D74A1F00A6206D /* StorageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTableViewCell.swift; sourceTree = "<group>"; };
+		B6C93E2628FA927B00F2F96F /* MetascoreGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetascoreGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 				B686B0C828D0CA580042D727 /* DetailsViewController.swift */,
 				B6BA9A2C28D749D300A6206D /* StorageViewController.swift */,
 				B666DF5928E9A80E001F6741 /* SideMenuViewController.swift */,
+				B6C93E2628FA927B00F2F96F /* MetascoreGameViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -437,7 +440,6 @@
 /* Begin PBXShellScriptBuildPhase section */
 		B666DF8828ED2E5D001F6741 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -490,6 +492,7 @@
 				B686B0AC28CA27F00042D727 /* IconSet.swift in Sources */,
 				B62C784D28D4C8BC001243D0 /* ScreenshotsModel.swift in Sources */,
 				B66B926228DD8B94000C8D8B /* APIError.swift in Sources */,
+				B6C93E2728FA927B00F2F96F /* MetascoreGameViewController.swift in Sources */,
 				B686B0AF28CA4EE50042D727 /* GamesModel.swift in Sources */,
 				B6BA9A2F28D74A1F00A6206D /* StorageTableViewCell.swift in Sources */,
 				B6BA9A2D28D749D300A6206D /* StorageViewController.swift in Sources */,
@@ -772,7 +775,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 9.6.0;
 			};
 		};
 		B66B925828D993CE000C8D8B /* XCRemoteSwiftPackageReference "realm-swift" */ = {

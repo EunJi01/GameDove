@@ -183,6 +183,12 @@ extension GamesCollectionViewController: UICollectionViewDelegate, UICollectionV
         cell.titleLabel.text = games[indexPath.row].name
         cell.releasedLabel.text = games[indexPath.row].released
         
+        if let metascore = games[indexPath.row].metascore {
+            cell.metascoreLabel.text = "\(metascore)"
+        } else {
+            cell.metascoreLabel.text = "-"
+        }
+        
         if let urlStr = games[indexPath.row].image {
             guard let url = URL(string: urlStr) else { return cell }
             KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in

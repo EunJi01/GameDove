@@ -15,9 +15,11 @@ struct GameResults: Codable {
     let name: String
     let image, released: String?
     let id: Int
+    let metascore: Int?
     
     enum CodingKeys: String, CodingKey {
         case image = "background_image"
+        case metascore = "metacritic"
         case name, released, id
     }
 }

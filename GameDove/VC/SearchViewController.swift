@@ -21,6 +21,8 @@ final class SearchViewController: GamesCollectionViewController {
             order = LocalizationKey.newGames.localized
         case .upcoming:
             order = LocalizationKey.upcomingGames.localized
+        case .metascore:
+            order = LocalizationKey.metascore.localized
         case .none:
             break
         }

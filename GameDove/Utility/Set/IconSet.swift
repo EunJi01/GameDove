@@ -37,4 +37,5 @@ struct TabBarIconSet {
 struct SideMenuIconSet {
     static let storage = UIImage(systemName: "tray.full") // 보관함
     static let setting = UIImage(systemName: "gearshape") // 설정
+    static let metascore = UIImage(systemName: "chart.bar") // 메타스코어
 }

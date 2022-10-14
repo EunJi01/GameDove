@@ -22,15 +22,23 @@ final class SideMenuViewController: BaseViewController {
         view.setImage(SideMenuIconSet.setting, for: .normal)
         return view
     }()
+    
+    private let metascoreButton: UIButton = {
+        let view = UIButton()
+        view.setTitle(LocalizationKey.metascore.localized, for: .normal)
+        view.setImage(SideMenuIconSet.metascore, for: .normal)
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         storageButton.addTarget(self, action: #selector(storageButtonTapped), for: .touchUpInside)
         settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        metascoreButton.addTarget(self, action: #selector(metascoreButtonTapped), for: .touchUpInside)
     }
     
     override func configure() {
-        [storageButton, settingsButton].forEach {
+        [metascoreButton, storageButton, settingsButton].forEach {
             view.addSubview($0)
             $0.tintColor = ColorSet.shared.button
             $0.setTitleColor(ColorSet.shared.button, for: .normal)
@@ -41,15 +49,25 @@ final class SideMenuViewController: BaseViewController {
     }
     
     override func setConstraints() {
-        storageButton.snp.makeConstraints { make in
+        metascoreButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(60)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+        }
+        
+        storageButton.snp.makeConstraints { make in
+            make.top.equalTo(metascoreButton.snp.bottom).offset(16)
+            make.leading.equalTo(metascoreButton)
         }
         
         settingsButton.snp.makeConstraints { make in
             make.top.equalTo(storageButton.snp.bottom).offset(16)
             make.leading.equalTo(storageButton)
         }
+    }
+    
+    @objc private func metascoreButtonTapped() {
+        let vc = MetascoreGameViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func storageButtonTapped() {

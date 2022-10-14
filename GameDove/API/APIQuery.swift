@@ -23,6 +23,7 @@ enum APIQuery: String {
         case released = "-released"
         case rating = "-rating"
         case upcoming = "released"
+        case metascore = "-metacritic"
     }
     
     enum Platforms: String, CaseIterable {

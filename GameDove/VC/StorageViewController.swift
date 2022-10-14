@@ -31,7 +31,7 @@ final class StorageViewController: BaseViewController {
         view.addSubview(storageTableView)
         navigationController?.navigationBar.topItem?.title = LocalizationKey.storage.localized
         let deleteAll = UIBarButtonItem(image: IconSet.trash, style: .plain, target: self, action: #selector(showDeleteAlert))
-        deleteAll.tintColor = .systemRed
+        deleteAll.tintColor = ColorSet.shared.button
         navigationItem.rightBarButtonItems = [deleteAll]
     }
     
