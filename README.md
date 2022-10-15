@@ -291,3 +291,7 @@
 - 단, 이미지가 미처 변환되지 못했을 때에는 크래쉬가 발생할 수 있으므로 imageList.count >= indexPath.row 라는 조건을 설정한다.
 - 메인이미지와 스크린샷 이미지가 중복되는 경우가 많기 때문에 네트워크 통신이 끝났을 때 scList.removeAll(where: { $0 == mainImage }) 를 통해 중복된 url을 제거하는 코드를 추가했다.
 - Firebase를 다운받아 설정하고, Analytics와 Crashlytics로 정보를 받아오도록 했으며, 플랫폼을 바꿀 때의 이벤트 로깅을 추가했다.
+
+#### 10/15 : 1.1.3 업데이트
+- 게임 리스트 탭에서 바로 메타스코어를 확인할 수 있도록 UI를 수정했다.
+- MetascoreGameViewController를 추가해서 현제 Rating 뿐만 아니라 메타스코어 순으로 게임을 확인할 수 있도록 개선했다.
