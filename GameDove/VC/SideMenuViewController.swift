@@ -67,18 +67,21 @@ final class SideMenuViewController: BaseViewController {
     
     @objc private func metascoreButtonTapped() {
         let vc = MetascoreGameViewController()
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func storageButtonTapped() {
         let vc = StorageViewController()
         vc.navigationItem.title = LocalizationKey.storage.localized
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func settingsButtonTapped() {
         let vc = SettingsViewController()
         vc.navigationItem.title = LocalizationKey.settings.localized
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -54,8 +54,8 @@ class GamesCollectionViewCell: UICollectionViewCell {
     
     let metascoreLabel: UILabel = {
         let view = UILabel()
-        view.backgroundColor = ColorSet.shared.objectBack
-        view.textColor = .black
+        view.backgroundColor = ColorSet.shared.clearBlack
+        view.textColor = .white
         view.font = UIFont().pretendardMediumFont(size: 14)
         view.textAlignment = .center
         return view
@@ -121,7 +121,7 @@ class GamesCollectionViewCell: UICollectionViewCell {
             make.bottom.equalTo(mainImageView.snp.bottom).inset(12)
             make.trailing.equalTo(mainImageView.snp.trailing).inset(12)
             make.height.equalTo(24)
-            make.width.equalTo(38)
+            make.width.equalTo(36)
         }
     }
 }
