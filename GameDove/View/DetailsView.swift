@@ -13,7 +13,7 @@ class DetailsView: UIView {
     
     let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont().pretendardBoldFont(size: 30)
+        view.font = .pretendardBoldFont(size: 30)
         view.textColor = ColorSet.shared.button
         return view
     }()

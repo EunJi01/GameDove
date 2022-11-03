@@ -11,7 +11,7 @@ import SnapKit
 class DetailsCollectionViewCell: UICollectionViewCell {
     let itemLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont().pretendardMediumFont(size: 17)
+        view.font = .pretendardMediumFont(size: 17)
         view.textColor = .clear
         view.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         return view
@@ -20,7 +20,7 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     let itemDataLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
-        view.font = UIFont().pretendardRegularFont(size: 17)
+        view.font = .pretendardRegularFont(size: 17)
         return view
     }()
     

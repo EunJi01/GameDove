@@ -28,7 +28,7 @@ class GamesCollectionViewController: BaseViewController, GamesCollectionView {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         button.setTitleColor(ColorSet.shared.button, for: .normal)
-        button.titleLabel?.font = UIFont().pretendardBoldFont(size: 19)
+        button.titleLabel?.font = .pretendardBoldFont(size: 19)
         button.showsMenuAsPrimaryAction = true
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
         button.semanticContentAttribute = .forceRightToLeft
