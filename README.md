@@ -42,6 +42,9 @@
 - 위의 업데이트로 디테일뷰의 로딩 시간이 길어졌기 때문에, 이 시간을 단축시키기 위해 여러 방법을 시도했다.
 - 최종적으로 정한 방법은, 우선 네트워크 통신으로 이미지의 url을 받아왔을 때에는 바로 이미지로 변환하지 않고 배열에 담아둔 후 비동기로 이미지를 변환하는 것이다.
 ```
+    var scList: [String] = []
+    var imageList: [UIImage] = []
+    
     private func fetchImage() {
         scList.forEach {
             guard let url = URL(string: $0) else { return }
