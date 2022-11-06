@@ -33,10 +33,35 @@
 - 현재 버전을 체크해 보여준다.
 
 ## 주요 이슈
-#### 임시.
-#### 임시.
-#### 임시.
+#### BannerCollectionView 이미지 미리 로드
+- 배너가 스크롤되어 다음 이미지로 넘어갔을 때 이미지를 받아오기 시작하기 때문에, 사용자가 이미지를 넘길 때마다 로딩을 기다려야 한다는 문제가 있었다.
+- 따라서 네트워크 통신과 동시에 url을 UIImage로 변환한 후 배열에 추가해, 한꺼번에 BannerCollectionView의 ImageView에 나타내기로 로직을 변경했다.
+- 이렇게 하면 모든 url이 image로 변환된 후에 뷰를 보여주므로 셀마다 로딩이 필요하지는 않지만, DetailsView 자체의 로딩은 다소 길어진다는 문제가 있었다.
 
+#### BannerCollectionView 이미지 비동기 로드
+- 위의 업데이트로 디테일뷰의 로딩 시간이 길어졌기 때문에, 이 시간을 단축시키기 위해 여러 방법을 시도했다.
+- 최종적으로 정한 방법은, 우선 네트워크 통신으로 이미지의 url을 받아왔을 때에는 바로 이미지로 변환하지 않고 배열에 담아둔 후 비동기로 이미지를 변환하는 것이다.
+```
+    private func fetchImage() {
+        scList.forEach {
+            guard let url = URL(string: $0) else { return }
+            KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+                switch result {
+                case .success(let value):
+                    let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
+                    self?.imageList.append(newImage)
+                case .failure(_):
+                    self?.view.makeToast(LocalizationKey.failedImage.localized)
+                }
+            }
+        }
+    }
+```
+- fetchImage에서는 반복문을 통해 비동기로 이미지를 변환하고, 이를 cellForRowAt에서 image로 설정한다.
+- 단, 이미지가 미처 변환되지 못했을 때에는 크래쉬가 발생할 수 있으므로 imageList.count >= indexPath.row 라는 조건을 설정했다.
+
+#### API 핸들링 구조
+- 임시.
 -------------
 ### 앱 UI/UX
 ![스크린샷 2022-08-30 오후 7 43 50](https://user-images.githubusercontent.com/92143918/187417082-522e3efd-3ff9-4796-bca8-8305659b5a8e.png)  
@@ -280,8 +305,8 @@
 - bannerCollectionView의 이미지 로딩 시간을 개선하기 위해 willDisplay, prefetch 등의 메서드를 활용해 봤지만 적절한 방법은 아닌 것 같다.
 
 #### 10/04 : 1.1.1 업데이트
-- 네트워크 통신과 동시에 url을 UIImage로 변경한 후 배열에 추가해, 이를 bannerCollectionView의 imageView에 나타내기로 순서를 변경했다.
-- 이렇게 하면 모든 url의 image로 변환된 후에 뷰를 보여주므로 셀마다 로딩이 필요하지는 않지만, DetailsView 자체의 로딩은 다소 길어질 수 있을 것 같다.
+- 네트워크 통신과 동시에 url을 UIImage로 변한 후 배열에 추가해, 이를 한꺼번에 bannerCollectionView의 imageView에 나타내기로 로직을 변경했다.
+- 이렇게 하면 모든 url image로 변환된 후에 뷰를 보여주므로 셀마다 로딩이 필요하지는 않지만, DetailsView 자체의 로딩은 다소 길어질 수 있을 것 같다.
 - 아무리 비동기로 진행한다고 해도, 가장 용량이 큰 이미지가 4초가 걸린다고 가정하면 이 한장의 이미지 때문에 4초를 꼬박 기다려야 하기 때문이다.
 - 하지만 모든 url의 변경이 완료되기 전에 뷰를 띄워버리면 크래쉬가 발생하기 때문에 이 부분에 대해서는 더 고민해봐야 할 것 같다.
 - 기존 코드로는 사용자가 직접 스크롤했을 경우에도 멈추지 않고 타이머대로 자동 스크롤이 동작하기 때문에, 의도치 않게 빠르게 넘어가는 상황이 발생할 수 있다.
