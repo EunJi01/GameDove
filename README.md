@@ -62,9 +62,6 @@
 ```
 - fetchImage에서는 반복문을 통해 비동기로 이미지를 변환하고, 이를 cellForRowAt에서 image로 설정한다.
 - 단, 이미지가 미처 변환되지 못했을 때에는 크래쉬가 발생할 수 있으므로 imageList.count >= indexPath.row 라는 조건을 설정했다.
-
-#### API 핸들링 구조
-- 임시...
 -------------
 ### 앱 UI/UX
 ![스크린샷 2022-08-30 오후 7 43 50](https://user-images.githubusercontent.com/92143918/187417082-522e3efd-3ff9-4796-bca8-8305659b5a8e.png)  
