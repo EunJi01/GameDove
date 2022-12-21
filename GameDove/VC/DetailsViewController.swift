@@ -141,8 +141,7 @@ final class DetailsViewController: BaseViewController {
                 case .success(let value):
                     let newImage = value.image.resize(newWidth: UIScreen.main.bounds.width)
                     self?.imageList.append(newImage)
-                case .failure(let error):
-                    print("Error: \(error)")
+                case .failure(_):
                     self?.view.makeToast(LocalizationKey.failedImage.localized)
                 }
             }
