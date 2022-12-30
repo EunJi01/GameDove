@@ -4,10 +4,8 @@
 ## 개발
 - 최소 타겟 : iOS 14
 - iPhone, Portrait 모드 지원
-- 다국어 지원, 다크모드 지원
-- CustomFont
-- Code Base UI
-- MVC, UIKit, AutoLayout
+- 다국어 지원, 다크모드 지원, CustomFont
+- MVC, UIKit, AutoLayout, Code Base UI
 - SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit, SideMenu, Firebase
 
 ## 앱 소개
@@ -63,6 +61,7 @@
 ```
 - fetchImage에서는 반복문을 통해 비동기로 이미지를 변환하고, 이를 cellForRowAt에서 image로 설정한다.
 - 단, 이미지가 미처 변환되지 못했을 때에는 크래쉬가 발생할 수 있으므로 imageList.count >= indexPath.row 라는 조건을 설정했다.
+- https://user-images.githubusercontent.com/92143918/210030628-9e2313d5-ffe3-4574-a0c5-8d7ccb702d7f.mov
 -------------
 ### 앱 UI/UX
 ![스크린샷 2022-08-30 오후 7 43 50](https://user-images.githubusercontent.com/92143918/187417082-522e3efd-3ff9-4796-bca8-8305659b5a8e.png)  
@@ -70,7 +69,6 @@
 ### 앱 기능
 * ✅ 다국어 지원 (한영일)
 #### NewGameView / RatingGameView / UpcomingGameView (TabBar)
-* ✅ API 통신 ⭐️매우 중요⭐️ ---> 우선 신작 모아보기를 구현 후, 마지막에 나누기
 * ✅ API 통신 ⭐️매우 중요⭐️ ---> 상태 코드나 연결 상태가 좋지 않을 경우에 대한 대응
 * ✅ 플랫폼 옵션 설정 - API platforms Query
 #### SearchView
