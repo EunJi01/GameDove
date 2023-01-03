@@ -8,7 +8,7 @@
 - MVC, UIKit, AutoLayout, Code Base UI
 - SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit, SideMenu, Firebase
 ## 앱 소개
-- https://apps.apple.com/kr/app/게임도브-신작-인기-게임-정보/id1645004525
+- App Store : https://apps.apple.com/kr/app/게임도브-신작-인기-게임-정보/id1645004525
 ![스크린샷 2022-12-30 오후 12 08 24](https://user-images.githubusercontent.com/92143918/210030490-c011cdc0-82c7-4aed-85c7-1276f0e655a6.png)
 #### GamesView
 - [API](https://rawg.io/apidocs) 통신을 통해 신작, 인기작, 출시예정작 게임을 플랫폼별로 열람할 수 있다.
