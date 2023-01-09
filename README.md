@@ -32,6 +32,8 @@
 - 현재 버전을 체크해 보여준다.
 
 ## 주요 이슈
+**출시 회고** : https://eun-dev.tistory.com/60
+
 #### BannerCollectionView 이미지 미리 로드
 - 배너가 스크롤되어 다음 이미지로 넘어갔을 때 이미지를 받아오기 시작하기 때문에, 사용자가 이미지를 넘길 때마다 로딩을 기다려야 한다는 문제가 있었다.
 - 따라서 네트워크 통신과 동시에 url을 UIImage로 변환한 후 배열에 추가해, 한꺼번에 BannerCollectionView의 ImageView에 나타내기로 로직을 변경했다.
