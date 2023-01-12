@@ -11,7 +11,7 @@
 - App Store : https://apps.apple.com/kr/app/게임도브-신작-인기-게임-정보/id1645004525
 ![스크린샷 2022-12-30 오후 12 08 24](https://user-images.githubusercontent.com/92143918/210030490-c011cdc0-82c7-4aed-85c7-1276f0e655a6.png)
 #### GamesView
-- [API](https://rawg.io/apidocs) 통신을 통해 신작, 인기작, 출시예정작 게임을 플랫폼별로 열람할 수 있다.
+- [Open API](https://rawg.io/apidocs) 통신을 통해 신작, 인기작, 출시예정작 게임을 플랫폼별로 열람할 수 있다.
 - 검색도 가능하며 검색할 때에는 현재의 플랫폼과 정렬을 유지한다.
 - 인기작의 경우 오래된 게임의 순위는 변동이 적기 때문에 날짜 필터를 통해 최신 정보를 확인할 수 있다.
 
