@@ -6,7 +6,7 @@
 - iPhone, Portrait 모드 지원
 - 다국어 지원, 다크모드 지원, CustomFont
 - MVC, UIKit, AutoLayout, Code Base UI
-- SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit, SideMenu, Firebase
+- SnapKit, Realm, Kingfisher, Toast, JGPProgressHUD, DeviceKit, SideMenu, Firebase Analytics/crashlytics
 ## 앱 소개
 - App Store : https://apps.apple.com/kr/app/게임도브-신작-인기-게임-정보/id1645004525
 ![스크린샷 2022-12-30 오후 12 08 24](https://user-images.githubusercontent.com/92143918/210030490-c011cdc0-82c7-4aed-85c7-1276f0e655a6.png)
